@@ -1,3 +1,5 @@
+{% comment %}
+
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -39,7 +41,7 @@
     flex-wrap: wrap;
   }
 
-  summary.list-menu__item {
+  summary.list-menu__item { 
     padding-right: 2.7rem;
   }
 
@@ -63,6 +65,8 @@
     }
   }
 </style>
+
+{% endcomment %}
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>

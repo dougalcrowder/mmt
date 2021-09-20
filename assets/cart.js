@@ -1,137 +1,112 @@
-class CartRemoveButton extends HTMLElement {
-  constructor() {
-    super();
-    this.addEventListener('click', (event) => {
-      event.preventDefault();
-      this.closest('cart-items').updateQuantity(this.dataset.index, 0);
-    });
-  }
-}
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ })
+/************************************************************************/
+/******/ ({
 
-customElements.define('cart-remove-button', CartRemoveButton);
+/***/ "./js/cart.js":
+/*!********************!*\
+  !*** ./js/cart.js ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-class CartItems extends HTMLElement {
-  constructor() {
-    super();
+eval("function _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nfunction ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function\"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }\n\nfunction _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }\n\nfunction _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === \"object\" || typeof call === \"function\")) { return call; } else if (call !== void 0) { throw new TypeError(\"Derived constructors may only return object or undefined\"); } return _assertThisInitialized(self); }\n\nfunction _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return self; }\n\nfunction _wrapNativeSuper(Class) { var _cache = typeof Map === \"function\" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== \"function\") { throw new TypeError(\"Super expression must either be null or a function\"); } if (typeof _cache !== \"undefined\") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }\n\nfunction _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }\n\nfunction _isNativeReflectConstruct() { if (typeof Reflect === \"undefined\" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === \"function\") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }\n\nfunction _isNativeFunction(fn) { return Function.toString.call(fn).indexOf(\"[native code]\") !== -1; }\n\nfunction _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }\n\nfunction _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }\n\nvar CartRemoveButton = /*#__PURE__*/function (_HTMLElement) {\n  _inherits(CartRemoveButton, _HTMLElement);\n\n  var _super = _createSuper(CartRemoveButton);\n\n  function CartRemoveButton() {\n    var _this;\n\n    _classCallCheck(this, CartRemoveButton);\n\n    _this = _super.call(this);\n\n    _this.addEventListener('click', function (event) {\n      event.preventDefault();\n\n      _this.closest('cart-items').updateQuantity(_this.dataset.index, 0);\n    });\n\n    return _this;\n  }\n\n  return CartRemoveButton;\n}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));\n\ncustomElements.define('cart-remove-button', CartRemoveButton);\n\nvar CartItems = /*#__PURE__*/function (_HTMLElement2) {\n  _inherits(CartItems, _HTMLElement2);\n\n  var _super2 = _createSuper(CartItems);\n\n  function CartItems() {\n    var _this2;\n\n    _classCallCheck(this, CartItems);\n\n    _this2 = _super2.call(this);\n    _this2.lineItemStatusElement = document.getElementById('shopping-cart-line-item-status');\n    _this2.currentItemCount = Array.from(_this2.querySelectorAll('[name=\"updates[]\"]')).reduce(function (total, quantityInput) {\n      return total + parseInt(quantityInput.value);\n    }, 0);\n    _this2.debouncedOnChange = debounce(function (event) {\n      _this2.onChange(event);\n    }, 300);\n\n    _this2.addEventListener('change', _this2.debouncedOnChange.bind(_assertThisInitialized(_this2)));\n\n    return _this2;\n  }\n\n  _createClass(CartItems, [{\n    key: \"onChange\",\n    value: function onChange(event) {\n      this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));\n    }\n  }, {\n    key: \"getSectionsToRender\",\n    value: function getSectionsToRender() {\n      return [{\n        id: 'main-cart-items',\n        section: document.getElementById('main-cart-items').dataset.id,\n        selector: '.js-contents'\n      }, {\n        id: 'cart-icon-bubble',\n        section: 'cart-icon-bubble',\n        selector: '.shopify-section'\n      }, {\n        id: 'cart-live-region-text',\n        section: 'cart-live-region-text',\n        selector: '.shopify-section'\n      }, {\n        id: 'main-cart-footer',\n        section: document.getElementById('main-cart-footer').dataset.id,\n        selector: '.js-contents'\n      }];\n    }\n  }, {\n    key: \"updateQuantity\",\n    value: function updateQuantity(line, quantity, name) {\n      var _this3 = this;\n\n      this.enableLoading(line);\n      var body = JSON.stringify({\n        line: line,\n        quantity: quantity,\n        sections: this.getSectionsToRender().map(function (section) {\n          return section.section;\n        }),\n        sections_url: window.location.pathname\n      });\n      fetch(\"\".concat(routes.cart_change_url), _objectSpread(_objectSpread({}, fetchConfig()), {\n        body: body\n      })).then(function (response) {\n        return response.text();\n      }).then(function (state) {\n        var parsedState = JSON.parse(state);\n\n        _this3.classList.toggle('is-empty', parsedState.item_count === 0);\n\n        var cartFooter = document.getElementById('main-cart-footer');\n        if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);\n\n        _this3.getSectionsToRender().forEach(function (section) {\n          var elementToReplace = document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);\n          elementToReplace.innerHTML = _this3.getSectionInnerHTML(parsedState.sections[section.section], section.selector);\n        });\n\n        _this3.updateLiveRegions(line, parsedState.item_count);\n\n        var lineItem = document.getElementById(\"CartItem-\".concat(line));\n        if (lineItem && lineItem.querySelector(\"[name=\\\"\".concat(name, \"\\\"]\"))) lineItem.querySelector(\"[name=\\\"\".concat(name, \"\\\"]\")).focus();\n\n        _this3.disableLoading();\n      })[\"catch\"](function () {\n        _this3.querySelectorAll('.loading-overlay').forEach(function (overlay) {\n          return overlay.classList.add('hidden');\n        });\n\n        document.getElementById('cart-errors').textContent = window.cartStrings.error;\n\n        _this3.disableLoading();\n      });\n    }\n  }, {\n    key: \"updateLiveRegions\",\n    value: function updateLiveRegions(line, itemCount) {\n      if (this.currentItemCount === itemCount) {\n        document.getElementById(\"Line-item-error-\".concat(line)).querySelector('.cart-item__error-text').innerHTML = window.cartStrings.quantityError.replace('[quantity]', document.getElementById(\"Quantity-\".concat(line)).value);\n      }\n\n      this.currentItemCount = itemCount;\n      this.lineItemStatusElement.setAttribute('aria-hidden', true);\n      var cartStatus = document.getElementById('cart-live-region-text');\n      cartStatus.setAttribute('aria-hidden', false);\n      setTimeout(function () {\n        cartStatus.setAttribute('aria-hidden', true);\n      }, 1000);\n    }\n  }, {\n    key: \"getSectionInnerHTML\",\n    value: function getSectionInnerHTML(html, selector) {\n      return new DOMParser().parseFromString(html, 'text/html').querySelector(selector).innerHTML;\n    }\n  }, {\n    key: \"enableLoading\",\n    value: function enableLoading(line) {\n      document.getElementById('main-cart-items').classList.add('cart__items--disabled');\n      this.querySelectorAll(\"#CartItem-\".concat(line, \" .loading-overlay\")).forEach(function (overlay) {\n        return overlay.classList.remove('hidden');\n      });\n      document.activeElement.blur();\n      this.lineItemStatusElement.setAttribute('aria-hidden', false);\n    }\n  }, {\n    key: \"disableLoading\",\n    value: function disableLoading() {\n      document.getElementById('main-cart-items').classList.remove('cart__items--disabled');\n    }\n  }]);\n\n  return CartItems;\n}( /*#__PURE__*/_wrapNativeSuper(HTMLElement));\n\ncustomElements.define('cart-items', CartItems);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9qcy9jYXJ0LmpzPzhhZTEiXSwibmFtZXMiOlsiQ2FydFJlbW92ZUJ1dHRvbiIsImFkZEV2ZW50TGlzdGVuZXIiLCJldmVudCIsInByZXZlbnREZWZhdWx0IiwiY2xvc2VzdCIsInVwZGF0ZVF1YW50aXR5IiwiZGF0YXNldCIsImluZGV4IiwiSFRNTEVsZW1lbnQiLCJjdXN0b21FbGVtZW50cyIsImRlZmluZSIsIkNhcnRJdGVtcyIsImxpbmVJdGVtU3RhdHVzRWxlbWVudCIsImRvY3VtZW50IiwiZ2V0RWxlbWVudEJ5SWQiLCJjdXJyZW50SXRlbUNvdW50IiwiQXJyYXkiLCJmcm9tIiwicXVlcnlTZWxlY3RvckFsbCIsInJlZHVjZSIsInRvdGFsIiwicXVhbnRpdHlJbnB1dCIsInBhcnNlSW50IiwidmFsdWUiLCJkZWJvdW5jZWRPbkNoYW5nZSIsImRlYm91bmNlIiwib25DaGFuZ2UiLCJiaW5kIiwidGFyZ2V0IiwiYWN0aXZlRWxlbWVudCIsImdldEF0dHJpYnV0ZSIsImlkIiwic2VjdGlvbiIsInNlbGVjdG9yIiwibGluZSIsInF1YW50aXR5IiwibmFtZSIsImVuYWJsZUxvYWRpbmciLCJib2R5IiwiSlNPTiIsInN0cmluZ2lmeSIsInNlY3Rpb25zIiwiZ2V0U2VjdGlvbnNUb1JlbmRlciIsIm1hcCIsInNlY3Rpb25zX3VybCIsIndpbmRvdyIsImxvY2F0aW9uIiwicGF0aG5hbWUiLCJmZXRjaCIsInJvdXRlcyIsImNhcnRfY2hhbmdlX3VybCIsImZldGNoQ29uZmlnIiwidGhlbiIsInJlc3BvbnNlIiwidGV4dCIsInN0YXRlIiwicGFyc2VkU3RhdGUiLCJwYXJzZSIsImNsYXNzTGlzdCIsInRvZ2dsZSIsIml0ZW1fY291bnQiLCJjYXJ0Rm9vdGVyIiwiZm9yRWFjaCIsImVsZW1lbnRUb1JlcGxhY2UiLCJxdWVyeVNlbGVjdG9yIiwiaW5uZXJIVE1MIiwiZ2V0U2VjdGlvbklubmVySFRNTCIsInVwZGF0ZUxpdmVSZWdpb25zIiwibGluZUl0ZW0iLCJmb2N1cyIsImRpc2FibGVMb2FkaW5nIiwib3ZlcmxheSIsImFkZCIsInRleHRDb250ZW50IiwiY2FydFN0cmluZ3MiLCJlcnJvciIsIml0ZW1Db3VudCIsInF1YW50aXR5RXJyb3IiLCJyZXBsYWNlIiwic2V0QXR0cmlidXRlIiwiY2FydFN0YXR1cyIsInNldFRpbWVvdXQiLCJodG1sIiwiRE9NUGFyc2VyIiwicGFyc2VGcm9tU3RyaW5nIiwicmVtb3ZlIiwiYmx1ciJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQUFNQSxnQjs7Ozs7QUFDSiw4QkFBYztBQUFBOztBQUFBOztBQUNaOztBQUNBLFVBQUtDLGdCQUFMLENBQXNCLE9BQXRCLEVBQStCLFVBQUNDLEtBQUQsRUFBVztBQUN4Q0EsV0FBSyxDQUFDQyxjQUFOOztBQUNBLFlBQUtDLE9BQUwsQ0FBYSxZQUFiLEVBQTJCQyxjQUEzQixDQUEwQyxNQUFLQyxPQUFMLENBQWFDLEtBQXZELEVBQThELENBQTlEO0FBQ0QsS0FIRDs7QUFGWTtBQU1iOzs7aUNBUDRCQyxXOztBQVUvQkMsY0FBYyxDQUFDQyxNQUFmLENBQXNCLG9CQUF0QixFQUE0Q1YsZ0JBQTVDOztJQUVNVyxTOzs7OztBQUNKLHVCQUFjO0FBQUE7O0FBQUE7O0FBQ1o7QUFFQSxXQUFLQyxxQkFBTCxHQUE2QkMsUUFBUSxDQUFDQyxjQUFULENBQXdCLGdDQUF4QixDQUE3QjtBQUVBLFdBQUtDLGdCQUFMLEdBQXdCQyxLQUFLLENBQUNDLElBQU4sQ0FBVyxPQUFLQyxnQkFBTCxDQUFzQixvQkFBdEIsQ0FBWCxFQUNyQkMsTUFEcUIsQ0FDZCxVQUFDQyxLQUFELEVBQVFDLGFBQVI7QUFBQSxhQUEwQkQsS0FBSyxHQUFHRSxRQUFRLENBQUNELGFBQWEsQ0FBQ0UsS0FBZixDQUExQztBQUFBLEtBRGMsRUFDbUQsQ0FEbkQsQ0FBeEI7QUFHQSxXQUFLQyxpQkFBTCxHQUF5QkMsUUFBUSxDQUFDLFVBQUN2QixLQUFELEVBQVc7QUFDM0MsYUFBS3dCLFFBQUwsQ0FBY3hCLEtBQWQ7QUFDRCxLQUZnQyxFQUU5QixHQUY4QixDQUFqQzs7QUFJQSxXQUFLRCxnQkFBTCxDQUFzQixRQUF0QixFQUFnQyxPQUFLdUIsaUJBQUwsQ0FBdUJHLElBQXZCLGdDQUFoQzs7QUFaWTtBQWFiOzs7O1dBRUQsa0JBQVN6QixLQUFULEVBQWdCO0FBQ2QsV0FBS0csY0FBTCxDQUFvQkgsS0FBSyxDQUFDMEIsTUFBTixDQUFhdEIsT0FBYixDQUFxQkMsS0FBekMsRUFBZ0RMLEtBQUssQ0FBQzBCLE1BQU4sQ0FBYUwsS0FBN0QsRUFBb0VWLFFBQVEsQ0FBQ2dCLGFBQVQsQ0FBdUJDLFlBQXZCLENBQW9DLE1BQXBDLENBQXBFO0FBQ0Q7OztXQUVELCtCQUFzQjtBQUNwQixhQUFPLENBQ0w7QUFDRUMsVUFBRSxFQUFFLGlCQUROO0FBRUVDLGVBQU8sRUFBRW5CLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixpQkFBeEIsRUFBMkNSLE9BQTNDLENBQW1EeUIsRUFGOUQ7QUFHRUUsZ0JBQVEsRUFBRTtBQUhaLE9BREssRUFNTDtBQUNFRixVQUFFLEVBQUUsa0JBRE47QUFFRUMsZUFBTyxFQUFFLGtCQUZYO0FBR0VDLGdCQUFRLEVBQUU7QUFIWixPQU5LLEVBV0w7QUFDRUYsVUFBRSxFQUFFLHVCQUROO0FBRUVDLGVBQU8sRUFBRSx1QkFGWDtBQUdFQyxnQkFBUSxFQUFFO0FBSFosT0FYSyxFQWdCTDtBQUNFRixVQUFFLEVBQUUsa0JBRE47QUFFRUMsZUFBTyxFQUFFbkIsUUFBUSxDQUFDQyxjQUFULENBQXdCLGtCQUF4QixFQUE0Q1IsT0FBNUMsQ0FBb0R5QixFQUYvRDtBQUdFRSxnQkFBUSxFQUFFO0FBSFosT0FoQkssQ0FBUDtBQXNCRDs7O1dBRUQsd0JBQWVDLElBQWYsRUFBcUJDLFFBQXJCLEVBQStCQyxJQUEvQixFQUFxQztBQUFBOztBQUNuQyxXQUFLQyxhQUFMLENBQW1CSCxJQUFuQjtBQUVBLFVBQU1JLElBQUksR0FBR0MsSUFBSSxDQUFDQyxTQUFMLENBQWU7QUFDMUJOLFlBQUksRUFBSkEsSUFEMEI7QUFFMUJDLGdCQUFRLEVBQVJBLFFBRjBCO0FBRzFCTSxnQkFBUSxFQUFFLEtBQUtDLG1CQUFMLEdBQTJCQyxHQUEzQixDQUErQixVQUFDWCxPQUFEO0FBQUEsaUJBQWFBLE9BQU8sQ0FBQ0EsT0FBckI7QUFBQSxTQUEvQixDQUhnQjtBQUkxQlksb0JBQVksRUFBRUMsTUFBTSxDQUFDQyxRQUFQLENBQWdCQztBQUpKLE9BQWYsQ0FBYjtBQU9BQyxXQUFLLFdBQUlDLE1BQU0sQ0FBQ0MsZUFBWCxtQ0FBa0NDLFdBQVcsRUFBN0MsR0FBb0Q7QUFBRWIsWUFBSSxFQUFKQTtBQUFGLE9BQXBELEVBQUwsQ0FDR2MsSUFESCxDQUNRLFVBQUNDLFFBQUQsRUFBYztBQUNsQixlQUFPQSxRQUFRLENBQUNDLElBQVQsRUFBUDtBQUNELE9BSEgsRUFJR0YsSUFKSCxDQUlRLFVBQUNHLEtBQUQsRUFBVztBQUNmLFlBQU1DLFdBQVcsR0FBR2pCLElBQUksQ0FBQ2tCLEtBQUwsQ0FBV0YsS0FBWCxDQUFwQjs7QUFDQSxjQUFJLENBQUNHLFNBQUwsQ0FBZUMsTUFBZixDQUFzQixVQUF0QixFQUFrQ0gsV0FBVyxDQUFDSSxVQUFaLEtBQTJCLENBQTdEOztBQUNBLFlBQU1DLFVBQVUsR0FBR2hELFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QixrQkFBeEIsQ0FBbkI7QUFFQSxZQUFJK0MsVUFBSixFQUFnQkEsVUFBVSxDQUFDSCxTQUFYLENBQXFCQyxNQUFyQixDQUE0QixVQUE1QixFQUF3Q0gsV0FBVyxDQUFDSSxVQUFaLEtBQTJCLENBQW5FOztBQUVoQixjQUFJLENBQUNsQixtQkFBTCxHQUEyQm9CLE9BQTNCLENBQW9DLFVBQUE5QixPQUFPLEVBQUk7QUFDN0MsY0FBTStCLGdCQUFnQixHQUNwQmxELFFBQVEsQ0FBQ0MsY0FBVCxDQUF3QmtCLE9BQU8sQ0FBQ0QsRUFBaEMsRUFBb0NpQyxhQUFwQyxDQUFrRGhDLE9BQU8sQ0FBQ0MsUUFBMUQsS0FBdUVwQixRQUFRLENBQUNDLGNBQVQsQ0FBd0JrQixPQUFPLENBQUNELEVBQWhDLENBRHpFO0FBR0FnQywwQkFBZ0IsQ0FBQ0UsU0FBakIsR0FDRSxNQUFJLENBQUNDLG1CQUFMLENBQXlCVixXQUFXLENBQUNmLFFBQVosQ0FBcUJULE9BQU8sQ0FBQ0EsT0FBN0IsQ0FBekIsRUFBZ0VBLE9BQU8sQ0FBQ0MsUUFBeEUsQ0FERjtBQUVELFNBTkQ7O0FBUUEsY0FBSSxDQUFDa0MsaUJBQUwsQ0FBdUJqQyxJQUF2QixFQUE2QnNCLFdBQVcsQ0FBQ0ksVUFBekM7O0FBQ0EsWUFBTVEsUUFBUSxHQUFJdkQsUUFBUSxDQUFDQyxjQUFULG9CQUFvQ29CLElBQXBDLEVBQWxCO0FBQ0EsWUFBSWtDLFFBQVEsSUFBSUEsUUFBUSxDQUFDSixhQUFULG1CQUFpQzVCLElBQWpDLFNBQWhCLEVBQTREZ0MsUUFBUSxDQUFDSixhQUFULG1CQUFpQzVCLElBQWpDLFVBQTJDaUMsS0FBM0M7O0FBQzVELGNBQUksQ0FBQ0MsY0FBTDtBQUNELE9BdkJILFdBdUJXLFlBQU07QUFDYixjQUFJLENBQUNwRCxnQkFBTCxDQUFzQixrQkFBdEIsRUFBMEM0QyxPQUExQyxDQUFrRCxVQUFDUyxPQUFEO0FBQUEsaUJBQWFBLE9BQU8sQ0FBQ2IsU0FBUixDQUFrQmMsR0FBbEIsQ0FBc0IsUUFBdEIsQ0FBYjtBQUFBLFNBQWxEOztBQUNBM0QsZ0JBQVEsQ0FBQ0MsY0FBVCxDQUF3QixhQUF4QixFQUF1QzJELFdBQXZDLEdBQXFENUIsTUFBTSxDQUFDNkIsV0FBUCxDQUFtQkMsS0FBeEU7O0FBQ0EsY0FBSSxDQUFDTCxjQUFMO0FBQ0QsT0EzQkg7QUE0QkQ7OztXQUVELDJCQUFrQnBDLElBQWxCLEVBQXdCMEMsU0FBeEIsRUFBbUM7QUFDakMsVUFBSSxLQUFLN0QsZ0JBQUwsS0FBMEI2RCxTQUE5QixFQUF5QztBQUN2Qy9ELGdCQUFRLENBQUNDLGNBQVQsMkJBQTJDb0IsSUFBM0MsR0FDRzhCLGFBREgsQ0FDaUIsd0JBRGpCLEVBRUdDLFNBRkgsR0FFZXBCLE1BQU0sQ0FBQzZCLFdBQVAsQ0FBbUJHLGFBQW5CLENBQWlDQyxPQUFqQyxDQUNYLFlBRFcsRUFFWGpFLFFBQVEsQ0FBQ0MsY0FBVCxvQkFBb0NvQixJQUFwQyxHQUE0Q1gsS0FGakMsQ0FGZjtBQU1EOztBQUVELFdBQUtSLGdCQUFMLEdBQXdCNkQsU0FBeEI7QUFDQSxXQUFLaEUscUJBQUwsQ0FBMkJtRSxZQUEzQixDQUF3QyxhQUF4QyxFQUF1RCxJQUF2RDtBQUVBLFVBQU1DLFVBQVUsR0FBR25FLFFBQVEsQ0FBQ0MsY0FBVCxDQUF3Qix1QkFBeEIsQ0FBbkI7QUFDQWtFLGdCQUFVLENBQUNELFlBQVgsQ0FBd0IsYUFBeEIsRUFBdUMsS0FBdkM7QUFFQUUsZ0JBQVUsQ0FBQyxZQUFNO0FBQ2ZELGtCQUFVLENBQUNELFlBQVgsQ0FBd0IsYUFBeEIsRUFBdUMsSUFBdkM7QUFDRCxPQUZTLEVBRVAsSUFGTyxDQUFWO0FBR0Q7OztXQUVELDZCQUFvQkcsSUFBcEIsRUFBMEJqRCxRQUExQixFQUFvQztBQUNsQyxhQUFPLElBQUlrRCxTQUFKLEdBQ0pDLGVBREksQ0FDWUYsSUFEWixFQUNrQixXQURsQixFQUVKbEIsYUFGSSxDQUVVL0IsUUFGVixFQUVvQmdDLFNBRjNCO0FBR0Q7OztXQUVELHVCQUFjL0IsSUFBZCxFQUFvQjtBQUNsQnJCLGNBQVEsQ0FBQ0MsY0FBVCxDQUF3QixpQkFBeEIsRUFBMkM0QyxTQUEzQyxDQUFxRGMsR0FBckQsQ0FBeUQsdUJBQXpEO0FBQ0EsV0FBS3RELGdCQUFMLHFCQUFtQ2dCLElBQW5DLHdCQUE0RDRCLE9BQTVELENBQW9FLFVBQUNTLE9BQUQ7QUFBQSxlQUFhQSxPQUFPLENBQUNiLFNBQVIsQ0FBa0IyQixNQUFsQixDQUF5QixRQUF6QixDQUFiO0FBQUEsT0FBcEU7QUFDQXhFLGNBQVEsQ0FBQ2dCLGFBQVQsQ0FBdUJ5RCxJQUF2QjtBQUNBLFdBQUsxRSxxQkFBTCxDQUEyQm1FLFlBQTNCLENBQXdDLGFBQXhDLEVBQXVELEtBQXZEO0FBQ0Q7OztXQUVELDBCQUFpQjtBQUNmbEUsY0FBUSxDQUFDQyxjQUFULENBQXdCLGlCQUF4QixFQUEyQzRDLFNBQTNDLENBQXFEMkIsTUFBckQsQ0FBNEQsdUJBQTVEO0FBQ0Q7Ozs7aUNBekhxQjdFLFc7O0FBNEh4QkMsY0FBYyxDQUFDQyxNQUFmLENBQXNCLFlBQXRCLEVBQW9DQyxTQUFwQyIsImZpbGUiOiIuL2pzL2NhcnQuanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjbGFzcyBDYXJ0UmVtb3ZlQnV0dG9uIGV4dGVuZHMgSFRNTEVsZW1lbnQge1xuICBjb25zdHJ1Y3RvcigpIHtcbiAgICBzdXBlcigpO1xuICAgIHRoaXMuYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCAoZXZlbnQpID0+IHtcbiAgICAgIGV2ZW50LnByZXZlbnREZWZhdWx0KCk7XG4gICAgICB0aGlzLmNsb3Nlc3QoJ2NhcnQtaXRlbXMnKS51cGRhdGVRdWFudGl0eSh0aGlzLmRhdGFzZXQuaW5kZXgsIDApO1xuICAgIH0pO1xuICB9XG59XG5cbmN1c3RvbUVsZW1lbnRzLmRlZmluZSgnY2FydC1yZW1vdmUtYnV0dG9uJywgQ2FydFJlbW92ZUJ1dHRvbik7XG5cbmNsYXNzIENhcnRJdGVtcyBleHRlbmRzIEhUTUxFbGVtZW50IHtcbiAgY29uc3RydWN0b3IoKSB7XG4gICAgc3VwZXIoKTtcblxuICAgIHRoaXMubGluZUl0ZW1TdGF0dXNFbGVtZW50ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Nob3BwaW5nLWNhcnQtbGluZS1pdGVtLXN0YXR1cycpO1xuXG4gICAgdGhpcy5jdXJyZW50SXRlbUNvdW50ID0gQXJyYXkuZnJvbSh0aGlzLnF1ZXJ5U2VsZWN0b3JBbGwoJ1tuYW1lPVwidXBkYXRlc1tdXCJdJykpXG4gICAgICAucmVkdWNlKCh0b3RhbCwgcXVhbnRpdHlJbnB1dCkgPT4gdG90YWwgKyBwYXJzZUludChxdWFudGl0eUlucHV0LnZhbHVlKSwgMCk7XG5cbiAgICB0aGlzLmRlYm91bmNlZE9uQ2hhbmdlID0gZGVib3VuY2UoKGV2ZW50KSA9PiB7XG4gICAgICB0aGlzLm9uQ2hhbmdlKGV2ZW50KTtcbiAgICB9LCAzMDApO1xuXG4gICAgdGhpcy5hZGRFdmVudExpc3RlbmVyKCdjaGFuZ2UnLCB0aGlzLmRlYm91bmNlZE9uQ2hhbmdlLmJpbmQodGhpcykpO1xuICB9XG5cbiAgb25DaGFuZ2UoZXZlbnQpIHtcbiAgICB0aGlzLnVwZGF0ZVF1YW50aXR5KGV2ZW50LnRhcmdldC5kYXRhc2V0LmluZGV4LCBldmVudC50YXJnZXQudmFsdWUsIGRvY3VtZW50LmFjdGl2ZUVsZW1lbnQuZ2V0QXR0cmlidXRlKCduYW1lJykpO1xuICB9XG5cbiAgZ2V0U2VjdGlvbnNUb1JlbmRlcigpIHtcbiAgICByZXR1cm4gW1xuICAgICAge1xuICAgICAgICBpZDogJ21haW4tY2FydC1pdGVtcycsXG4gICAgICAgIHNlY3Rpb246IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtYWluLWNhcnQtaXRlbXMnKS5kYXRhc2V0LmlkLFxuICAgICAgICBzZWxlY3RvcjogJy5qcy1jb250ZW50cycsXG4gICAgICB9LFxuICAgICAge1xuICAgICAgICBpZDogJ2NhcnQtaWNvbi1idWJibGUnLFxuICAgICAgICBzZWN0aW9uOiAnY2FydC1pY29uLWJ1YmJsZScsXG4gICAgICAgIHNlbGVjdG9yOiAnLnNob3BpZnktc2VjdGlvbidcbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiAnY2FydC1saXZlLXJlZ2lvbi10ZXh0JyxcbiAgICAgICAgc2VjdGlvbjogJ2NhcnQtbGl2ZS1yZWdpb24tdGV4dCcsXG4gICAgICAgIHNlbGVjdG9yOiAnLnNob3BpZnktc2VjdGlvbidcbiAgICAgIH0sXG4gICAgICB7XG4gICAgICAgIGlkOiAnbWFpbi1jYXJ0LWZvb3RlcicsXG4gICAgICAgIHNlY3Rpb246IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtYWluLWNhcnQtZm9vdGVyJykuZGF0YXNldC5pZCxcbiAgICAgICAgc2VsZWN0b3I6ICcuanMtY29udGVudHMnLFxuICAgICAgfVxuICAgIF07XG4gIH1cblxuICB1cGRhdGVRdWFudGl0eShsaW5lLCBxdWFudGl0eSwgbmFtZSkge1xuICAgIHRoaXMuZW5hYmxlTG9hZGluZyhsaW5lKTtcblxuICAgIGNvbnN0IGJvZHkgPSBKU09OLnN0cmluZ2lmeSh7XG4gICAgICBsaW5lLFxuICAgICAgcXVhbnRpdHksXG4gICAgICBzZWN0aW9uczogdGhpcy5nZXRTZWN0aW9uc1RvUmVuZGVyKCkubWFwKChzZWN0aW9uKSA9PiBzZWN0aW9uLnNlY3Rpb24pLFxuICAgICAgc2VjdGlvbnNfdXJsOiB3aW5kb3cubG9jYXRpb24ucGF0aG5hbWVcbiAgICB9KTtcblxuICAgIGZldGNoKGAke3JvdXRlcy5jYXJ0X2NoYW5nZV91cmx9YCwgey4uLmZldGNoQ29uZmlnKCksIC4uLnsgYm9keSB9fSlcbiAgICAgIC50aGVuKChyZXNwb25zZSkgPT4ge1xuICAgICAgICByZXR1cm4gcmVzcG9uc2UudGV4dCgpO1xuICAgICAgfSlcbiAgICAgIC50aGVuKChzdGF0ZSkgPT4ge1xuICAgICAgICBjb25zdCBwYXJzZWRTdGF0ZSA9IEpTT04ucGFyc2Uoc3RhdGUpO1xuICAgICAgICB0aGlzLmNsYXNzTGlzdC50b2dnbGUoJ2lzLWVtcHR5JywgcGFyc2VkU3RhdGUuaXRlbV9jb3VudCA9PT0gMCk7XG4gICAgICAgIGNvbnN0IGNhcnRGb290ZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbWFpbi1jYXJ0LWZvb3RlcicpO1xuXG4gICAgICAgIGlmIChjYXJ0Rm9vdGVyKSBjYXJ0Rm9vdGVyLmNsYXNzTGlzdC50b2dnbGUoJ2lzLWVtcHR5JywgcGFyc2VkU3RhdGUuaXRlbV9jb3VudCA9PT0gMCk7XG5cbiAgICAgICAgdGhpcy5nZXRTZWN0aW9uc1RvUmVuZGVyKCkuZm9yRWFjaCgoc2VjdGlvbiA9PiB7XG4gICAgICAgICAgY29uc3QgZWxlbWVudFRvUmVwbGFjZSA9XG4gICAgICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChzZWN0aW9uLmlkKS5xdWVyeVNlbGVjdG9yKHNlY3Rpb24uc2VsZWN0b3IpIHx8IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKHNlY3Rpb24uaWQpO1xuXG4gICAgICAgICAgZWxlbWVudFRvUmVwbGFjZS5pbm5lckhUTUwgPVxuICAgICAgICAgICAgdGhpcy5nZXRTZWN0aW9uSW5uZXJIVE1MKHBhcnNlZFN0YXRlLnNlY3Rpb25zW3NlY3Rpb24uc2VjdGlvbl0sIHNlY3Rpb24uc2VsZWN0b3IpO1xuICAgICAgICB9KSk7XG5cbiAgICAgICAgdGhpcy51cGRhdGVMaXZlUmVnaW9ucyhsaW5lLCBwYXJzZWRTdGF0ZS5pdGVtX2NvdW50KTtcbiAgICAgICAgY29uc3QgbGluZUl0ZW0gPSAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoYENhcnRJdGVtLSR7bGluZX1gKTtcbiAgICAgICAgaWYgKGxpbmVJdGVtICYmIGxpbmVJdGVtLnF1ZXJ5U2VsZWN0b3IoYFtuYW1lPVwiJHtuYW1lfVwiXWApKSBsaW5lSXRlbS5xdWVyeVNlbGVjdG9yKGBbbmFtZT1cIiR7bmFtZX1cIl1gKS5mb2N1cygpO1xuICAgICAgICB0aGlzLmRpc2FibGVMb2FkaW5nKCk7XG4gICAgICB9KS5jYXRjaCgoKSA9PiB7XG4gICAgICAgIHRoaXMucXVlcnlTZWxlY3RvckFsbCgnLmxvYWRpbmctb3ZlcmxheScpLmZvckVhY2goKG92ZXJsYXkpID0+IG92ZXJsYXkuY2xhc3NMaXN0LmFkZCgnaGlkZGVuJykpO1xuICAgICAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY2FydC1lcnJvcnMnKS50ZXh0Q29udGVudCA9IHdpbmRvdy5jYXJ0U3RyaW5ncy5lcnJvcjtcbiAgICAgICAgdGhpcy5kaXNhYmxlTG9hZGluZygpO1xuICAgICAgfSk7XG4gIH1cblxuICB1cGRhdGVMaXZlUmVnaW9ucyhsaW5lLCBpdGVtQ291bnQpIHtcbiAgICBpZiAodGhpcy5jdXJyZW50SXRlbUNvdW50ID09PSBpdGVtQ291bnQpIHtcbiAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBMaW5lLWl0ZW0tZXJyb3ItJHtsaW5lfWApXG4gICAgICAgIC5xdWVyeVNlbGVjdG9yKCcuY2FydC1pdGVtX19lcnJvci10ZXh0JylcbiAgICAgICAgLmlubmVySFRNTCA9IHdpbmRvdy5jYXJ0U3RyaW5ncy5xdWFudGl0eUVycm9yLnJlcGxhY2UoXG4gICAgICAgICAgJ1txdWFudGl0eV0nLFxuICAgICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBRdWFudGl0eS0ke2xpbmV9YCkudmFsdWVcbiAgICAgICAgKTtcbiAgICB9XG5cbiAgICB0aGlzLmN1cnJlbnRJdGVtQ291bnQgPSBpdGVtQ291bnQ7XG4gICAgdGhpcy5saW5lSXRlbVN0YXR1c0VsZW1lbnQuc2V0QXR0cmlidXRlKCdhcmlhLWhpZGRlbicsIHRydWUpO1xuXG4gICAgY29uc3QgY2FydFN0YXR1cyA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdjYXJ0LWxpdmUtcmVnaW9uLXRleHQnKTtcbiAgICBjYXJ0U3RhdHVzLnNldEF0dHJpYnV0ZSgnYXJpYS1oaWRkZW4nLCBmYWxzZSk7XG5cbiAgICBzZXRUaW1lb3V0KCgpID0+IHtcbiAgICAgIGNhcnRTdGF0dXMuc2V0QXR0cmlidXRlKCdhcmlhLWhpZGRlbicsIHRydWUpO1xuICAgIH0sIDEwMDApO1xuICB9XG5cbiAgZ2V0U2VjdGlvbklubmVySFRNTChodG1sLCBzZWxlY3Rvcikge1xuICAgIHJldHVybiBuZXcgRE9NUGFyc2VyKClcbiAgICAgIC5wYXJzZUZyb21TdHJpbmcoaHRtbCwgJ3RleHQvaHRtbCcpXG4gICAgICAucXVlcnlTZWxlY3RvcihzZWxlY3RvcikuaW5uZXJIVE1MO1xuICB9XG5cbiAgZW5hYmxlTG9hZGluZyhsaW5lKSB7XG4gICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ21haW4tY2FydC1pdGVtcycpLmNsYXNzTGlzdC5hZGQoJ2NhcnRfX2l0ZW1zLS1kaXNhYmxlZCcpO1xuICAgIHRoaXMucXVlcnlTZWxlY3RvckFsbChgI0NhcnRJdGVtLSR7bGluZX0gLmxvYWRpbmctb3ZlcmxheWApLmZvckVhY2goKG92ZXJsYXkpID0+IG92ZXJsYXkuY2xhc3NMaXN0LnJlbW92ZSgnaGlkZGVuJykpO1xuICAgIGRvY3VtZW50LmFjdGl2ZUVsZW1lbnQuYmx1cigpO1xuICAgIHRoaXMubGluZUl0ZW1TdGF0dXNFbGVtZW50LnNldEF0dHJpYnV0ZSgnYXJpYS1oaWRkZW4nLCBmYWxzZSk7XG4gIH1cblxuICBkaXNhYmxlTG9hZGluZygpIHtcbiAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbWFpbi1jYXJ0LWl0ZW1zJykuY2xhc3NMaXN0LnJlbW92ZSgnY2FydF9faXRlbXMtLWRpc2FibGVkJyk7XG4gIH1cbn1cblxuY3VzdG9tRWxlbWVudHMuZGVmaW5lKCdjYXJ0LWl0ZW1zJywgQ2FydEl0ZW1zKTtcbiJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./js/cart.js\n");
 
-    this.lineItemStatusElement = document.getElementById('shopping-cart-line-item-status');
+/***/ }),
 
-    this.currentItemCount = Array.from(this.querySelectorAll('[name="updates[]"]'))
-      .reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0);
+/***/ 1:
+/*!**************************!*\
+  !*** multi ./js/cart.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-    this.debouncedOnChange = debounce((event) => {
-      this.onChange(event);
-    }, 300);
+module.exports = __webpack_require__(/*! /Users/dougalcrowder/Sites/Themelab_foundation/mm-src/js/cart.js */"./js/cart.js");
 
-    this.addEventListener('change', this.debouncedOnChange.bind(this));
-  }
 
-  onChange(event) {
-    this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
-  }
+/***/ })
 
-  getSectionsToRender() {
-    return [
-      {
-        id: 'main-cart-items',
-        section: document.getElementById('main-cart-items').dataset.id,
-        selector: '.js-contents',
-      },
-      {
-        id: 'cart-icon-bubble',
-        section: 'cart-icon-bubble',
-        selector: '.shopify-section'
-      },
-      {
-        id: 'cart-live-region-text',
-        section: 'cart-live-region-text',
-        selector: '.shopify-section'
-      },
-      {
-        id: 'main-cart-footer',
-        section: document.getElementById('main-cart-footer').dataset.id,
-        selector: '.js-contents',
-      }
-    ];
-  }
-
-  updateQuantity(line, quantity, name) {
-    this.enableLoading(line);
-
-    const body = JSON.stringify({
-      line,
-      quantity,
-      sections: this.getSectionsToRender().map((section) => section.section),
-      sections_url: window.location.pathname
-    });
-
-    fetch(`${routes.cart_change_url}`, {...fetchConfig(), ...{ body }})
-      .then((response) => {
-        return response.text();
-      })
-      .then((state) => {
-        const parsedState = JSON.parse(state);
-        this.classList.toggle('is-empty', parsedState.item_count === 0);
-        const cartFooter = document.getElementById('main-cart-footer');
-
-        if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
-
-        this.getSectionsToRender().forEach((section => {
-          const elementToReplace =
-            document.getElementById(section.id).querySelector(section.selector) || document.getElementById(section.id);
-
-          elementToReplace.innerHTML =
-            this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
-        }));
-
-        this.updateLiveRegions(line, parsedState.item_count);
-        const lineItem =  document.getElementById(`CartItem-${line}`);
-        if (lineItem && lineItem.querySelector(`[name="${name}"]`)) lineItem.querySelector(`[name="${name}"]`).focus();
-        this.disableLoading();
-      }).catch(() => {
-        this.querySelectorAll('.loading-overlay').forEach((overlay) => overlay.classList.add('hidden'));
-        document.getElementById('cart-errors').textContent = window.cartStrings.error;
-        this.disableLoading();
-      });
-  }
-
-  updateLiveRegions(line, itemCount) {
-    if (this.currentItemCount === itemCount) {
-      document.getElementById(`Line-item-error-${line}`)
-        .querySelector('.cart-item__error-text')
-        .innerHTML = window.cartStrings.quantityError.replace(
-          '[quantity]',
-          document.getElementById(`Quantity-${line}`).value
-        );
-    }
-
-    this.currentItemCount = itemCount;
-    this.lineItemStatusElement.setAttribute('aria-hidden', true);
-
-    const cartStatus = document.getElementById('cart-live-region-text');
-    cartStatus.setAttribute('aria-hidden', false);
-
-    setTimeout(() => {
-      cartStatus.setAttribute('aria-hidden', true);
-    }, 1000);
-  }
-
-  getSectionInnerHTML(html, selector) {
-    return new DOMParser()
-      .parseFromString(html, 'text/html')
-      .querySelector(selector).innerHTML;
-  }
-
-  enableLoading(line) {
-    document.getElementById('main-cart-items').classList.add('cart__items--disabled');
-    this.querySelectorAll(`#CartItem-${line} .loading-overlay`).forEach((overlay) => overlay.classList.remove('hidden'));
-    document.activeElement.blur();
-    this.lineItemStatusElement.setAttribute('aria-hidden', false);
-  }
-
-  disableLoading() {
-    document.getElementById('main-cart-items').classList.remove('cart__items--disabled');
-  }
-}
-
-customElements.define('cart-items', CartItems);
+/******/ });
