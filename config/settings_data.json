@@ -34,7 +34,6 @@
           "663b58be-d5a6-41a4-94f2-df9bb2435b16": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/loft-style-bedroom.jpg",
               "title": "Moody Boards",
               "subtitle": "Inspirational Abundance",
               "link": "shopify:\/\/blogs\/community",
@@ -44,7 +43,6 @@
           "24e27814-6ff9-440b-9cda-6b6f0a4debb7": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/colorful-ribbon.jpg",
               "title": "Brochures & Samples",
               "subtitle": "Try before you buy",
               "link": "shopify:\/\/pages\/care",
@@ -54,7 +52,6 @@
           "a911026b-a355-4e85-b902-387149596068": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/hand-covered-in-powdered-paint.jpg",
               "title": "Tools",
               "subtitle": "Get stuck in",
               "link": "shopify:\/\/blogs\/community",
@@ -64,7 +61,6 @@
           "f1478d1d-b69c-4ba9-a5cd-93a80571237b": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/person-in-a-floral-dress-holds-a-large-book-open.jpg",
               "title": "Book - House of Print",
               "subtitle": "Pretty in Print!",
               "link": "shopify:\/\/products\/fbicot12",
@@ -79,7 +75,7 @@
           "f1478d1d-b69c-4ba9-a5cd-93a80571237b"
         ],
         "settings": {
-          "menu": "main-menu",
+          "menu": "find-us",
           "menu_message": "FREE UK DELIVERY WHEN YOU SPEND £50 OR MORE"
         }
       },
@@ -97,14 +93,13 @@
             "type": "link_list",
             "settings": {
               "heading": "Follow Us",
-              "menu": "follow-menu"
+              "menu": ""
             }
           },
           "2e0cd923-360f-4b9e-924b-d295313fbb80": {
             "type": "image",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/tp.png",
               "image_width": 200,
               "alignment": "center"
             }
@@ -113,7 +108,7 @@
             "type": "link_list",
             "settings": {
               "heading": "Business & Press",
-              "menu": "business-press"
+              "menu": ""
             }
           }
         },
@@ -128,9 +123,9 @@
           "newsletter_enable": false,
           "newsletter_heading": "Subscribe to our emails",
           "show_social": false,
-          "enable_country_selector": true,
-          "enable_language_selector": true,
-          "payment_enable": true
+          "enable_country_selector": false,
+          "enable_language_selector": false,
+          "payment_enable": false
         }
       },
       "newsletter": {
