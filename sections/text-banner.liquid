@@ -1,0 +1,81 @@
+<div class="text_banner {{ section.settings.bg_pattern }}">
+  {%- if section.settings.link != blank -%}
+  <a href="{{ section.settings.link }}" class="text rte page-width color-{{ section.settings.color_scheme }}" alt="{{ section.settings.title | strip_html }}">
+      {{ section.settings.title }}
+  </a>
+  {%- else -%}
+  <div class="text rte color-{{ section.settings.color_scheme }}">
+    {{ section.settings.title }}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Text Banner",
+  "tag": "section",
+  "class": "text_banner_section",
+  "settings": [
+    {
+    "type": "richtext",
+    "id": "title",
+    "default": "<p><b>Something</b> fantastic here</p>",
+    "label": "Title"
+    },
+    {
+    "type": "url",
+    "id": "link",
+    "label": "Link Url"
+    },
+    {
+    "type": "select",
+    "id": "bg_pattern",
+    "options": [
+        {
+          "value": "pattern_01",
+          "label": "Pattern 01"
+        },
+        {
+          "value": "pattern_02",
+          "label": "Pattern 02"
+        },
+        {
+          "value": "pattern_03",
+          "label": "Pattern 03"
+        }
+      ],
+      "default": "pattern_01",
+      "label": "Background Pattern"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "white_text",
+          "label": "white text"
+        },
+        {
+          "value": "red_text",
+          "label": "Red Text"
+        },
+        {
+          "value": "dark_text",
+          "label": "Dark Text"
+        },
+        {
+          "value": "blue_text",
+          "label": "Blue Text"
+        }
+      ],
+      "default": "white_text",
+      "label": "Text Colour"
+    }
+  ],
+  "presets": [
+    {
+      "name": "text banner"
+    }
+  ]
+}
+{% endschema %}

@@ -11,16 +11,19 @@
     - anchor: {String} (optional) This can be added so that on page reload it takes you to wherever you've placed your anchor tag.
 {% endcomment %}
 
-<link rel="stylesheet" href="{{ 'component-pagination.css' | asset_url }}" media="print" onload="this.media='all'">
-<noscript>{{ 'component-pagination.css' | asset_url | stylesheet_tag }}</noscript>
+<link rel="stylesheet" href="{{ 'pagination.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'pagination.css' | asset_url | stylesheet_tag }}</noscript>
+<div class="inner center">
+  <button class="button view-more-button">Load More</button>
+</div>
 
 {%- if paginate.parts.size > 0 -%}
   <div class="pagination-wrapper">
     <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
-      <ul class="pagination__list list-unstyled" role="list">
+      <ul class="flex" role="list">
       {%- if paginate.previous -%}
         <li>
-          <a href="{{ paginate.previous.url }}{{ anchor }}" class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }}">
+          <a href="{{ paginate.previous.url }}{{ anchor }}" class="pagination__item pagination__prev pagination__item--next pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.previous' | t }}">
             {% render 'icon-caret' %}
           </a>
         </li>
@@ -42,7 +45,7 @@
 
       {%- if paginate.next -%}
         <li>
-          <a href="{{ paginate.next.url }}{{ anchor }}" class="pagination__item pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}" >
+          <a href="{{ paginate.next.url }}{{ anchor }}" class="pagination__item pagination__next pagination__item--prev pagination__item-arrow link motion-reduce" aria-label="{{ 'general.pagination.next' | t }}" >
             {%- render 'icon-caret' -%}
           </a>
         </li>
@@ -50,4 +53,21 @@
       </ul>
     </nav>
   </div>
+  <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+  <script>
+    
+    let elem = document.querySelector('.collection_loader');
+    let infScroll = new InfiniteScroll( elem, {
+      // options
+      path: '.pagination__next',
+      append: '.product_grid',
+      history: false,
+      button: '.view-more-button',
+      // using button, disable loading on scroll 
+      scrollThreshold: false,
+      status: '.page-load-status',
+    });
+
+    document.querySelector('.pagination-wrapper').classList.add('visually-hidden');
+  </script>
 {%- endif -%}

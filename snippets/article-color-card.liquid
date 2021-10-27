@@ -1,0 +1,25 @@
+<article class="article-card" aria-labelledby="Article-{{ article.id }}">
+  <a href="{{ article.url }}" class="article-content">
+  {%- if article.image -%}
+  <picture>
+    <source srcset="{{ article.image | img_url: '406x', scale: 2 }} 2x, {{ article.image | img_url: '406x' }} 1x" media="(min-width: 768px)" />
+    <img 
+      loading="lazy" 
+      class="lazyimage"
+      src="{{ article.image | img_url: '300x' }}" 
+      alt="{{ article.image.alt | escape }}" 
+      alt="{{ article.image.src.alt | escape }}"
+      width="{{ article.image.width }}"
+      height="{{ article.image.height }}"
+      loading="lazy"
+    />
+  </picture>
+  {%- endif -%}
+  
+  <header class="article-header">
+    <p class="article-card__title" id="Article-{{ article.id }}">
+      {{ article.title | escape }}
+    </p>
+  </header>
+  </a>
+</article>

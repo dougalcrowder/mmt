@@ -1,8 +1,18 @@
 {
+    "/blog.js": "/blog.js",
     "/cart.js": "/cart.js",
     "/facets.js": "/facets.js",
     "/main.js": "/main.js",
     "/main.css": "/main.css",
     "/header.css": "/header.css",
+    "/products.css": "/products.css",
+    "/collections.css": "/collections.css",
+    "/blog.css": "/blog.css",
+    "/footer.css": "/footer.css",
+    "/pagination.css": "/pagination.css",
+    "/facets.css": "/facets.css",
+    "/cart.css": "/cart.css",
+    "/page.css": "/page.css",
+    "/hotspots.css": "/hotspots.css",
     "/js/main.min.js": "/js/main.min.js"
 }

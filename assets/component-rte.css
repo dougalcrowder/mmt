@@ -1,15 +1,5 @@
-.rte:after {
-  clear: both;
-  content: '';
-  display: block;
-}
-
 .rte > p:first-child {
   margin-top: 0;
-}
-
-.rte > p:last-child {
-  margin-bottom: 0;
 }
 
 .rte table {

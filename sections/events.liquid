@@ -1,0 +1,171 @@
+<div class="events inner">
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+ {%- when 'event'-%}
+  <div class="event">
+    <div class="flex">
+      <div class="first">
+      <h2>{{ block.settings.event_title }}</h2>
+      {%- if block.settings.image != blank -%}
+      {%- assign image = block.settings.image -%}
+      <picture>
+        <source srcset="{{ image | img_url: '540x351', scale: 2 }} 2x, {{ image | img_url: '400x300' }} 1x" media="(max-width: 768px)" />
+        <img class="lazyimage" loading="lazy" src="{{ image | img_url: '0x0' }}" alt="{{ image.alt | escape }}" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}" />
+      </picture>
+      {%- endif -%}
+      {%- if block.settings.event_intro != blank -%}
+      <p class="intro">{{ block.settings.event_intro }}</p>
+      {%- endif -%}
+      
+      </div>
+      
+      <div class="second">
+        {%- if block.settings.image != blank -%}
+        {%- assign image = block.settings.image -%}
+        <picture>
+          <source srcset="{{ image | img_url: '540x351', scale: 2 }} 2x, {{ image | img_url: '400x300' }} 1x" media="(min-width: 768px)" />
+          <img class="lazyimage" loading="lazy" src="{{ image | img_url: '0x0' }}" alt="{{ image.alt | escape }}" width="{{ section.settings.image.width }}" height="{{ section.settings.image.height }}" />
+        </picture>
+        {%- endif -%}
+        {%- if block.settings.event_description -%}
+        <div class="rte">
+        {{ block.settings.event_description }}
+        </div>
+        {%- endif -%}
+        <div class="flex">
+          <div class="details">
+            {%- if block.settings.event_date -%}
+            <span class="serif">
+            Date: {{ block.settings.event_date }}
+            </span>
+            {%- endif -%}
+            {%- if block.settings.event_price -%}
+            <b>{{ block.settings.event_price }}</b>
+            {%- endif -%}
+            {%- if block.settings.event_extras -%}
+            <b>{{ block.settings.event_extras }}</b>
+            {%- endif -%}
+          </div>
+          <div class="ticket">
+            {%- if block.settings.event_external_link -%}
+            <a href="{{ block.settings.event_external_link }}">
+            {%- endif -%}
+              <div class="cta">
+                <div class="but">
+                {%- if block.settings.event_button_text -%}
+                <b>{{ block.settings.event_button_text }}</b>
+                {%- endif -%}
+                {%- if block.settings.event_button_text_2 -%}
+                <b>{{ block.settings.event_button_text_2 }}</b>
+                {%- endif -%}
+                {%- if block.settings.event_price -%}
+                {{ block.settings.event_price }}
+                {%- endif -%}
+                </div>
+              <div class="liner"></div>
+            </div>
+            {%- if block.settings.event_external_link -%}
+            </a>
+            {%- endif -%}
+            {%- if block.settings.event_buy_btn  -%}
+            {{ block.settings.event_buy_btn }}
+            {%- endif -%}
+        </div>
+      </div>
+    </div>
+    <div class="bottoms"> </div>
+    </div>
+  </div>
+  
+ {%- endcase-%}
+ {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Events",
+  "tag": "section",
+  "class": "events",
+  "class": "events_area",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Events Title"
+    }
+  ],
+  "blocks": [
+     {
+       "name": "Event",
+       "type": "event",
+       "settings": [
+          {
+           "type": "text",
+           "id": "event_title",
+           "label": "Event Title"
+         },
+         {
+            "type": "textarea",
+            "id": "event_intro",
+            "label": "Event Intro"
+          },
+          {
+            "type": "richtext",
+            "id": "event_description",
+            "label": "Event Description"
+          },
+         {
+           "type": "image_picker",
+           "id": "image",
+           "label": "Event Image"
+         },
+         {
+           "type": "text",
+           "id": "event_date",
+           "label": "Event Date"
+         },
+         {
+            "type": "textarea",
+            "id": "event_extras",
+            "label": "Event Extras"
+          },
+          {
+            "type": "text",
+            "id": "event_price",
+            "label": "Event Price"
+          },
+          {
+            "type": "text",
+            "id": "event_button_text",
+            "label": "Event Button Text"
+          },
+          {
+            "type": "text",
+            "id": "event_button_text_2",
+            "label": "Event Button Text 2"
+          },
+          {
+            "type": "url",
+            "id": "event_external_link",
+            "label": "Event External Booking url"
+          },
+          {
+            "type": "html",
+            "id": "event_buy_btn",
+            "label": "Event Buy Button Code"
+          }
+       ]
+     }
+   ],
+    "presets": [
+       {
+         "name": "Events",
+         "blocks": [
+           {
+             "type": "event"
+           }
+         ]
+       }
+     ]
+}
+{% endschema %}

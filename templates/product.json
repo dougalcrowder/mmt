@@ -2,61 +2,46 @@
   "sections": {
     "main": {
       "type": "main-product",
+      "settings": {
+        "short_desc": "{{ product.metafields.descriptors.subtitle.value }}",
+        "show_dynamic_checkout": true,
+        "enable_sticky_info": true,
+        "share_label": "Share",
+        "hide_variants": false,
+        "enable_video_looping": false
+      }
+    },
+    "page-tabs": {
+      "type": "page-tabs",
       "blocks": {
-        "vendor": {
-          "type": "text",
+        "03855864-8aca-4fc3-aae2-1f0e0765a9b9": {
+          "type": "tab",
           "settings": {
-            "text_style": "uppercase",
-            "text": "{{ product.vendor }}"
+            "heading": "Product Care",
+            "content": "",
+            "page": "care",
+            "info_image": "shopify:\/\/shop_images\/green-door-with-open-sign.jpg"
           }
-        },
-        "title": {
-          "type": "title"
-        },
-        "subtitle": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
-          }
-        },
-        "price": {
-          "type": "price"
-        },
-        "variant_picker": {
-          "type": "variant_picker"
-        },
-        "quantity_selector": {
-          "type": "quantity_selector"
-        },
-        "buy_buttons": {
-          "type": "buy_buttons"
-        },
-        "description": {
-          "type": "description"
-        },
-        "share": {
-          "type": "share"
         }
       },
       "block_order": [
-        "vendor",
-        "title",
-        "subtitle",
-        "price",
-        "variant_picker",
-        "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
-      ]
+        "03855864-8aca-4fc3-aae2-1f0e0765a9b9"
+      ],
+      "settings": {
+        "product_desc": true,
+        "description_image": "{{ product.metafields.my_fields.product_info_image.value }}"
+      }
     },
     "product-recommendations": {
-      "type": "product-recommendations"
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like"
+      }
     }
   },
   "order": [
     "main",
+    "page-tabs",
     "product-recommendations"
   ]
 }

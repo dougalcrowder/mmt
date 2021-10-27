@@ -10,29 +10,14 @@
       {%- when 'featured_image'-%}
         {%- if article.image -%}
           <div class="article-template__hero-container" {{ block.shopify_attributes }}>
-            <div class="article-template__hero-{{ block.settings.image_height }} media"
-              itemprop="image"
-              {% if block.settings.image_height == 'adapt' and article.image %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}
-            >
-              <img
-                srcset="{% if article.image.width >= 350 %}{{ article.image | img_url: '350x' }} 350w,{% endif %}
-                  {% if article.image.width >= 750 %}{{ article.image | img_url: '750x' }} 750w,{% endif %}
-                  {% if article.image.width >= 1100 %}{{ article.image | img_url: '1100x' }} 1100w,{% endif %}
-                  {% if article.image.width >= 1500 %}{{ article.image | img_url: '1500x' }} 1500w,{% endif %}
-                  {% if article.image.width >= 2200 %}{{ article.image | img_url: '2200x' }} 2200w,{% endif %}
-                  {% if article.image.width >= 3000 %}{{ article.image | img_url: '3000x' }} 3000w,{% endif %}"
-                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
-                src="{{ article.image | img_url: '1100x' }}"
-                loading="lazy"
-                width="{{ article.image.width }}"
-                height="{{ article.image.height }}"
-                alt="{{ article.image.alt | escape }}">
-            </div>
+            {%- assign landscape_image = article.image -%}
+            {%- assign square_image = article.image -%}
+            {% include 'image-hero-letterbox' %}
           </div>
         {%- endif -%}
 
         {%- when 'title'-%}
-          <header class="page-width page-width--narrow" {{ block.shopify_attributes }}>
+          <header class="inner narrow" {{ block.shopify_attributes }}>
             <h1 class="article-template__title" itemprop="headline">{{ article.title | escape }}</h1>
             {%- if block.settings.blog_show_date -%}
               <span class="circle-divider caption-with-letter-spacing" itemprop="dateCreated pubdate datePublished">{{ article.published_at | time_tag: format: 'date' }}</span>
@@ -45,12 +30,28 @@
           </header>
 
         {%- when 'content'-%}
-          <div class="article-template__content page-width page-width--narrow rte" itemprop="articleBody" {{ block.shopify_attributes }}>
+          <div class="article-template inner narrow rte" itemprop="articleBody" {{ block.shopify_attributes }}>
               {{ article.content }}
           </div>
-
+          
+          {%- when 'images'-%}
+          <div class="images inner grid rte" itemprop="articleBody" {{ block.shopify_attributes }}>
+            {%- if block.settings.image_1 != blank -%}
+              <img src="{{ block.settings.image_1 | img_url: '480x480' }}" ?>
+            {%- endif -%}
+            {%- if block.settings.image_2 != blank -%}
+              <img src="{{ block.settings.image_2 | img_url: '480x480' }}" ?>
+            {%- endif -%}
+            {%- if block.settings.image_3 != blank -%}
+              <img src="{{ block.settings.image_3 | img_url: '480x480' }}" ?>
+            {%- endif -%}
+            {%- if block.settings.image_4 != blank -%}
+              <img src="{{ block.settings.image_4 | img_url: '480x480' }}" ?>
+            {%- endif -%}
+          </div>
+          
         {%- when 'share' -%}
-          <div class="article-template__social-sharing page-width page-width--narrow" {{ block.shopify_attributes }}>
+          <div class="article-template__social-sharing inner narrow" {{ block.shopify_attributes }}>
             <share-button class="share-button" {{ block.shopify_attributes }}>
               <button class="share-button__button hidden">
                 {% render 'icon-share' %}
@@ -91,7 +92,7 @@
     {%- endcase -%}
   {%- endfor -%}
 
-  <div class="element-margin center">
+  <div class="inner narrow">
     <a href="{{ blog.url }}" class="article-template__link link animate-arrow{% if blog.comments_enabled? == false %} spaced-section{% endif %}">
       <span class="icon-wrap">{% render 'icon-arrow' %}</span>
       {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
@@ -365,7 +366,40 @@
           "content": "t:sections.main-article.blocks.share.settings.title_info.content"
         }
       ]
-    }
+    },
+    {
+    "type": "images",
+    "name": "Image Grid",
+    "limit": 8,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Share"
+      },
+      {
+        "type": "image_picker",
+        "label": "Image 1",
+        "id": "image_1"
+      },
+      {
+        "type": "image_picker",
+        "label": "Image 2",
+        "id": "image_2"
+      },
+      {
+        "type": "image_picker",
+        "label": "Image 3",
+        "id": "image_3"
+      },
+      {
+        "type": "image_picker",
+        "label": "Image 4",
+        "id": "image_4"
+      }
+    ]
+  }
   ]
 }
 {% endschema %}

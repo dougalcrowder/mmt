@@ -1,20 +1,53 @@
-{{ 'component-cart.css' | asset_url | stylesheet_tag }}
-{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
-{{ 'component-totals.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-
+{{ 'cart.css' | asset_url | stylesheet_tag }}
+{% comment %}
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
-
-<cart-items class="page-width{% if cart == empty %} is-empty{% endif %}">
+{% endcomment %}
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+<cart-items class="inner{% if cart == empty %} is-empty{% endif %}">
   <div class="title-wrapper-with-link">
-    <h1 class="title title--primary">{{ 'sections.cart.title' | t }}</h1>
-    <a href="{{ routes.all_products_collection_url }}" class="underlined-link">{{ 'general.continue_shopping' | t }}</a>
+    <h1 class="visually-hidden">{{ 'sections.cart.title' | t }}</h1>
+    <a href="{{ routes.all_products_collection_url }}">Back to shopping</a>
   </div>
+  <div class="cart_header_items flex">
+    <div class="silly_print">
+      <a class="button nude" href="javascript:if(window.print)window.print()" aria-label="Print (like it is 1997)">{% render 'icon-print' %} Print</a>
+    </div>
+    <div class="gofrit">
+        <div id="main-cart-header">
+            <div class="totals flex">
+              <p class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}:</p>
+              <p class="totals__subtotal-value" id="follow">{{ cart.total_price | money_with_currency }}</p>
+            </div>
+        </div>
 
+        <div>
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+            <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+              {%- for discount in cart.cart_level_discount_applications -%}
+                <li class="discounts__discount discounts__discount--end">
+                  {%- render 'icon-discount' -%}
+                  {{ discount.title }}
+                  (-{{ discount.total_allocated_amount | money }})
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      <div class="cart__ctas flex" {{ block.shopify_attributes }}>
+        <noscript>
+          <button type="submit" class="cart__update-button button button--secondary" form="cart">
+            {{ 'sections.cart.update' | t }}
+          </button>
+        </noscript>
+        <a href="/" class="button pink">{{ 'general.continue_shopping' | t }}</a>
+        <button type="submit" id="checkout" class="primary button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+          {{ 'sections.cart.checkout' | t }}
+        </button>
+      </div>
+    </div>
+  </div>
   <div class="cart__warnings">
-    <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
+    <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1> 
     <a href="{{ routes.all_products_collection_url }}" class="button">
       {{ 'general.continue_shopping' | t }}
     </a>
@@ -26,29 +59,91 @@
       </p>
     {%- endif -%}
   </div>
-
+  
+  
+  
+  {% assign sampleLive = false %}
+  {%- for item in cart.items -%}
+    {% if item.product.type == 'Free Sample' or item.product.type == 'Sample' %}
+     {% assign sampleLive = true %} 
+     {% break %}
+    {% endif %}
+  {% endfor %}
+  
   <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
     <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
       <div class="js-contents">
+        
         {%- if cart != empty -%}
-          <table class="cart-items">
-            <thead>
-              <tr>
-                <th class="caption-with-letter-spacing" colspan="2" scope="col">{{ 'sections.cart.headings.product' | t }}</th>
-                <th class="medium-hide large-up-hide right caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
-                <th class="cart-items__heading--wide small-hide caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.quantity' | t }}</th>
-                <th class="small-hide right caption-with-letter-spacing" colspan="1" scope="col">{{ 'sections.cart.headings.total' | t }}</th>
-              </tr>
-            </thead>
+          {%- if sampleLive -%}
+          <div class="swatches grid">
+            <div class="intro">
+              <h3 class="h2">Swatches</h3>
+              <p>Important decisions shouldn’t be rushed which is why we are delighted to offer up to 10 swatches free of charge. Additional swatches will automatically be charged at £1.50 each.</p>
+            </div>
+            {%- for item in cart.items -%}
+              {% if item.product.type == 'Free Sample' or item.product.type == 'Sample' %}
+              {% for itema in (1..item.quantity) %}             
+              <div class="cart-item swatch" data-qty="{{ item.quantity }}">
+                <div class="flex">
+                  {% if item.image %}
+                  <div class="image">
+                    {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
+                    <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
+                    <img class="cart-item__image lazyimage"
+                      src="{{ item.image | img_url: '140x' }}"
+                      alt="{{ item.image.alt | escape }}"
+                      loading="lazy"
+                      width="150"
+                      height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                    >
+                  </div>
+                {% endif %}
+                  <div class="text">
+                    {% assign finalTitle = item.product.title %}
+                    {% if item.product.title contains "Free Sample" %}
+                    {% assign midTitle = item.product.title | remove: "Free Sample" %}
+                    {% capture finalTitle %}
+                      {{ midTitle }}<span>Free Sample<span>
+                    {% endcapture %}
+                    {% endif %}
+                    <p>{{ finalTitle }} {% if item.product.type == 'Sample' %}<span class="cart-item__price">{{ item.final_price | money }}</span>{% endif %}</p>
+                    <div class="removals remove-button" data-qty="{{ item.quantity }}" data-id="{{ item.id }}" data-index="{{ item.index | plus: 1 }}">
+                      <a href="{{ item.url_to_remove }}" class="button" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                        {% render 'icon-remove' %}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+              {% else %} 
+              <div class="visually-hidden">&nbsp;</div>
+              {% endif%}
+            {% endfor %}
+          </div>
+          {%- endif -%}
+          
+          
+        
+        <div class="cart-items cart-items-table">
+          <div class="table grid table_header">
+              <div class="title"><h3 class="h2">Your Cart</h3></div>
+              <div class="th_price">Price</div>
+              <div class="products">{{ 'sections.cart.headings.quantity' | t }} / Metres</div>
+              <div class="total">{{ 'sections.cart.headings.total' | t }}</div>
+              <div class="remove">Remove</div>
+          </div>
 
-            <tbody>
+          <div class="table_body">
               {%- for item in cart.items -%}
-                <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
-                  <td class="cart-item__media">
+                <div class="cart-item table grid {% if item.product.type == 'Free Sample' or item.product.type == 'Sample' %} visually-hidden{% endif%}" id="CartItem-{{ item.index | plus: 1 }}">
+                  
+                  <div class="cart-item__media">
                     {% if item.image %}
                       {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
                       <a href="{{ item.url }}" class="cart-item__link" aria-hidden="true" tabindex="-1"> </a>
-                      <img class="cart-item__image"
+                      <img class="cart-item__image lazyimage"
                         src="{{ item.image | img_url: '300x' }}"
                         alt="{{ item.image.alt | escape }}"
                         loading="lazy"
@@ -56,9 +151,9 @@
                         height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
                       >
                     {% endif %}
-                  </td>
+                  </div>
 
-                  <td class="cart-item__details">
+                  <div class="cart-item__details">
                     {%- if section.settings.show_vendor -%}
                       <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
                     {%- endif -%}
@@ -116,56 +211,13 @@
                         <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
                       </svg>
                     </div>
-                  </td>
+                  </div>
+                  
+                  <div class="cart-item__price">
+                   {{ item.final_price | money }}
+                  </div>
 
-                  <td class="cart-item__totals right medium-hide large-up-hide">
-                    <div class="loading-overlay hidden">
-                      <div class="loading-overlay__spinner">
-                        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                        </svg>
-                      </div>
-                    </div>
-                    <div class="cart-item__price-wrapper">
-                      {%- if item.original_line_price != item.final_line_price -%}
-                        <dl class="cart-item__discounted-prices">
-                          <dt class="visually-hidden">
-                            {{ 'products.product.price.regular_price' | t }}
-                          </dt>
-                          <dd>
-                            <s class="cart-item__old-price price price--end">
-                              {{ item.original_line_price | money }}
-                            </s>
-                          </dd>
-                          <dt class="visually-hidden">
-                            {{ 'products.product.price.sale_price' | t }}
-                          </dt>
-                          <dd class="price price--end">
-                            {{ item.final_line_price | money }}
-                          </dd>
-                        </dl>
-                      {%- else -%}
-                        <span class="price price--end">
-                          {{ item.original_line_price | money }}
-                        </span>
-                      {%- endif -%}
-
-                      {%- if item.variant.available and item.unit_price_measurement -%}
-                        <div class="unit-price caption">
-                          <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
-                          {{ item.variant.unit_price | money }}
-                          <span aria-hidden="true">/</span>
-                          <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
-                          {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
-                            {{- item.variant.unit_price_measurement.reference_value -}}
-                          {%- endif -%}
-                          {{ item.variant.unit_price_measurement.reference_unit }}
-                        </div>
-                      {%- endif -%}
-                    </div>
-                  </td>
-
-                  <td class="cart-item__quantity">
+                  <div class="cart-item__quantity">
                     <label class="visually-hidden" for="Quantity-{{ item.index | plus: 1 }}">
                       {{ 'products.product.quantity.label' | t }}
                     </label>
@@ -188,15 +240,9 @@
                         {% render 'icon-plus' %}
                       </button>
                     </quantity-input>
+                  </div>
 
-                    <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
-                      <a href="{{ item.url_to_remove }}" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
-                        {% render 'icon-remove' %}
-                      </a>
-                    </cart-remove-button>
-                  </td>
-
-                  <td class="cart-item__totals right small-hide">
+                  <div class="cart-item__totals">
                     <div class="loading-overlay hidden">
                       <div class="loading-overlay__spinner">
                         <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
@@ -212,19 +258,19 @@
                             {{ 'products.product.price.regular_price' | t }}
                           </dt>
                           <dd>
-                            <s class="cart-item__old-price price price--end">
+                            <s class="cart-item__old-price price  price--center">
                               {{ item.original_line_price | money }}
                             </s>
                           </dd>
                           <dt class="visually-hidden">
                             {{ 'products.product.price.sale_price' | t }}
                           </dt>
-                          <dd class="price price--end">
+                          <dd class="price price--center">
                             {{ item.final_line_price | money }}
                           </dd>
                         </dl>
                       {%- else -%}
-                        <span class="price price--end">
+                        <span class="price price--center">
                           {{ item.original_line_price | money }}
                         </span>
                       {%- endif -%}
@@ -242,23 +288,104 @@
                         </div>
                       {%- endif -%}
                     </div>
-                  </td>
-                </tr>
+                  </div>
+                  
+                  <div class="cart-item__remove">
+                    
+                    <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+                      <a href="{{ item.url_to_remove }}" class="button" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                        {% render 'icon-remove' %}
+                      </a>
+                    </cart-remove-button>
+                    
+                  </div>
+                </div>
               {%- endfor -%}
             </tbody>
           </table>
         {%- endif -%}
       </div>
-    </div>
+      </div>
+  </div>
 
     <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
     <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
+    {% render 'shipping_calculator' %}
   </form>
 </cart-items>
+
+<script>
+  
+  // document.querySelectorAll('.swatches .swatch').forEach( function(swatch) {
+  //   let quantity = swatch.dataset.qty;
+  //   if (quantity == 3) {
+  //     let cloner = swatch.cloneNode(true);
+  //     document.querySelector('.swatches').appendChild(cloner);
+  //   }
+  // });
+  
+  document.querySelectorAll('.swatches .removals').forEach( function(removals) {
+    
+      let button = removals.querySelector('.button');
+      removals.addEventListener('click', function (evt){
+        evt.preventDefault();
+      });
+      removals.addEventListener('click', function (){
+        
+        let quantity = removals.dataset.qty;
+        let updateQty = quantity - 1;
+        let eyedee = removals.dataset.id;
+        
+        let dota = `{"quantity":"${updateQty}","id":"${eyedee}"}`;
+        
+        console.log(updateQty);
+        console.log(eyedee);
+        console.log(dota);
+        console.log(JSON.stringify(dota));
+        
+        fetch('/cart/change.js', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: dota,
+        })
+        .then(response => {
+          console.log("done");
+          return response.json();
+        })
+        .then(result => {
+          console.log("done");
+          console.log('Success maybe:', result);
+          location.reload();
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+
+  });
+  
+//   let dota = {"quantity":"3","id":"40722972311747"};
+// 
+//   function updateQty(dota) {
+//     fetch('/cart/change.js', {
+//       method: 'POST',
+//       credentials: 'same-origin',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(dota),
+//     });
+//   }
+
+</script>
 
 {% schema %}
 {
   "name": "t:sections.main-cart-items.name",
+  "class": "cart-section",
   "settings": [
     {
       "type": "checkbox",

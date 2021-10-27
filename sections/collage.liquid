@@ -37,7 +37,7 @@
                   loading="lazy"
                   width="{{ block.settings.image.width }}"
                   height="{{ block.settings.image.height }}"
-                  class="collage-card__image"
+                  class="collage-card__image lazyimage"
                 >
               {%- else -%}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder collage-card__image' }}
@@ -77,7 +77,7 @@
                       loading="lazy"
                       width="{{ featured_media.width }}"
                       height="{{ featured_media.height }}"
-                      class="collage-card__image"
+                      class="collage-card__image lazyimage"
                     >
 
                     {%- if block.settings.second_image and block.settings.product.media[1] != nil -%}
@@ -95,7 +95,7 @@
                         loading="lazy"
                         width="{{ block.settings.product.media[1].width }}"
                         height="{{ block.settings.product.media[1].height }}"
-                        class="collage-card__image small-hide medium-hide"
+                        class="collage-card__image small-hide medium-hide lazyimage"
                       >
                     {%- endif -%}
                   </div>
@@ -163,7 +163,7 @@
                           loading="lazy"
                           width="{{ block.settings.collection.featured_image.width }}"
                           height="{{ block.settings.collection.featured_image.height }}"
-                          class="collage-card__image"
+                          class="collage-card__image lazyimage"
                         >
                       </div>
 
@@ -224,7 +224,7 @@
                       loading="lazy"
                       width="{{ block.settings.cover_image.width }}"
                       height="{{ block.settings.cover_image.height }}"
-                      class="collage-card__image"
+                      class="collage-card__image lazyimage"
                     >
                   {%- else -%}
                     {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder collage-card__image' }}
@@ -260,7 +260,7 @@
                       loading="lazy"
                       width="{{ block.settings.cover_image.width }}"
                       height="{{ block.settings.cover_image.height }}"
-                      class="collage-card__image"
+                      class="collage-card__image lazyimage"
                     >
                   {%- else -%}
                     {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder collage-card__image' }}
@@ -305,7 +305,7 @@
                         loading="lazy"
                         width="{{ block.settings.cover_image.width }}"
                         height="{{ block.settings.cover_image.height }}"
-                        class="collage-card__image"
+                        class="collage-card__image lazyimage"
                       >
                     {%- else -%}
                       {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder collage-card__image' }}

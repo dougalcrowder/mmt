@@ -1,0 +1,14 @@
+{%- if request.page_type == 'index' -%}
+<h1 class="logo_banner">
+{%- else -%}
+<h2 class="logo_banner">
+{%- endif -%}
+<a href="/">
+{%- render 'logo' -%}
+<span class="visually-hidden">{{ shop.name }}</span>
+</a>
+{%- if request.page_type == 'index' -%}
+</h1>
+{%- else -%}
+</h2>
+{%- endif -%}

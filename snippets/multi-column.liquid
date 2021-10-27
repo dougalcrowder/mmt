@@ -1,0 +1,33 @@
+<li class="column {{ block.settings.width }}" {{ block.shopify_attributes }}>
+    {%- if block.settings.image != blank -%}
+      <div class="image">
+        {%- assign image = block.settings.image -%}
+        <picture>
+          <source srcset="{{ image | img_url: '820x615', scale: 2 }} 2x, {{ image | img_url: '820x615' }} 1x" media="(min-width: 1270px)" />
+          <source srcset="{{ image | img_url: '600x450', scale: 2 }} 2x, {{ image | img_url: '600x450' }} 1x" media="(min-width: 1100px)" />
+          <source srcset="{{ image | img_url: '490x368', scale: 2 }} 2x, {{ image | img_url: '490x368' }} 1x" media="(min-width: 960px)" />
+          <source srcset="{{ image | img_url: '400x300', scale: 2 }} 2x, {{ image | img_url: '400x300' }} 1x" media="(min-width: 768px)" />
+          <source srcset="{{ image | img_url: '768x768', scale: 2 }} 2x, {{ image | img_url: '768x768' }} 1x" media="(min-width: 480px)" />
+          <source srcset="{{ image | img_url: '480x480', scale: 2 }} 2x, {{ image | img_url: '480x480' }} 1x" media="(min-width: 320px)" />
+          <img class="lazyimage" loading="lazy" src="{{ image | img_url: '320x320' }}" alt="{{ image.alt | escape }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" />
+        </picture>
+      </div>
+    {%- endif -%}
+    <div class="text_wrap flex {{ block.settings.desktop_text_box_position }} align-{{ block.settings.text_align }} color-{{ block.settings.color_scheme }}">
+      
+      {%- if block.settings.title != blank -%}
+        <h3>{{ block.settings.title | escape }}</h3>
+      {%- endif -%}
+      {%- if block.settings.subtitle != blank -%}
+        <h4>{{ block.settings.subtitle | escape }}</h4>
+      {%- endif -%}
+      {%- if block.settings.text != blank -%}
+        <div class="rte">{{ block.settings.text }}</div>
+      {%- endif -%}
+      <div class="buttons {{ block.settings.button_color }}">
+      {%- if block.settings.button_label != blank -%}
+        <a class="button {{ block.settings.button_color }}"{% if block.settings.button_link != blank %} href="{{ block.settings.button_link }}"{% endif %} {% if block.settings.button_link == blank %} aria-disabled="true"{% endif %}>{{ block.settings.button_label | escape }}</a>
+      {%- endif -%}
+      </div>
+    </div>
+</li>

@@ -1,0 +1,26 @@
+footer.footer {
+  margin-top: 40px;
+  font-size: 87.5%;
+}
+
+footer.footer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
+.prefooter.prefooter {
+  display: block;
+  height: 88px;
+}
+
+.footer_bottom {
+  border-bottom: 32px solid var(--color-foreground);
+}
+
+.footer_bottom .footer__copyright {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+

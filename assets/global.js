@@ -1,3 +1,9 @@
+if (window.matchMedia( "(hover: none)" ).matches) {
+   document.body.classList.add("nohoverboards");
+} else {
+  document.body.classList.add("hover");
+}
+
 function getFocusableElements(container) {
   return Array.from(
     container.querySelectorAll(
@@ -308,7 +314,7 @@ class MenuDrawer extends HTMLElement {
     summaryElements.forEach(element => {
       element.setAttribute('role', 'button');
       element.setAttribute('aria-expanded', false);
-      element.setAttribute('aria-controls', element.nextElementSibling.id);
+      // element.setAttribute('aria-controls', element.nextElementSibling.id);
     });
   }
 
@@ -622,6 +628,11 @@ class VariantSelects extends HTMLElement {
   updateURL() {
     if (!this.currentVariant || this.dataset.updateUrl === 'false') return;
     window.history.replaceState({ }, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+    
+    let theVar = this.currentVariant;
+    console.log(theVar.featured_image.src);
+    var image = theVar.featured_image.src;
+    variantImages(image);
   }
 
   updateVariantInput() {
@@ -661,13 +672,17 @@ class VariantSelects extends HTMLElement {
         const html = new DOMParser().parseFromString(responseText, 'text/html')
         const destination = document.getElementById(id);
         const source = html.getElementById(id);
-
+        const variantPickerDestination = document.querySelector('variant-radios') || document.querySelector('variant-selects');
+        const variantPickerSource = html.querySelector('variant-radios') || html.querySelector('variant-selects');
+        
         if (source && destination) destination.innerHTML = source.innerHTML;
-
+        if (variantPickerSource && variantPickerDestination) variantPickerDestination.innerHTML = variantPickerSource.innerHTML;
+        
         const price = document.getElementById(`price-${this.dataset.section}`);
 
         if (price) price.classList.remove('visibility-hidden');
         this.toggleAddButton(!this.currentVariant.available, window.variantStrings.soldOut);
+        noSingles();
       });
   }
 
@@ -699,8 +714,10 @@ class VariantSelects extends HTMLElement {
   }
 
   getVariantData() {
+    console.log("variant_stuff Data");
     this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
     return this.variantData;
+    console.log(this.variantData);
   }
 }
 
@@ -720,3 +737,29 @@ class VariantRadios extends VariantSelects {
 }
 
 customElements.define('variant-radios', VariantRadios);
+
+
+document.querySelectorAll('#mainNav li').forEach( function(navLi) {
+  if(navLi.classList.contains('subnav_active')) {
+    navLi.addEventListener('click', function (){
+      
+      let dropper = navLi.querySelector('.header__submenu');
+      let inner = navLi.querySelector('.inner');
+      
+      if (dropper.classList.contains('active')) {
+        inner.classList.add('backto');
+        setTimeout(function() {
+          dropper.classList.remove('active');
+          navLi.classList.remove('active');
+        }, 300);
+        setTimeout(function() {
+          inner.classList.remove('backto');
+        }, 800);
+      } else {
+        dropper.classList.add('active');
+        navLi.classList.add('active');
+      }
+      
+    });
+  }
+});

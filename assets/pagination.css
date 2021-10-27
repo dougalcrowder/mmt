@@ -1,0 +1,82 @@
+.pagination-wrapper {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.pagination ul > li {
+  flex: 1 0 4.4rem;
+  max-width: 4.4rem;
+  text-align: center;
+  position: relative;
+}
+
+.pagination ul > li:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.view-more-button {
+  margin-bottom: 96px;
+}
+
+.pagination ul {
+  color: rgb(var(--color-foreground));
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.pagination ul li a,
+.pagination ul li span {
+  display: block;
+  height: 48px;
+}
+
+a.pagination__item:hover::after {
+  height: 0.1rem;
+}
+
+.pagination__item .icon-caret {
+  height: 0.6rem;
+}
+
+.pagination__item--current::after {
+  height: 0.1rem;
+}
+
+.pagination__item--current::after,
+.pagination__item:hover::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: currentColor;
+}
+
+.pagination__item--next .icon {
+  margin-left: -0.2rem;
+  transform: rotate(90deg);
+}
+
+.pagination__item--next:hover .icon {
+  transform: rotate(90deg) scale(1.07);
+}
+
+.pagination__item--prev .icon {
+  margin-right: -0.2rem;
+  transform: rotate(-90deg);
+}
+
+.pagination__item--prev:hover .icon {
+  transform: rotate(-90deg) scale(1.07);
+}
+
+.pagination__item-arrow:hover::after {
+  display: none;
+}
+

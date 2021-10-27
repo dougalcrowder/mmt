@@ -1,0 +1,132 @@
+.transition-fade {
+  transition: 0.4s;
+  opacity: 1;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+
+.no-js .blog-articles {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media screen and (min-width: 600px) {
+  .no-js .blog-articles {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .no-js .blog-articles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.js .blog-articles {
+  padding: 0;
+  max-width: 1304px;
+}
+
+.js .blog-articles article {
+  position: absolute;
+}
+
+@media screen and (min-width: 522px) {
+  .js .blog-articles article img {
+    max-width: 350px;
+  }
+}
+
+.blog_grid {
+  margin-top: 300px;
+  margin-bottom: 40px;
+}
+
+.blog_grid article picture {
+  display: block;
+  overflow: hidden;
+}
+
+.blog_grid article img {
+  display: block;
+  transition: var(--transition-slow);
+}
+
+.blog_grid article .title {
+  position: relative;
+  margin-top: 8px;
+}
+
+.blog_grid article .title .article_title {
+  font-family: var(--font-heading-family);
+  font-size: 112.5%;
+  position: relative;
+  z-index: 1;
+}
+
+.blog_grid article .title .article_excerpt {
+  font-size: 87.5%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  z-index: 3;
+  opacity: 0;
+  transition: var(--transition-slow);
+}
+
+.blog_grid article .title.with_excerpt {
+  position: relative;
+}
+
+.blog_grid article:hover .article_excerpt {
+  opacity: 1;
+}
+
+.blog_grid article:hover img {
+  transform: scale(104%);
+}
+
+.image_banner + .blog_grid {
+  margin-top: 40px;
+}
+
+.article_tags {
+  border-bottom: 1px solid var(--color-foreground);
+  margin-bottom: 24px;
+}
+
+.article_tags a {
+  padding: 8px;
+  flex: 1 1 auto;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.article_tags a.active {
+  font-weight: bold;
+}
+
+.inner.intros {
+  max-width: 520px;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .inner.intros {
+    margin-bottom: 80px;
+    margin-top: 88px;
+  }
+}
+
+.blog_intro.visually-hidden + .article_tags {
+  margin-top: 300px;
+}
+

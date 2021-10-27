@@ -1,0 +1,380 @@
+{%- comment -%} ---------------- THE CSS --------------------- {%- endcomment -%}
+<link rel="stylesheet" href="{{ 'hotspots.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'hotspots.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- assign image_aspect_ratio = section.settings.image.aspect_ratio | default: 1 -%}
+{%- assign square_image_aspect_ratio = 1 -%}
+{%- assign section_selector = '[data-tooltips="' | append: section.id | append: '"]'-%}
+<style>
+
+  {%- comment -%}
+  {{ section_selector }} .tooltip-button:focus .tooltip-index,
+  {{ section_selector }} .tooltip-button[aria-expanded="true"] .tooltip-index {
+    box-shadow: 0 0 0 2px red;
+  }
+  {%- endcomment -%}
+  
+  {%- for block in section.blocks -%}
+  {{ section_selector }} .tooltip-item:nth-child({{ forloop.index }}) .tooltip-index {
+    top: 0px;
+    margin-top: {{ block.settings.top_mob | divided_by: square_image_aspect_ratio }}%;
+    left: {{ block.settings.left_mob }}%;
+  }
+  @media screen and (min-width: 880px) {
+    {{ section_selector }} .tooltip-item:nth-child({{ forloop.index }}) .tooltip-index {
+      top: 0px;
+      margin-top: {{ block.settings.top | divided_by: image_aspect_ratio }}%;
+      left: {{ block.settings.left }}%;
+    }
+  }
+  {%- endfor -%}
+  
+  
+    
+  {%- for block in section.blocks -%}
+    {%- assign y = block.settings.top | divided_by: image_aspect_ratio -%}
+    {%- assign y_mob = block.settings.top_mob | divided_by: square_image_aspect_ratio -%}
+    {%- assign tooltip_selector = '#tooltip-' | append: block.id -%}
+    {{ tooltip_selector }} .tooltip-button {
+      top: 0px;
+      margin-top: {{ y_mob }}%;
+      left: {{ block.settings.left_mob }}%;
+    }
+    @media screen and (min-width: 880px) {
+      {{ tooltip_selector }} .tooltip-button {
+        top: 0px;
+        margin-top: {{ y }}%;
+        left: {{ block.settings.left }}%;
+      }
+    }
+    
+    {{ tooltip_selector }} .tooltip-overlay {
+      margin-top: {{ y_mob }}%;
+      {% if block.settings.left_mob > 75 %}
+      left: calc({{ block.settings.left_mob }}% - 180px);
+      {% elsif block.settings.left_mob > 55 %}
+      left: calc({{ block.settings.left_mob }}% - 90px);
+      {% else %}
+      left: {{ block.settings.left_mob }}%;
+      {% endif %}
+    }
+    @media screen and (min-width: 880px) {
+      {{ tooltip_selector }} .tooltip-overlay {
+        margin-top: {{ y }}%;
+        {% if block.settings.left > 75 %}
+        left: calc({{ block.settings.left }}% - 180px);
+        {% elsif block.settings.left > 55 %}
+        left: calc({{ block.settings.left }}% - 90px);
+        {% else %}
+        left: calc({{ block.settings.left }}% - 40px);
+        {% endif %}
+      }
+    }
+
+    {{ tooltip_selector }} .tooltip-button .tooltip-index {
+      margin-top: 0;
+    }
+    
+    /* @media screen and (min-width: 880px) {
+      {{ tooltip_selector }} .tooltip-overlay {
+        margin-top: {{ y }}%;
+        left: {{ block.settings.left }}%;
+      }
+    } */
+  {%- endfor -%}
+
+</style>
+
+
+{%- comment -%} ---------------- THE NO-JS ------------------- {%- endcomment -%}
+
+<noscript>
+  <style>
+    .tooltips-section .tooltips-list {
+      list-style: decimal;
+      padding: 24px;
+    }
+
+    .tooltip-item {
+      position: static;
+      padding: 16px;
+      max-width: none;
+    }
+  </style>
+</noscript>
+
+
+{%- comment -%} ---------------- THE MARKUP ------------------ {%- endcomment -%}
+  <div class="intro_text visibility-hidden">
+    {%- if section.settings.title != blank -%}
+      <{{section.settings.header_tag}}>{{ section.settings.title | escape }}</{{section.settings.header_tag}}>
+    {%- endif -%}
+</div>
+<div class="tooltips-section hero-section" data-tooltips="{{ section.id }}">
+  <figure class="tooltips-figure">
+    {%- if section.settings.image == blank -%}
+      {{ 'image' | placeholder_svg_tag: 'tooltips-picture' }}
+    {%- else -%}
+    
+    {%- comment -%}
+    <picture class="tooltips-picture">
+      <source srcset="{{ section.settings.image | img_url: '320x' }} 1x,
+                      {{ section.settings.image | img_url: '320x', scale: 2 }} 2x" media="(max-width: 320px)">
+      <source srcset="{{ section.settings.image | img_url: '420x' }} 1x,
+                      {{ section.settings.image | img_url: '420x', scale: 2 }} 2x" media="(max-width: 420px)">
+      <source srcset="{{ section.settings.image | img_url: '768x' }} 1x,
+                      {{ section.settings.image | img_url: '768x', scale: 2 }} 2x" media="(max-width: 768px)">
+      <source srcset="{{ section.settings.image | img_url: '1240x' }} 1x,
+                      {{ section.settings.image | img_url: '1240x', scale: 2 }} 2x" media="(max-width: 1240px)">
+      <source srcset="{{ section.settings.image | img_url: '1440x' }} 1x,
+                      {{ section.settings.image | img_url: '1440x', scale: 2 }} 2x" media="(max-width: 1440px)">
+      <source srcset="{{ section.settings.image | img_url: '1660x' }} 1x,
+                      {{ section.settings.image | img_url: '1660x', scale: 2 }} 2x" media="(max-width: 1660px)">
+      <source srcset="{{ section.settings.image | img_url: '2048x' }} 1x,
+                      {{ section.settings.image | img_url: '2048x', scale: 2 }} 2x" media="(min-width: 1661px)">
+      <img class="tooltips-img" src="{{ section.settings.image | img_url: '2048x' }}" alt="{{ section.settings.image.alt }}">
+    </picture>
+    {%- endcomment -%}
+    
+    {%- assign landscape_image = section.settings.image -%}
+      {% if section.settings.square_image != blank %}
+      {%- assign square_image = section.settings.square_image -%}
+      {%- else -%}
+      {%- assign square_image = section.settings.image -%}
+      {%- endif -%}
+    {%- include 'image-hero-tt' -%}
+    {%- endif -%}
+  </figure>
+  
+  <ol class="tooltips-list" aria-label="{{ section.settings.title }}">
+    {%- for block in section.blocks -%}
+    <li class="tooltip-item" id="tooltip-{{ block.id }}">
+      <button class="tooltip-button"
+              type="button" 
+              value="{{ block.id }}"
+              aria-describedby="tooltip-overlay-{{ block.id }}" 
+              aria-label="{{ forloop.index }}, {{ block.settings.title }}" 
+              aria-expanded="false" 
+              data-tooltip-trigger
+              {{ block.shopify_attributes }} >
+        <div class="tooltip-index" role="none"><span> </span></div>
+        <strong class="tooltip-title" role="none">{{ block.settings.title }}</strong>
+      </button>
+      <aside class="tooltip-overlay" id="tooltip-overlay-{{ block.id }}" data-tooltip-overlay></aside>
+      <noscript data-tooltip-markup>
+        <strong class="tooltip-header">{{ block.settings.title }}</strong>
+        {{ block.settings.content }}
+        {%- assign product = all_products[block.settings.prod] -%}
+        {% unless product == empty %}
+          <a href="{{ product.url }}" class="tip_product">
+            <div class="title">Learn More</div>
+          </a>
+        {% endunless %}
+      </noscript>
+    </li>
+    {%- endfor -%}
+  </ol>
+  
+  
+{%- comment -%} ---------------- THE CONFIG ------------------ {%- endcomment -%}
+  
+  <script data-tooltips-config type="application/json">
+   {
+     "breakpoint": 300,
+     "sectionId": {{ section.id | json }},
+     "blocksId": {{ section.blocks | map: 'id' | json }}
+   }
+  </script>
+
+</div>
+
+
+{%- comment -%} ------------------ THE JS -------------------- {%- endcomment -%}
+
+<script src="{{ 'tooltips.js' | asset_url }}" defer="defer"></script>
+
+
+{%- comment -%} --------------- THEME EDITOR ----------------- {%- endcomment -%}
+
+{%- if section.blocks.last.shopify_attributes != blank -%}
+<script>
+  (function ThemeEditor(SD){
+    var sectionId = {{ section.id | json }};
+    if (SD.ThemeEditor[sectionId]) return;
+    
+    SD.ThemeEditor[sectionId] = 'init';
+    initEvents(sectionId);
+    
+    document.addEventListener('shopify:section:load', function(evt) {
+      if (evt.detail.sectionId !== sectionId) return;
+      
+      var section = SD[sectionId];
+      section.init(section.config);
+      initEvents(sectionId);
+    });
+
+    function initEvents(sectionId) {
+      var sectionHost = document.querySelector('[data-tooltips="' + sectionId + '"]');
+
+      sectionHost.addEventListener('shopify:block:select', toggleSelect);
+      sectionHost.addEventListener('shopify:block:deselect', toggleSelect); 
+    }
+    
+    function toggleSelect(evt) {
+      var sectionId = evt.detail.sectionId;
+      var blockId = evt.detail.blockId;
+      var section = SD[sectionId];
+      
+      evt.type === 'shopify:block:select'
+      ? section.select(blockId)
+      : section.deselect(blockId)
+      
+      updateBlocks(section, blockId);
+    }
+    
+    function updateBlocks(section, blockId) {
+      if (section.config.blocksId.indexOf(blockId) === -1) {
+        section.config.blocksId.push(blockId);
+      }
+    }
+ 
+  })(window.SectionsDesign = window.SectionsDesign || {ThemeEditor: []});
+</script>
+{%- endif -%}
+
+{%- comment -%} ---------------- THE SETTINGS ---------------- {%- endcomment -%}
+
+{% schema %}
+{
+  "name": "Tooltips",
+  "class": "sd-tooltips",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Add an image below, then place tooltips/hotspots above linking to products etc"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main image",
+      "info": "Image must be at least 2560x1000 pixels"
+    },
+    {
+      "type": "image_picker",
+      "id": "square_image",
+      "label": "Main image Mobile",
+      "info": "Image must be at least 2048x2048 pixels"
+    },
+    {
+    "type": "text",
+    "id": "title",
+    "label": "Heading",
+    "info": "Add a heading for people with impaired vision and search engines",
+    "default": {
+      "en": "Image with hotspots"
+    }
+  },
+  {
+     "type": "select",
+     "id": "header_tag",
+     "label": "Heading Type",
+     "options": [
+       {
+         "value": "h1",
+         "label": "H1"
+       },
+       {
+         "value": "h2",
+         "label": "H2"
+       },
+        {
+          "value": "h3",
+          "label": "H3"
+        }
+     ],
+     "default": "h2",
+     "info": "Choose a header tag, leave as is if unsure"
+  }
+  ],
+  "blocks": [
+    {
+      "type": "Tooltip",
+      "name": "Tooltip",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tooltip",
+          "default": "Tooltip title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Tooltip HTML content",
+          "default": "<p>I am a tooltip, I provide additional explanatory content and showcase product features.</p>"
+        },
+        {
+          "type": "product",
+          "id": "prod",
+          "label": "Tooltip HTML content"
+        },
+        {
+          "type": "range",
+          "id": "top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Top position",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "left",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Left position",
+          "default": 50
+        },
+        {
+          "type": "paragraph",
+          "content": "Resize the preview so the image is square then you can see the positioning of these"
+        },
+        {
+          "type": "range",
+          "id": "top_mob",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Top position Mobile",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "left_mob",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Left position Mobile",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tooltips",
+      "category": "image",
+      "blocks": [
+        {
+          "type": "Tooltip"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

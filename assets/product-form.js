@@ -1,4 +1,43 @@
 if (!customElements.get('product-form')) {
+  
+  function cartListen() {
+    fetch('/cart.js')
+    .then(response => response.json())
+    .then(data => {
+      let numero = data.item_count;
+      // console.log(data);
+      // if(numero === 0) {
+      //   console.log('numbers are nuffin: ' + numero)
+      // } else {
+      //   console.log('we have stuff: ' + numero)
+      // }
+      
+      console.log(data.item_count);
+      let freeSamples = 0;
+      data.items.forEach( function(prods) {
+        // console.log(prods.id);
+        if (prods.product_type == 'Free Sample') {
+          let qty = prods.quantity;
+          freeSamples += qty;
+          console.log('free samples: ' +freeSamples);
+        }
+      });
+      
+      if(freeSamples > 4 ) {
+        console.log("No more freebies for you");
+        document.body.classList.add("paid");
+        document.body.classList.remove("free");
+      } else {
+        console.log("Ok, as you were");
+        document.body.classList.add("free");
+        document.body.classList.remove("paid");
+      }
+      
+    })
+  }
+  
+  cartListen();
+  
   customElements.define('product-form', class ProductForm extends HTMLElement {
     constructor() {
       super();
@@ -45,6 +84,7 @@ if (!customElements.get('product-form')) {
           submitButton.classList.remove('loading');
           submitButton.removeAttribute('aria-disabled');
           this.querySelector('.loading-overlay__spinner').classList.add('hidden');
+          cartListen();
         });
     }
 

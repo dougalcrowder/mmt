@@ -1,0 +1,141 @@
+{
+  "sections": {
+    "1635330929a8d9324e": {
+      "type": "image-banner",
+      "blocks": {
+        "1635330929a8d9324e-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get Stuck in on one of our courses",
+            "heading_type": "header1"
+          }
+        },
+        "1635330929a8d9324e-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Make yourself a home."
+          }
+        },
+        "1635330929a8d9324e-2": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "1635330929a8d9324e-0",
+        "1635330929a8d9324e-1",
+        "1635330929a8d9324e-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/MM-46-1-scaled.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/hand-covered-in-powdered-paint.jpg",
+        "make_logo_white": true,
+        "desktop_text_box_position": "center",
+        "text_align": "center",
+        "show_text_box": true,
+        "color_scheme": "white_text"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "16352620842faf27c4": {
+      "type": "events",
+      "blocks": {
+        "16352620842faf27c4-0": {
+          "type": "event",
+          "settings": {
+            "event_title": "A Bloomsbury Breakfast & Workshop at the Charlotte Street Hotel",
+            "event_intro": "Celebrate London Craft week and enjoy\nbreakfast in the Drawing Room at Charlotte Street Hotel. Join journalist Jo Rodgers in conversation with textile designer Molly Mahon, founder and creative director of Firmdale Hotels and Kit Kemp Design Studio, Kit Kemp, and designer and painter Melissa White.",
+            "event_description": "<p>Surrounded by Kit Kemp’s Bloomsbury-inspired interiors with original artworks by Duncan Grant and Vanessa Bell, the panel will share their love for The Bloomsbury Set, discussing their unique use of craft and colour and how they continue to inspire Molly, Kit and Melissa in their work today. Talk, Tuesday 5th October, 09:00- 10:30am £30 per person, including a delicious breakfast and in conversation Workshop, Tuesday 5th October, 11:00 – 12:30pm £100 per person, including a delicious breakfast, in conversation and 1.5 hour workshop with Molly Mahon.<\/p>",
+            "image": "shopify:\/\/shop_images\/hotels-flats.jpg",
+            "event_date": "5th October 11:00 - 12:30",
+            "event_extras": "Including a delicious breakfast",
+            "event_price": "£30 per person",
+            "event_button_text": "Book Your Place",
+            "event_button_text_2": "via Eventbrite",
+            "event_external_link": "https:\/\/eventbrite.com",
+            "event_buy_btn": ""
+          }
+        },
+        "86e614b8-e8c2-491e-832a-3e23d40baa3f": {
+          "type": "event",
+          "settings": {
+            "event_title": "Block printing Lampshades at Charleston",
+            "event_intro": "Join Molly for a one-day workshop experiencing the joy of block printing and making your own lampshade.",
+            "event_description": "<p>The day-long course will include a private tour of the house, followed by an introduction to block printing by Molly. Using Molly’s carved wooden blocks, you will experiment with colour and pattern and ﬁnish by printing your own 30cm lampshade. £200 pp-the price includes all materials, refreshments and a delicious lunch.<\/p>",
+            "image": "shopify:\/\/shop_images\/MM-46-1-scaled.jpg",
+            "event_date": "7th October 15:30 - 18:00",
+            "event_extras": "Inc. lampshade to take home",
+            "event_price": "£200 per person",
+            "event_button_text": "Book your place",
+            "event_button_text_2": "",
+            "event_external_link": "",
+            "event_buy_btn": ""
+          }
+        }
+      },
+      "block_order": [
+        "16352620842faf27c4-0",
+        "86e614b8-e8c2-491e-832a-3e23d40baa3f"
+      ],
+      "settings": {
+        "title": ""
+      }
+    },
+    "1635263281959956a1": {
+      "type": "text-banner",
+      "settings": {
+        "title": "<p><strong>How about giving a workshop as a gift? Gift vouchers unavailable!<\/strong><\/p>",
+        "link": "",
+        "bg_pattern": "pattern_03",
+        "color_scheme": "blue_text"
+      }
+    },
+    "163526328406ed0926": {
+      "type": "events",
+      "blocks": {
+        "163526328406ed0926-0": {
+          "type": "event",
+          "settings": {
+            "event_title": "Block printing Curtains at Carew Castle",
+            "event_intro": "Join Molly for a one-day workshop experiencing the joy of block printing and making your own lampshade.",
+            "event_description": "<p>The day-long course will include a private tour of the house, followed by an introduction to block printing by Molly. Using Molly’s carved wooden blocks, you will experiment with colour and pattern and ﬁnish by printing your own 30cm lampshade. £200 pp-the price includes all materials, refreshments and a delicious lunch.<\/p>",
+            "image": "shopify:\/\/shop_images\/stone-castle-with-a-view.jpg",
+            "event_date": "23rd - 25th November",
+            "event_extras": "You keep the curtains",
+            "event_price": "£650 per Unit",
+            "event_button_text": "Book Now!",
+            "event_button_text_2": "",
+            "event_external_link": "",
+            "event_buy_btn": ""
+          }
+        }
+      },
+      "block_order": [
+        "163526328406ed0926-0"
+      ],
+      "settings": {
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "1635330929a8d9324e",
+    "main",
+    "16352620842faf27c4",
+    "1635263281959956a1",
+    "163526328406ed0926"
+  ]
+}

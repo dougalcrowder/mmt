@@ -1,0 +1,223 @@
+{%- assign prodDesc = false -%}
+{%- if template contains 'product' -%}
+  {%- if section.settings.product_desc -%}
+  {%- assign prodDesc = true -%}
+  {%- endif -%}
+{%- endif -%}
+<div class="tabs inner">
+  <div role="tablist" aria-label="Product Details Tabs" class="flex tablist">
+    
+  {%- if prodDesc -%}  
+    <button class="tabber" role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" tabindex="0">
+      More Info
+    </button>
+  {%- endif -%}
+  
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'tab' -%}
+    {%- if prodDesc -%} 
+      <button class="tabber" role="tab" aria-selected="false" aria-controls="panel-{{ forloop.index | plus:1 }}" id="tab-{{ forloop.index | plus:1 }}" tabindex="-1">
+        {{ block.settings.heading }}
+      </button>
+    {%- else -%}
+      <button class="tabber" role="tab" aria-selected="{%- if forloop.index == 1 -%}true{%- else -%}false{%- endif -%}" aria-controls="panel-{{ forloop.index }}" id="tab-{{ forloop.index }}" tabindex="{%- if forloop.index == 1 -%}0{%- else -%}-1{%- endif -%}">
+        {{ block.settings.heading }}
+      </button>
+    {%- endif -%}
+    {% endcase %}
+  {%- endfor -%}
+  </div>
+  {%- if template contains 'product' -%}  
+  {%- if section.settings.product_desc -%}
+  <div id="panel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
+  
+  {%- if section.settings.description_image != blank -%}
+  <div class="flex tab_flex withimage">
+    <div class="text rte">
+      {{ product.description }}
+    </div>
+    <div class="image">
+      {%- assign image = section.settings.description_image -%}
+      <picture>
+        <source srcset="{{ image | img_url: '650x', scale: 2 }} 2x, {{ image | img_url: '650x' }} 1x" media="(min-width: 1270px)" />
+        <source srcset="{{ image | img_url: '630x', scale: 2 }} 2x, {{ image | img_url: '630x' }} 1x" media="(min-width: 1100px)" />
+        <source srcset="{{ image | img_url: '500x', scale: 2 }} 2x, {{ image | img_url: '500x' }} 1x" media="(min-width: 960px)" />
+        <source srcset="{{ image | img_url: '480x', scale: 2 }} 2x, {{ image | img_url: '480x' }} 1x" media="(min-width: 768px)" />
+        <source srcset="{{ image | img_url: '380x', scale: 2 }} 2x, {{ image | img_url: '380x' }} 1x" media="(min-width: 480px)" />
+        <source srcset="{{ image | img_url: '460x', scale: 2 }} 2x, {{ image | img_url: '460x' }} 1x" media="(min-width: 320px)" />
+        <img class="lazyimage" loading="lazy" src="{{ image | img_url: '280x' }}" alt="{{ image.alt | escape }}" width="{{ section.settings.description_image.width }}" height="{{ section.settings.description_image.height }}" />
+      </picture>
+    </div>
+  </div>
+  {%- else -%}
+  <div class="flex tab_flex">
+    <div class="text rte">
+  {{ product.description }}
+    </div>
+  </div>
+  {%- endif -%}
+  </div>
+  {%- endif -%}
+  {%- endif -%}
+  {%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'tab' -%}
+    {%- if prodDesc -%}
+      <div id="panel-{{ forloop.index | plus:1 }}" role="tabpanel" tabindex="0" aria-labelledby="tab-{{ forloop.index | plus:1 }}" hidden>
+    {%- else -%}
+      <div id="panel-{{ forloop.index }}" role="tabpanel" tabindex="0" aria-labelledby="tab-{{ forloop.index }}"{%- if forloop.index == 1 -%}0{%- else -%} hidden{%- endif -%}>
+    {%- endif -%}
+    
+      {%- if block.settings.info_image != blank -%}
+      <div class="flex tab_flex withimage">
+        <div class="text rte">
+          {{ block.settings.content }}
+          {{ block.settings.page.content }}
+        </div>
+        <div class="image">
+          {%- assign image = block.settings.info_image -%}
+         
+          <picture>
+            <source srcset="{{ image | img_url: '650x', scale: 2 }} 2x, {{ image | img_url: '650x' }} 1x" media="(min-width: 1270px)" />
+            <source srcset="{{ image | img_url: '630x', scale: 2 }} 2x, {{ image | img_url: '630x' }} 1x" media="(min-width: 1100px)" />
+            <source srcset="{{ image | img_url: '500x', scale: 2 }} 2x, {{ image | img_url: '500x' }} 1x" media="(min-width: 960px)" />
+            <source srcset="{{ image | img_url: '480x', scale: 2 }} 2x, {{ image | img_url: '480x' }} 1x" media="(min-width: 768px)" />
+            <source srcset="{{ image | img_url: '380x', scale: 2 }} 2x, {{ image | img_url: '380x' }} 1x" media="(min-width: 480px)" />
+            <source srcset="{{ image | img_url: '460x', scale: 2 }} 2x, {{ image | img_url: '460x' }} 1x" media="(min-width: 320px)" />
+            <img class="lazyimage" loading="lazy" src="{{ image | img_url: '280x' }}" alt="{{ image.alt | escape }}" width="{{ block.settings.info_image.width }}" height="{{ block.settings.info_image.height }}" />
+          </picture>
+        </div>
+      </div>
+      {%- else -%}
+      <div class="flex tab_flex">
+        <div class="text rte">
+      {{ block.settings.content }}
+      {{ block.settings.page.content }}
+        </div>
+      </div>
+      {%- endif -%}
+      </div>
+    {% endcase %}
+  {%- endfor -%}
+</div>
+ 
+<script>
+  
+  window.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll('[role="tab"]');
+    const tabList = document.querySelector('[role="tablist"]');
+  
+    // Add a click event handler to each tab
+    tabs.forEach(tab => {
+      tab.addEventListener("click", changeTabs);
+    });
+  
+    // Enable arrow navigation between tabs in the tab list
+    let tabFocus = 0;
+  
+    tabList.addEventListener("keydown", e => {
+      // Move right
+      if (e.keyCode === 39 || e.keyCode === 37) {
+        tabs[tabFocus].setAttribute("tabindex", -1);
+        if (e.keyCode === 39) {
+          tabFocus++;
+          // If we're at the end, go to the start
+          if (tabFocus >= tabs.length) {
+            tabFocus = 0;
+          }
+          // Move left
+        } else if (e.keyCode === 37) {
+          tabFocus--;
+          // If we're at the start, move to the end
+          if (tabFocus < 0) {
+            tabFocus = tabs.length - 1;
+          }
+        }
+  
+        tabs[tabFocus].setAttribute("tabindex", 0);
+        tabs[tabFocus].focus();
+      }
+    });
+  });
+  
+  function changeTabs(e) {
+    const target = e.target;
+    const parent = target.parentNode;
+    const grandparent = parent.parentNode;
+  
+    // Remove all current selected tabs
+    parent
+      .querySelectorAll('[aria-selected="true"]')
+      .forEach(t => t.setAttribute("aria-selected", false));
+  
+    // Set this tab as selected
+    target.setAttribute("aria-selected", true);
+  
+    // Hide all tab panels
+    grandparent
+      .querySelectorAll('[role="tabpanel"]')
+      .forEach(p => p.setAttribute("hidden", true));
+  
+    // Show the selected panel
+    grandparent.parentNode
+      .querySelector(`#${target.getAttribute("aria-controls")}`)
+      .removeAttribute("hidden");
+  }
+  
+</script>
+
+{% schema %}
+
+{
+"name": "Tabs Block",
+"class": "tabs-section",
+"tag": "section",
+"settings": [
+  {
+    "type": "checkbox",
+    "id": "product_desc",
+    "default": true,
+    "label": "Make first tab product description",
+    "info": "On product pages it is best to have this checked"
+  },
+  {
+    "type": "image_picker",
+    "id": "description_image",
+    "label": "Description image"
+  }
+],
+"blocks": [
+  {
+  "type": "tab",
+  "name": "Tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Collapsible tab",
+      "info": "t:sections.main-product.blocks.collapsible_tab.settings.heading.info",
+      "label": "t:sections.main-product.blocks.collapsible_tab.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:sections.main-product.blocks.collapsible_tab.settings.content.label"
+    },
+    {
+      "type": "page",
+      "id": "page",
+      "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "info_image",
+      "label": "Info image"
+    }
+    ]
+  }
+  ],
+  "max_blocks": 3
+}
+
+{% endschema %}

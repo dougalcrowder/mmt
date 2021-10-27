@@ -1,5 +1,174 @@
 {
-  "current": "Default",
+  "current": {
+    "colors_solid_button_labels": "#FFFFFF",
+    "colors_accent_1": "#121212",
+    "colors_accent_2": "#334FB4",
+    "colors_text": "#121212",
+    "colors_outline_button_labels": "#121212",
+    "colors_background_1": "#FFFFFF",
+    "colors_background_2": "#F3F3F3",
+    "type_header_font": "assistant_n4",
+    "type_body_font": "assistant_n4",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "announcement",
+            "disabled": true,
+            "settings": {
+              "text": "Welcome to our store",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "663b58be-d5a6-41a4-94f2-df9bb2435b16": {
+            "type": "menu_images",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/loft-style-bedroom.jpg",
+              "title": "Moody Boards",
+              "subtitle": "Inspirational Abundance",
+              "link": "shopify:\/\/blogs\/community",
+              "menu_item_handle": "fabric"
+            }
+          },
+          "24e27814-6ff9-440b-9cda-6b6f0a4debb7": {
+            "type": "menu_images",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/colorful-ribbon.jpg",
+              "title": "Brochures & Samples",
+              "subtitle": "Try before you buy",
+              "link": "shopify:\/\/pages\/care",
+              "menu_item_handle": "fabric"
+            }
+          },
+          "a911026b-a355-4e85-b902-387149596068": {
+            "type": "menu_images",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/hand-covered-in-powdered-paint.jpg",
+              "title": "Tools",
+              "subtitle": "Get stuck in",
+              "link": "shopify:\/\/blogs\/community",
+              "menu_item_handle": "printing-supplies"
+            }
+          },
+          "f1478d1d-b69c-4ba9-a5cd-93a80571237b": {
+            "type": "menu_images",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/person-in-a-floral-dress-holds-a-large-book-open.jpg",
+              "title": "Book - House of Print",
+              "subtitle": "Pretty in Print!",
+              "link": "shopify:\/\/products\/fbicot12",
+              "menu_item_handle": "printing-supplies"
+            }
+          }
+        },
+        "block_order": [
+          "663b58be-d5a6-41a4-94f2-df9bb2435b16",
+          "24e27814-6ff9-440b-9cda-6b6f0a4debb7",
+          "a911026b-a355-4e85-b902-387149596068",
+          "f1478d1d-b69c-4ba9-a5cd-93a80571237b"
+        ],
+        "settings": {
+          "menu": "main-menu",
+          "menu_message": "FREE UK DELIVERY WHEN YOU SPEND £50 OR MORE"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links",
+              "menu": "footer"
+            }
+          },
+          "b5dac7b8-367b-40cc-b268-8c06c9d8b635": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Follow Us",
+              "menu": "follow-menu"
+            }
+          },
+          "2e0cd923-360f-4b9e-924b-d295313fbb80": {
+            "type": "image",
+            "disabled": true,
+            "settings": {
+              "image": "shopify:\/\/shop_images\/tp.png",
+              "image_width": 200,
+              "alignment": "center"
+            }
+          },
+          "d4e833a1-a2e4-4972-af43-171c7f65982e": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Business & Press",
+              "menu": "business-press"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "b5dac7b8-367b-40cc-b268-8c06c9d8b635",
+          "2e0cd923-360f-4b9e-924b-d295313fbb80",
+          "d4e833a1-a2e4-4972-af43-171c7f65982e"
+        ],
+        "settings": {
+          "color_scheme": "background-1",
+          "newsletter_enable": false,
+          "newsletter_heading": "Subscribe to our emails",
+          "show_social": false,
+          "enable_country_selector": true,
+          "enable_language_selector": true,
+          "payment_enable": true
+        }
+      },
+      "newsletter": {
+        "type": "newsletter",
+        "blocks": {
+          "118079ad-66b6-4830-8b60-8dcf38803242": {
+            "type": "heading",
+            "settings": {
+              "heading": "Enjoy 10% off your ﬁrst order"
+            }
+          },
+          "e20d543f-8cc6-4d96-9370-377d89c3a24e": {
+            "type": "paragraph",
+            "settings": {
+              "text": "<p>Sign up to to Molly newsletter for regular updates and exclusive offers.<\/p>"
+            }
+          },
+          "85c2eb03-5fc7-4a11-ae24-fbbb63a844b7": {
+            "type": "email_form",
+            "settings": {
+            }
+          }
+        },
+        "block_order": [
+          "118079ad-66b6-4830-8b60-8dcf38803242",
+          "e20d543f-8cc6-4d96-9370-377d89c3a24e",
+          "85c2eb03-5fc7-4a11-ae24-fbbb63a844b7"
+        ],
+        "settings": {
+          "quote": "<p>Molly is the real deal! <br\/>Enthusiastic quote goes here to get the sign up<\/p>",
+          "cite": "Keith Kadstone"
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
   "presets": {
     "Default": {
       "colors_solid_button_labels": "#FFFFFF",
@@ -18,13 +187,14 @@
             "announcement-bar-0": {
               "type": "announcement",
               "settings": {
-                "color_scheme": "background-1"
               }
             }
           },
           "block_order": [
             "announcement-bar-0"
-          ]
+          ],
+          "settings": {
+          }
         }
       }
     },
@@ -41,21 +211,25 @@
       "sections": {
         "footer": {
           "type": "footer",
-          "settings": {
-            "color_scheme": "accent-1"
-          },
           "blocks": {
             "menu": {
-              "type": "link_list"
+              "type": "link_list",
+              "settings": {
+              }
             },
             "text": {
-              "type": "text"
+              "type": "text",
+              "settings": {
+              }
             }
           },
           "block_order": [
             "menu",
             "text"
-          ]
+          ],
+          "settings": {
+            "color_scheme": "accent-1"
+          }
         }
       }
     }

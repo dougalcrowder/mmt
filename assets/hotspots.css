@@ -1,0 +1,311 @@
+.sd-tooltips .intro_text {
+  position: absolute;
+  z-index: -1;
+}
+
+.sd-tooltips img {
+  display: block;
+}
+
+.tooltips-section {
+  position: relative;
+}
+
+.tooltips-figure {
+  margin: 0;
+}
+
+.tooltips-img {
+  display: block;
+  width: 100%;
+}
+
+.tooltips-list {
+  padding: 0 0 0 32px;
+  list-style: decimal;
+}
+
+.tooltip-item {
+  box-sizing: border-box;
+  padding: 8px 12px;
+}
+
+.tooltip-button {
+  background: transparent;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  z-index: 1;
+}
+
+.tooltip-button:focus {
+  outline: none;
+}
+
+.tooltip-index {
+  border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  padding: 15px;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  transition: var(--transition);
+}
+
+.tooltip-index span {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.tooltip-index span:after {
+  content: " ";
+  left: 3px;
+  right: 3px;
+  top: 3px;
+  bottom: 3px;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--color-red-rgb), 0);
+  transition: var(--transition);
+}
+
+.tooltip-button[aria-expanded=true] .tooltip-index span:after,
+.tooltip-button:focus .tooltip-index span:after,
+.tooltip-button:hover .tooltip-index span:after {
+  border: 1px solid var(--color-red);
+}
+
+.tooltip-button[aria-expanded=true] .tooltip-index span:after,
+.tooltip-button:focus .tooltip-index span:after {
+  border: 1px solid var(--color-red);
+}
+
+.tooltip-overlay {
+  background: #fff;
+  opacity: 1;
+  overflow: hidden;
+  will-change: height;
+}
+
+.tooltip-header {
+  display: none;
+}
+
+.tooltip-item .tooltip-overlay:empty {
+  -webkit-animation: none;
+          animation: none;
+}
+
+[aria-expanded=true] ~ .tooltip-overlay {
+  -webkit-animation: tooltip-expand 200ms both cubic-bezier(0.4, 0, 0.2, 1);
+          animation: tooltip-expand 200ms both cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[aria-expanded=false] ~ .tooltip-overlay {
+  -webkit-animation: tooltip-collapse 180ms both cubic-bezier(0.4, 0, 0.2, 1);
+          animation: tooltip-collapse 180ms both cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@-webkit-keyframes tooltip-expand {
+  0% {
+    height: var(--start-h);
+  }
+
+  100% {
+    height: var(--end-h);
+  }
+}
+
+@keyframes tooltip-expand {
+  0% {
+    height: var(--start-h);
+  }
+
+  100% {
+    height: var(--end-h);
+  }
+}
+
+@-webkit-keyframes tooltip-collapse {
+  0% {
+    height: var(--start-h);
+  }
+
+  100% {
+    height: var(--end-h);
+  }
+}
+
+@keyframes tooltip-collapse {
+  0% {
+    height: var(--start-h);
+  }
+
+  100% {
+    height: var(--end-h);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip-overlay {
+    -webkit-animation-duration: 0s !important;
+            animation-duration: 0s !important;
+  }
+}
+
+.tooltips-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tooltip-button .tooltip-index {
+  position: static;
+  transform: translate(0, 0);
+  width: 48px;
+  height: 48px;
+}
+
+.tooltip-button {
+  position: absolute;
+  padding: 0;
+  font-size: 100%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+}
+
+.tooltip-title {
+  display: none;
+}
+
+.tooltip-item {
+  max-width: 320px;
+  padding: 0;
+}
+
+[aria-expanded=true] ~ .tooltip-overlay {
+  z-index: 3;
+}
+
+[aria-expanded=true].tooltip-button {
+  z-index: 4;
+}
+
+.tooltip-overlay:empty {
+  padding: 0;
+  opacity: 0;
+  transform: scale(0, 0);
+}
+
+.tooltip-overlay {
+  max-width: 240px;
+  padding: 16px 16px 16px 16px;
+  text-align: center;
+  border-radius: 0;
+  transform-origin: top center;
+  position: absolute;
+  will-change: opacity, transform;
+  box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.19);
+  top: 32px;
+}
+
+@media screen and (min-width: 960px) {
+  .tooltip-overlay {
+    width: 320px;
+    max-width: 320px;
+  }
+}
+
+.tooltip-overlay p {
+  color: var(--color-pink);
+  font-size: 87.5%;
+}
+
+.tooltip-header {
+  display: block;
+  font-weight: normal;
+  font-family: var(--font-heading-family);
+  font-size: 112.5%;
+}
+
+[aria-expanded=true] ~ .tooltip-overlay {
+  -webkit-animation: tooltip-expand-large 200ms both cubic-bezier(0.4, 0, 0.2, 1);
+          animation: tooltip-expand-large 200ms both cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[aria-expanded=false] ~ .tooltip-overlay {
+  -webkit-animation: tooltip-collapse-large 180ms both cubic-bezier(0.4, 0, 0.2, 1);
+          animation: tooltip-collapse-large 180ms both cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@-webkit-keyframes tooltip-expand-large {
+  0% {
+    opacity: 0;
+    transform: scale(0.2, 0.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes tooltip-expand-large {
+  0% {
+    opacity: 0;
+    transform: scale(0.2, 0.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+@-webkit-keyframes tooltip-collapse-large {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes tooltip-collapse-large {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.tooltip-item .tip_product {
+  font-family: var(--font-heading-family);
+}
+
+.tooltip-item .tip_product .vendor,
+.tooltip-item .tip_product .price {
+  font-size: 87.5%;
+  color: var(--color-dark);
+}
+
+.tooltip-item .tip_product .title svg {
+  transition: var(--transition);
+  margin-left: 4px;
+}
+
+.tooltip-item .tip_product .title:hover svg {
+  transform: translateX(4px);
+}
+

@@ -1,0 +1,135 @@
+<div class="text_and_icons background-{{ section.settings.lines }} inner">
+  
+  <ul class="flex {{ section.settings.column_alignment }}" role="list">
+    {%- for block in section.blocks -%}
+      <li class="ti_column" {{ block.shopify_attributes }}>
+        <div class="column_card">
+          {%- if block.settings.icon != blank -%}
+          <figure class="icon svg">
+            {{ block.settings.icon }}
+          </figure>
+          {%- else -%}
+          {%- if block.settings.image != blank -%}
+              {% assign the_image = block.settings.image %}
+              <picture class="icon img">
+                  <source srcset="{{ the_image | img_url: '136x136', crop: 'center', format: 'png', scale: 2 }} 2x, {{ the_image | img_url: '136x136', crop: 'center', format: 'png' }} 1x" media="(min-width: 600px)" />
+                  <source srcset="{{ the_image | img_url: '90x90', crop: 'center', format: 'png', scale: 2 }} 2x, {{ the_image | img_url: '90x90', crop: 'center', format: 'png' }} 1x" media="(min-width: 320px)" />
+                <img loading="lazy" class="heroshot_image lazyimage" src="{{ the_image | img_url: '90x90' }}" alt="{{ the_image.alt | escape }}" width="90" height="90" />
+              </picture>
+          {%- endif -%}
+          {%- endif -%}
+          <div class="column_text">
+            {%- if block.settings.title != blank -%}
+              <h4>{{ block.settings.title | escape }}</h4>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <div class="rte">{{ block.settings.text }}</div>
+            {%- endif -%}
+          </div>
+          {%- if block.settings.link != blank -%}
+          <a href="{{ block.settings.link }}" alt="{{ block.settings.label }}"></a>
+          {%- endif -%}
+        </div>
+      </li>
+    {%- endfor -%}
+  </ul>
+
+</div>
+
+{% schema %}
+{
+  "name": "Text and Icon Columns",
+  "class": "text_and_icons-section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "column_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.multicolumn.settings.column_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.multicolumn.settings.column_alignment.options__2.label"
+        }
+      ],
+      "default": "left",
+      "label": "t:sections.multicolumn.settings.column_alignment.label"
+    },
+    {
+      "type": "select",
+      "id": "lines",
+      "options": [
+        {
+          "value": "none",
+          "label": "none"
+        },
+        {
+          "value": "lines",
+          "label": "lines"
+        }
+      ],
+      "default": "lines",
+      "label": "Lines"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "t:sections.multicolumn.blocks.column.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "Icon SVG code"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Column",
+          "label": "t:sections.multicolumn.blocks.column.settings.title.label"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Add some text here about the icon above, something pithy would suffice.</p>",
+          "label": "t:sections.multicolumn.blocks.column.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link destination"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text and Icon Columns",
+      "blocks": [
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

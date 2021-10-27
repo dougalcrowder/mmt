@@ -1,94 +1,78 @@
-<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'component-article-card.css' | asset_url }}" media="print" onload="this.media='all'">
-<link rel="stylesheet" href="{{ 'section-featured-blog.css' | asset_url }}" media="print" onload="this.media='all'">
+{% assign articleNumber = section.settings.post_limit %}
 
-<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
-<noscript>{{ 'component-article-card.css' | asset_url | stylesheet_tag }}</noscript>
+{%- if section.settings.post_limit > section.settings.blog.articles_count -%}
+  {% assign articleNumber = section.settings.blog.articles_count %}
+{%- endif -%}
 
-{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
-
-<div class="blog{% if section.settings.soft_background %} background-secondary{% endif %}{% if section.settings.heading == blank %} no-heading{% endif %}">
-  <div class="page-width-desktop">
-    <div class="title-wrapper-with-link{% if section.settings.heading == blank %} title-wrapper-with-link--no-heading{% endif %} title-wrapper--self-padded-tablet-down">
-      <h2 class="blog__title">{{ section.settings.heading | escape }}</h2>
-
-      {%- if section.settings.blog != blank and section.settings.show_view_all and section.settings.post_limit < section.settings.blog.articles_count -%}
-        <a href="{{ section.settings.blog.url }}"
-          class="link underlined-link large-up-hide"
-        >
-          {{ 'sections.featured_blog.view_all' | t }}
-        </a>
+<div class="featured_blog scroller-outer">
+  <div class="scroller-inner flex amount-{{ articleNumber }}">
+    <div class="text card main_card">
+      {%- if section.settings.heading != blank -%}
+      <h2>{{ section.settings.heading | escape }}</h2>
       {%- endif -%}
-    </div>
-    {%- liquid
-      if section.settings.post_limit <= section.settings.blog.articles_count
-        assign posts_exceed_limit = true
-      endif
-    -%}
-    {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
-      <slider-component class="slider-mobile-gutter">
-        <ul id="Slider-{{ section.id }}"
-          class="blog__posts articles-wrapper grid grid--peek grid--2-col-tablet grid--3-col-desktop slider slider--tablet{% if posts_exceed_limit %} blog__posts--{{ section.settings.post_limit }}-items{% else %} blog__posts--{{ section.settings.blog.articles_count }}-items{% endif %}"
-          role="list"
-        >
-          {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
-            <li class="blog__post grid__item article slider__slide slider__slide--full-width">
-              {% render 'article-card', blog: section.settings.blog, article: article, show_image: section.settings.show_image, show_date: section.settings.show_date, show_author: section.settings.show_author %}
-            </li>
-          {%- endfor -%}
-        </ul>
-        {%- if posts_exceed_limit -%}
-          <div class="slider-buttons no-js-hidden{% if section.settings.post_limit < 3 %} medium-hide{% endif %}{% if section.settings.post_limit < 2 %} small-hide{% endif %}">
-            <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
-            <div class="slider-counter caption">
-              <span class="slider-counter--current">1</span>
-              <span aria-hidden="true"> / </span>
-              <span class="visually-hidden">{{ 'accessibility.of' | t }}</span>
-              <span class="slider-counter--total">{{ section.settings.post_limit }}</span>
-            </div>
-            <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
-          </div>
-        {%- endif -%}
-      </slider-component>
-
-      {%- if section.settings.show_view_all and section.settings.post_limit < section.settings.blog.articles_count -%}
-        <div class="blog__view-all center small-hide medium-hide">
-          <a href="{{ section.settings.blog.url }}" class="blog__button button">
-            {{ 'sections.featured_blog.view_all' | t }}
-          </a>
-        </div>
+      
+      <div class="rte">
+      {{ section.settings.introduction }}
+      
+      {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.blog.url }}" class="button dark">
+        {{ section.settings.button_label }}
+      </a>
       {%- endif -%}
-    {%- else -%}
-      <div class="blog-placeholder">
-        <div class="placeholder media media--landscape">
-          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-        </div>
-        <div class="blog-placeholder__content">
-          <h2>
-            {{ 'sections.featured_blog.onboarding_title' | t }}
-          </h2>
-          <p class="rte-width">
-            {{ 'sections.featured_blog.onboarding_content' | t }}
-          </p>
-        </div>
+      
       </div>
+      
+    </div>
+    {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+    
+      {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
+      <div class="card">
+        {% include 'article-color-card' %}
+      </div>
+      {%- endfor -%}
+
     {%- endif -%}
   </div>
 </div>
+  {%- if section.settings.image != blank -%}
+  <picture class="background_img">
+    <source srcset="{{ section.settings.image | img_url: '2560x700', crop: 'left', format: 'pjpg' }}" media="(min-width: 2048px)" />
+    <source srcset="{{ section.settings.image | img_url: '2048x700', crop: 'left', format: 'pjpg' }}" media="(min-width: 1680px)" />
+    <source srcset="{{ section.settings.image | img_url: '1680x700', crop: 'left', format: 'pjpg' }}" media="(min-width: 1440px)" />
+    <source srcset="{{ section.settings.image | img_url: '1440x700', crop: 'left', format: 'pjpg' }}" media="(min-width: 1200px)" />
+    <source srcset="{{ section.settings.image | img_url: '1200x700', crop: 'left', format: 'pjpg' }}" media="(min-width: 1024px)" />
+    <source srcset="{{ section.settings.image | img_url: '1024x500', crop: 'left', format: 'pjpg' }}" media="(min-width: 880px)" /> 
+    <source srcset="{{ section.settings.image | img_url: '880x500', crop: 'left', format: 'pjpg' }}" media="(min-width: 768px)" />
+    <source srcset="{{ section.settings.image | img_url: '768x500', crop: 'left', format: 'pjpg' }}" media="(min-width: 480px)" />
+    <source srcset="{{ section.settings.image | img_url: '480x500', crop: 'left', format: 'pjpg' }}" media="(min-width: 320px)" />
+    <img{% unless forloop.index == 1 %} loading="lazy"{% endunless %} class="heroshot_image lazyimage" src="{{ section.settings.image | img_url: '320x500' }}" alt="{{ section.settings.image.alt | escape }}" />
+  </picture>
+  {%- endif -%}
+
 
 {% schema %}
 {
   "name": "t:sections.featured-blog.name",
   "tag": "section",
-  "class": "spaced-section spaced-section--full-width",
+  "class": "featured_blog-section",
   "settings": [
     {
       "type": "text",
       "id": "heading",
       "default": "Blog posts",
       "label": "t:sections.featured-blog.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "introduction",
+      "default": "<p>Each week we publish articles on books, artists, seasonal recipes, travel and the stories of our makers and materials. Each week we publish articles on books, artists, seasonal recipes, travel and the stories of our makers and materials.</p>",
+      "label": "Introduction"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "See all Articles",
+      "label": "Button Label"
     },
     {
       "type": "blog",
@@ -98,42 +82,16 @@
     {
       "type": "range",
       "id": "post_limit",
-      "min": 1,
-      "max": 3,
+      "min": 3,
+      "max": 10,
       "step": 1,
-      "default": 3,
+      "default": 5,
       "label": "t:sections.featured-blog.settings.post_limit.label"
     },
     {
-      "type": "checkbox",
-      "id": "show_image",
-      "default": true,
-      "label": "t:sections.featured-blog.settings.show_image.label",
-      "info": "t:sections.featured-blog.settings.show_image.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_date",
-      "default": true,
-      "label": "t:sections.featured-blog.settings.show_date.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_author",
-      "default": false,
-      "label": "t:sections.featured-blog.settings.show_author.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "soft_background",
-      "default": false,
-      "label": "t:sections.featured-blog.settings.soft_background.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_view_all",
-      "default": true,
-      "label": "t:sections.featured-blog.settings.show_view_all.label"
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
     }
   ],
   "presets": [
