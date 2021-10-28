@@ -161,7 +161,6 @@
 @media screen and (min-width: 768px) {
   .grid.product_page {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 240px;
     gap: 32px;
   }
 }
@@ -170,6 +169,10 @@
   .grid.product_page {
     gap: 64px;
   }
+}
+
+.grid.product_page .product-image {
+  overflow: hidden;
 }
 
 .breadcrumbs ol {

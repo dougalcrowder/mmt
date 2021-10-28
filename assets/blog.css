@@ -41,7 +41,6 @@ html.is-animating .transition-fade {
 }
 
 .blog_grid {
-  margin-top: 300px;
   margin-bottom: 40px;
 }
 
@@ -94,6 +93,10 @@ html.is-animating .transition-fade {
 
 .image_banner + .blog_grid {
   margin-top: 40px;
+}
+
+.image_banner.visually-hidden + .text {
+  margin-top: 200px;
 }
 
 .article_tags {

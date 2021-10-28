@@ -1,0 +1,57 @@
+<div class="text {{ section.settings.alignment }}">
+  {%- if section.settings.title != blank -%}
+  <h2>{{ section.settings.title }}</h2>
+  {%- endif -%}
+  {%- if section.settings.text != blank -%}
+  <div class="rte">
+    {{ section.settings.text }}
+  </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Title and Text",
+  "tag": "section",
+  "class": "text inner narrow",
+  "settings": [
+    {
+    "type": "text",
+    "id": "title",
+    "default": "Outstanding prints",
+    "label": "Title"
+    },
+    {
+    "type": "richtext",
+    "id": "text",
+    "default": "<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content</p>",
+    "label": "Text"
+    },
+    {
+    "type": "select",
+    "id": "alignment",
+    "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Text Alignment"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Title and Text"
+    }
+  ]
+}
+{% endschema %}

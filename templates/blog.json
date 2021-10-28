@@ -1,17 +1,63 @@
 {
   "sections": {
+    "16354416148d3a6fb7": {
+      "type": "image-banner",
+      "blocks": {
+        "16354416148d3a6fb7-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_type": "header1"
+          }
+        },
+        "16354416148d3a6fb7-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Make yourself a home."
+          }
+        },
+        "16354416148d3a6fb7-2": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "16354416148d3a6fb7-0",
+        "16354416148d3a6fb7-1",
+        "16354416148d3a6fb7-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/hand-covered-in-powdered-paint.jpg",
+        "make_logo_white": true,
+        "desktop_text_box_position": "center",
+        "text_align": "center",
+        "show_text_box": false,
+        "color_scheme": "white_text"
+      }
+    },
     "main": {
       "type": "main-blog",
       "settings": {
         "show_image": true,
-        "blog_header": "",
-        "blog_intro": "",
+        "blog_header": "Test the waters",
+        "blog_intro": "<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content<\/p>",
         "show_date": false,
         "show_author": false
       }
     }
   },
   "order": [
+    "16354416148d3a6fb7",
     "main"
   ]
 }

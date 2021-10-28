@@ -31,7 +31,13 @@
     {% if current_tags %}
     <div class="tagger inner intros">
      <h3 class="h2">{{ current_tags.first }}</h3>
-     <div class="text rte">{{ section.settings.blog_intro }}</div>
+     {% for block in section.blocks %}
+      {% assign tagger = current_tags.first | handleize %}
+      {% if tagger == block.settings.title %}
+      <div class="text rte">{{ block.settings.tag_desc }}</div>
+      {% endif %}
+     {% endfor %}
+     
     </div>
     {% endif %}
     <div class="blog-articles inner">
@@ -89,6 +95,25 @@
     {
       "type": "paragraph",
       "content": "t:sections.main-blog.settings.paragraph.content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tag_text",
+      "name": "Tag text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tag Handle",
+          "info": "add the the handle here, this is usually the tag name, in lowercase with spaces replaced by dashes"
+        },
+        {
+        "type": "textarea",
+        "id": "tag_desc",
+        "label": "Tag Intro text"
+        }
+      ]
     }
   ]
 }
