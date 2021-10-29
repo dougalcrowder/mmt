@@ -97,16 +97,6 @@
   }
 }
 
-.glide .slides-holder {
-  padding-bottom: 64px;
-}
-
-@media screen and (min-width: 600px) {
-  .glide .slides-holder {
-    padding-bottom: 0;
-  }
-}
-
 .glide__bullet {
   cursor: pointer;
   width: 64px;
@@ -451,21 +441,40 @@ fieldset.product-form__input .form__label {
 
 /* Product Samples */
 
+.sample_time {
+  flex-wrap: nowrap;
+}
+
 .sample_time .product-form.product-form {
   flex: 1 1 60%;
   margin: 0;
 }
 
 .sample_time .samples {
-  flex: 0 0 160px;
+  flex: 0 1 35%;
+}
+
+@media screen and (min-width: 1024px) {
+  .sample_time .samples {
+    flex: 0 0 160px;
+  }
 }
 
 .sample_time .samples button {
-  min-width: 140px;
-  height: 64px;
+  min-width: 50px;
+  height: 44px;
   margin: 0;
   font-size: 78.25%;
+  padding: 0;
   font-family: var(--font-heading-family);
+}
+
+@media screen and (min-width: 1024px) {
+  .sample_time .samples button {
+    min-width: 140px;
+    height: 64px;
+    padding: 8px 0;
+  }
 }
 
 .sample_time .samples button span {
@@ -502,6 +511,7 @@ fieldset.product-form__input .form__label {
 .share_price {
   margin: 0;
   justify-content: flex-start;
+  flex-wrap: nowrap;
 }
 
 .share_price .price {
@@ -514,7 +524,13 @@ fieldset.product-form__input .form__label {
 
 .share {
   margin: 0;
-  flex: 0 0 160px;
+  flex: 0 1 35%;
+}
+
+@media screen and (min-width: 1024px) {
+  .share {
+    flex: 0 0 160px;
+  }
 }
 
 /* Product info */
@@ -749,8 +765,49 @@ fieldset.product-form__input .form__label {
   position: relative;
 }
 
+.tag_features {
+  margin: 16px 0;
+  justify-content: flex-start;
+}
+
+.tag_features .tag_img {
+  flex: 0 1 25%;
+  text-align: center;
+}
+
+@media screen and (min-width: 990px) {
+  .tag_features .tag_img {
+    flex-basis: 32%;
+  }
+}
+
+.tag_features .tag_img svg {
+  display: inline-block;
+  max-width: 110px;
+}
+
+.tag_features .tag_img svg path {
+  fill: var(--color-red);
+}
+
+.variants {
+  margin-top: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .variants {
+    margin-top: 0;
+  }
+}
+
 .recommended .recommended_product_grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media screen and (min-width: 768px) {
+  .recommended .recommended_product_grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .recommended .product_card span {

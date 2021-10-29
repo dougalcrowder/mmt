@@ -936,7 +936,8 @@ img {
   transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1) 0.5s;
 }
 
-.js .text_banner_section {
+.js .text_banner_section,
+.js .collection_header {
   opacity: 0;
   transition: 0.4s all cubic-bezier(0.32, 0.24, 0.15, 1) 0.6s;
 }
@@ -957,7 +958,8 @@ img {
 .js .ding .header_links,
 .js .ding .image_banner,
 .js .ding .basic-page,
-.js .ding .spaced-section {
+.js .ding .spaced-section,
+.js .ding .collection_header {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1102,6 +1104,12 @@ img {
   flex-wrap: nowrap;
   z-index: 3;
   font-size: 93.75%;
+}
+
+@media screen and (max-width: 799px) {
+  .header .header_links {
+    z-index: 1000;
+  }
 }
 
 .header .header_links:after {
@@ -1533,7 +1541,7 @@ input::-webkit-search-decoration {
     right: 0;
     left: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 999;
     top: -102vh;
     height: 100vh;
     transition: var(--transition);
@@ -2057,6 +2065,16 @@ input::-webkit-search-decoration {
 @media screen and (min-width: 880px) {
   .image_banner.letterbox {
     aspect-ratio: 12/5;
+    padding-top: 41.6666666667%;
+    max-width: 100%;
+  }
+
+  .image_banner.letterbox picture {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
   }
 }
 
