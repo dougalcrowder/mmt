@@ -1,0 +1,12 @@
+<div class="tag_features flex">
+{% for tag in product.tags %}
+  {% if tag == 'Recyclable' or tag == "Waterbased Ink" or tag == "Ethically Sourced"%}
+  {% assign tagger = tag | handleize %}
+  {% capture tagin %}icon-{{ tagger}}{% endcapture %}
+  <div class="tag_img">
+    {% include tagin %}
+    <span>{{ tag }}</span>
+  </div>
+  {% endif %}
+{% endfor %}
+</div>
