@@ -24,29 +24,20 @@
 
 <div class="facets-container">
 
-  <menu-drawer class="mobile-facets__wrapper" data-breakpoint="mobile">
+  <menu-drawer class="mobile-facets__wrapper {% unless collapse_on_larger_devices %} medium-hide large-up-hide{% endunless %}" data-breakpoint="mobile">
     <details class="mobile-facets__disclosure disclosure-has-popup">
       <summary class="mobile-facets__open-wrapper focus-offset">
         <span class="mobile-facets__open">
           <span class="mobile-facets__open-label button-label">
-            Filter
+            {%- if enable_filtering and enable_sorting -%}
+              {{ 'products.facets.filter_and_sort' | t }}
+            {%- elsif enable_filtering -%}
+              {{ 'products.facets.filter_button' | t }}
+            {%- elsif enable_sorting -%}
+              {{ 'products.facets.sort_button' | t }}
+            {%- endif -%}
           </span>
-          <div class="product-count light{% unless collapse_on_larger_devices %} medium-hide large-up-hide{% endunless %}" role="status">
-            <p id="ProductCount" class="product-count__text">
-              {%- if results.results_count -%}
-                {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
-              {%- elsif results.products_count == results.all_products_count -%}
-                {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
-              {%- else -%}
-                {{ 'products.facets.product_count' | t: product_count: results.products_count, count: results.all_products_count }}
-              {%- endif -%}
-            </p>
-            <div class="loading-overlay__spinner">
-              <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-              </svg>
-            </div>
-          </div>
+          {% render 'icon-filter' %}
         </span>
         <span tabindex="0" class="mobile-facets__close mobile-facets__close--no-js">{%- render 'icon-close' -%}</span>
       </summary>
@@ -79,10 +70,19 @@
               {%- for filter in results.filters -%}
                 {% case filter.type %}
                 {% when 'list' %}
-                  <div class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
-
-                        <span class="serif filterlabel">{{ filter.label | escape }}</span>                        
-                  
+                  <details class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
+                    <summary class="mobile-facets__summary focus-inset">
+                      <div>
+                        <span>{{ filter.label | escape }}</span>                        
+                        <span class="mobile-facets__arrow no-js-hidden">{% render 'icon-arrow' %}</span>
+                        <noscript>{% render 'icon-caret' %}</noscript>
+                      </div>
+                    </summary>
+                    <div class="mobile-facets__submenu">
+                      <button class="mobile-facets__close-button link link--text focus-inset" aria-expanded="true" type="button">
+                        {% render 'icon-arrow' %}
+                        {{ filter.label | escape }}
+                      </button>
                       <ul class="mobile-facets__list list-unstyled" role="list">
                         {%- for value in filter.values -%}
                           <li class="mobile-facets__item list-menu__item">
@@ -91,12 +91,23 @@
                                 {% if value.active %}checked{% endif %}
                                 {% if value.count == 0 and value.active == false %}disabled{% endif %}
                               >
+
+                              <span class="mobile-facets__highlight"></span>
+
+                              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                                <rect width="16" height="16" stroke="currentColor" fill="none" stroke-width="1"></rect>
+                              </svg>
+
+                              <svg class="icon icon-checkmark" width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.5 3.5L2.83333 4.75L4.16667 6L9.5 1" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+
                               {{ value.label | escape }} ({{ value.count }})
                             </label>
                           </li>
                         {%- endfor -%}
                       </ul>
-                      {% comment %}
+
                       <div class="no-js-hidden mobile-facets__footer">
                         <facet-remove class="mobile-facets__clear-wrapper">
                           <a href="{{ results_url }}" class="mobile-facets__clear underlined-link">{{ 'products.facets.clear' | t }}</a>
@@ -104,8 +115,8 @@
                         <button type="button" class="no-js-hidden button button--primary" onclick="this.closest('.mobile-facets__wrapper').querySelector('summary').click()">{{ 'products.facets.apply' | t }}</button>
                         <noscript><button class="button button--primary">{{ 'products.facets.apply' | t }}</button></noscript>
                       </div>
-                      {% endcomment %}
-                  </div>
+                    </div>
+                  </details>
                 {% when 'price_range' %}
                   <details class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
                     <summary class="mobile-facets__summary focus-inset">
@@ -177,7 +188,22 @@
                 {% endcase %}
               {%- endfor -%}
 
-              <!-- sorting was ere -->
+              {%- if enable_sorting -%}
+                <div class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
+                  <div class="mobile-facets__summary">
+                    <div class="mobile-facets__sort">
+                      <label for="SortBy-mobile">{{ 'products.facets.sort_by_label' | t }}</label>
+                      <div class="select">
+                        <select name="sort_by" class="select__select" id="SortBy-mobile" aria-describedby="a11y-refresh-page-message">
+                          {%- for option in results.sort_options -%}
+                            <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                          {%- endfor -%}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
 
               <div class="mobile-facets__footer">
                 <facet-remove class="mobile-facets__clear-wrapper">
@@ -207,7 +233,7 @@
       {%- for value in filter.active_values -%}
         <facet-remove>
           <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
-            <span class="active-facets__button-inner button">
+            <span class="active-facets__button-inner button button--tertiary">
               {{ value.label | escape }}
               {% render 'icon-close-small' %}
               <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
@@ -220,7 +246,7 @@
         {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
           <facet-remove>
             <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
-              <span class="active-facets__button-inner button">
+              <span class="active-facets__button-inner button button--tertiary">
                 {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%}-{%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
                 {% render 'icon-close-small' %}
                 <span class="visually-hidden">{{ 'products.facets.clear_filter' | t }}</span>
@@ -236,22 +262,20 @@
       </a>
     </facet-remove>
   </div>
-  {%- if enable_sorting -%}
-  <facet-filters-form class="sortit">
-    <form id="FacetFiltersFormMobileTwo">
-      <div class="mobile-facets__details js-filter flex" data-index="mobile-{{ forloop.index }}">
-            <label for="SortBy-mobile">{{ 'products.facets.sort_by_label' | t }}</label>
-
-              <select name="sort_by" class="select__select" id="SortBy-mobile" aria-describedby="a11y-refresh-page-message">
-                {%- for option in results.sort_options -%}
-                  <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
-                {%- endfor -%}
-              </select>
-
-      </div>
-    </form>
-  </facet-filters-form>
-  {%- endif -%}
-
+  <div class="product-count light{% unless collapse_on_larger_devices %} medium-hide large-up-hide{% endunless %}" role="status">
+    <p id="ProductCount" class="product-count__text">
+      {%- if results.results_count -%}
+        {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
+      {%- elsif results.products_count == results.all_products_count -%}
+        {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+      {%- else -%}
+        {{ 'products.facets.product_count' | t: product_count: results.products_count, count: results.all_products_count }}
+      {%- endif -%}
+    </p>
+    <div class="loading-overlay__spinner">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+        <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+      </svg>
+    </div>
+  </div>
 </div>
-
