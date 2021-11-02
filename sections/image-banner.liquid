@@ -17,37 +17,13 @@
     {% include 'image-hero' %}
   {%- endif -%}
   
-  <div class="cta flex {{ section.settings.desktop_text_box_position }} {{ section.settings.text_align }} inner">
-    <div class="text_box color-{{ section.settings.color_scheme }}">
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'heading' -%}
-            {% if block.settings.heading_type == 'header1' %}<h1 class="{% else %}<h2 class="{% endif %} h0" {{ block.shopify_attributes }}>
-              <span>{{ block.settings.heading | escape }}</span>
-            </h2>
-          {%- when 'text' -%}
-            <div class="text" {{ block.shopify_attributes }}>
-              <span>{{ block.settings.text | escape }}</span>
-            </div>
-          {%- when 'buttons' -%}
-            <div class="buttons color-{{ section.settings.color_scheme }} {% if block.settings.button_label_1 != blank and block.settings.button_link_1 != blank and block.settings.button_label_2 != blank and block.settings.button_link_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
-              {%- if block.settings.button_label_1 != blank -%}
-                <a{% if block.settings.button_link_1 != blank %} href="{{ block.settings.button_link_1 }}"{% endif %} class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"{% if block.settings.button_link_1 == blank %} aria-disabled="true"{% endif %}>{{ block.settings.button_label_1 | escape }}</a>
-              {%- endif -%}
-              {%- if block.settings.button_label_2 != blank -%}
-                <a{% if block.settings.button_link_2 != blank %} href="{{ block.settings.button_link_2 }}"{% endif %} class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"{% if block.settings.button_link_2 == blank %} aria-disabled="true"{% endif %}>{{ block.settings.button_label_2 | escape }}</a>
-              {%- endif -%}
-            </div>
-        {%- endcase -%}
-      {%- endfor -%}
-    </div>
-  </div>
-
+  {% render 'inc_banner_text' %}
+  
 {% schema %}
 {
   "name": "t:sections.image-banner.name",
   "tag": "section",
-  "class": "image_banner",
+  "class": "image_banner ratio_banner",
   "settings": [
     {
       "type": "image_picker",
@@ -87,6 +63,26 @@
     },
     {
     "type": "select",
+    "id": "desktop_text_box_position_horizontal",
+    "options": [
+      {
+        "value": "start",
+        "label": "Left"
+      },
+      {
+        "value": "center",
+        "label": "Center"
+      },
+      {
+        "value": "end",
+        "label": "Right"
+      }
+    ],
+    "default": "center",
+    "label": "Desktop Text Horizontal positioning"
+  },
+    {
+    "type": "select",
       "id": "text_align",
       "options": [
         {
@@ -104,6 +100,34 @@
       ],
       "default": "center",
       "label": "text Alignment"
+    },
+    {
+      "type": "select",
+      "id": "text_box_max_width",
+      "options": [
+        {
+          "value": "600",
+          "label": "600 px"
+        },
+        {
+          "value": "700",
+          "label": "700 px"
+        },
+        {
+          "value": "800",
+          "label": "800 px"
+        },
+        {
+          "value": "900",
+          "label": "900 px"
+        },
+        {
+          "value": "1000",
+          "label": "1000 px"
+        }
+      ],
+      "default": "800",
+      "label": "Desktop text box max width"
     },
     {
       "type": "checkbox",
@@ -134,8 +158,7 @@
         }
       ],
       "default": "white_text",
-      "label": "t:sections.image-banner.settings.color_scheme.label",
-      "info": "t:sections.image-banner.settings.color_scheme.info"
+      "label": "Text Colour"
     },
     {
       "type": "header",
@@ -178,10 +201,16 @@
       "limit": 1,
       "settings": [
         {
-          "type": "text",
+          "type": "textarea",
           "id": "text",
           "default": "Make yourself a home.",
           "label": "t:sections.image-banner.blocks.text.settings.text.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "go_serif",
+          "default": false,
+          "label": "Go large and serif"
         }
       ]
     },

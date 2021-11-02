@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "1635762856d778e20f": {
+      "type": "video",
+      "settings": {
+        "logo_white": true,
+        "autoplay": false,
+        "autoloop": true,
+        "mute_video": false,
+        "show_controls": true,
+        "video_dark_overlay": false,
+        "iframe_video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "html5_video": "",
+        "display_text_over_video": false,
+        "pretext": "",
+        "title": "",
+        "subtitle": "",
+        "caption_background": false,
+        "caption_background_transparency": false,
+        "button1_label": "Play Video",
+        "button1_link": "",
+        "button1_highlight": false,
+        "button2_label": "",
+        "button2_link": "",
+        "button2_highlight": false,
+        "text_position": "center",
+        "text_align": "center",
+        "mobile_text_below_image": true,
+        "mobile_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1635762856d778e20f"
+  ]
+} 

@@ -1,0 +1,34 @@
+<div class="cta flex {{ section.settings.desktop_text_box_position }} justify-{{ section.settings.desktop_text_box_position_horizontal }} {{ section.settings.text_align }}  inner">
+  <div class="text_box color-{{ section.settings.color_scheme }} width-{{ section.settings.text_box_max_width }}">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          {% if block.settings.heading_type == 'header1' %}<h1 class="{% else %}<h2 class="{% endif %} h0" {{ block.shopify_attributes }}>
+            <span>{{ block.settings.heading | escape }}</span>
+          </h2>
+        {%- when 'text' -%}
+          <div class="text{% if block.settings.go_serif %} large serif{% endif %}" {{ block.shopify_attributes }}> 
+            <span>{{ block.settings.text }}</span>
+          </div>
+        {%- when 'buttons' -%}
+          <div class="buttons color-{{ section.settings.color_scheme }} {% if block.settings.button_label_1 != blank and block.settings.button_link_1 != blank and block.settings.button_label_2 != blank and block.settings.button_link_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block.settings.button_label_1 != blank -%}
+            
+              {% if block.settings.button_modal_1 != blank %}<button class="button button_1{% if block.settings.button_style_secondary_1 %} tertiary{% endif %}" onclick="modal1()">{{ block.settings.button_label_1 | escape }}</button>
+              {% elsif block.settings.button_link_1 != blank %}<a href="{{ block.settings.button_link_1 }}" class="button{% if block.settings.button_style_secondary_1 %} tertiary{% endif %}"{% if block.settings.button_link_1 == blank %} aria-disabled="true"{% endif %}>{{ block.settings.button_label_1 | escape }}</a>
+              {% endif %}
+              
+            {%- endif -%}
+            
+            {%- if block.settings.button_label_2 != blank -%}
+
+            {% if block.settings.button_modal_2 != blank %}<button class="button button_2{% if block.settings.button_style_secondary_2 %} tertiary{% endif %}" onclick="modal2()">{{ block.settings.button_label_2 | escape }}</button>
+            {% elsif block.settings.button_link_2 != blank %}<a href="{{ block.settings.button_link_2 }}" class="button{% if block.settings.button_style_secondary_2 %} tertiary{% endif %}"{% if block.settings.button_link_2 == blank %} aria-disabled="true"{% endif %}>{{ block.settings.button_label_2 | escape }}</a>
+            {% endif %}
+            
+            {%- endif -%}
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>

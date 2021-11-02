@@ -67,7 +67,8 @@
 .shopify-challenge__button.tertiary,
 .customer button.button--tertiary,
 .customer button.tertiary {
-  background-color: var(--color-base-text);
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
   color: white;
 }
 

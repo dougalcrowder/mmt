@@ -1,4 +1,5 @@
-{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+{{ 'video.css' | asset_url | stylesheet_tag }}
+
 {%- if section.settings.logo_white -%}
 <script>
   document.body.classList.add("white_logo");
@@ -7,16 +8,62 @@
 
 {%- if section.settings.image != blank -%}
 <script>
-  document.body.classList.add("banner video_banner");
+  document.body.classList.add("banner");
 </script>
 {%- endif -%}
 
-{% include 'include-video' %}
+{% include 'inc-video' %}
+
+{%- for block in section.blocks -%}
+{%- case block.type -%}
+{%- when 'buttons' -%}
+  {%- if block.settings.button_modal_1 != blank or block.settings.button_modal_2 != blank -%}
+  {% capture loadJs %}yes{% endcapture %}
+  {%- endif -%}
+{%- endcase -%}
+{%- endfor -%}
+
+{%- if loadJs == 'yes' -%}
+  {{ 'modal.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'modal.js' | asset_url }}"></script>
+{%- endif -%}
+
+{%- for block in section.blocks -%}
+{%- case block.type -%}
+{%- when 'buttons' -%}
+
+
+{% if block.settings.button_modal_1 != blank %}
+
+<script>
+  function modal1() {
+    basicLightbox.create(`
+      {{ block.settings.button_modal_1 }}
+    `).show()
+  }
+
+</script>
+{% endif %}
+
+{% if block.settings.button_modal_2 != blank %}
+
+<script>
+  function modal2() {
+    basicLightbox.create(`
+      {{ block.settings.button_modal_2 }}
+    `).show()
+  }
+
+</script>
+{% endif %}
+
+{%- endcase -%}
+{%- endfor -%}
 
 {% schema %}
 {
   "name": "t:sections.video.name",
-  "class": "spaced-section video-section",
+  "class": "spaced-section video-section ratio_banner",
   "settings": [
     {
       "type": "checkbox",
@@ -30,7 +77,7 @@
       "id": "autoplay",
       "label": "Autoplay video",
       "default": false,
-      "info": "Limited browser support for autoplaying video. [Learn more](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/360000661568-Why-won-t-my-video-autoplay-)"
+      "info": "Limited browser support for autoplaying video."
     },
     {
       "type": "checkbox",
@@ -51,18 +98,6 @@
       "default": true
     },
     {
-      "type": "checkbox",
-      "id": "video_dark_overlay",
-      "label": "Darken video"
-    },
-    {
-      "type": "video_url",
-      "id": "iframe_video",
-      "label": "Video link",
-      "accept": ["youtube", "vimeo"],
-      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
-    },
-    {
       "type": "text",
       "id": "html5_video",
       "label": "HTML5 MP4/OGV File URL"
@@ -78,73 +113,31 @@
       "info": "Displays if video is slow to load"
     },
     {
-      "type": "checkbox",
-      "id": "display_text_over_video",
-      "label": "Show text when video is playing",
-      "default": false
-    },
-    {
-      "type": "richtext",
-      "id": "pretext",
-      "label": "Preheading"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading"
-    },
-    {
-      "type": "richtext",
-      "id": "subtitle",
-      "label": "Subheading"
-    },
-    {
-      "type": "checkbox",
-      "id": "caption_background",
-      "label": "Display solid text background"
-    },
-    {
-      "type": "checkbox",
-      "id": "caption_background_transparency",
-      "label": "Enable background transparency"
-    },
-    {
-      "type": "text",
-      "id": "button1_label",
-      "label": "First button label"
-    },
-    {
-      "type": "url",
-      "id": "button1_link",
-      "label": "First button link"
-    },
-    {
-      "type": "checkbox",
-      "id": "button1_highlight",
-      "label": "Highlight first button"
-    },
-    {
-      "type": "text",
-      "id": "button2_label",
-      "label": "Second button label"
-    },
-    {
-      "type": "url",
-      "id": "button2_link",
-      "label": "Second button link"
-    },
-    {
-      "type": "checkbox",
-      "id": "button2_highlight",
-      "label": "Highlight second button"
+      "type": "select",
+      "id": "desktop_text_box_position",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:sections.image-banner.settings.desktop_text_box_position.options__1.label"
+        },
+        {
+          "value": "middle",
+          "label": "t:sections.image-banner.settings.desktop_text_box_position.options__2.label"
+        },
+        {
+          "value": "end",
+          "label": "t:sections.image-banner.settings.desktop_text_box_position.options__3.label"
+        }
+      ],
+      "default": "middle",
+      "label": "Desktop Text vertical positioning"
     },
     {
       "type": "select",
-      "id": "text_position",
-      "label": "Text position",
+      "id": "desktop_text_box_position_horizontal",
       "options": [
         {
-          "value": "left",
+          "value": "start",
           "label": "Left"
         },
         {
@@ -152,56 +145,195 @@
           "label": "Center"
         },
         {
-          "value": "right",
+          "value": "end",
           "label": "Right"
         }
       ],
-      "default": "center"
+      "default": "center",
+      "label": "Desktop Text Horizontal positioning"
     },
-    {
-      "type": "select",
-      "id": "text_align",
-      "label": "Text alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "header",
-      "content": "Mobile"
-    },
-    {
-      "type": "checkbox",
-      "id": "mobile_text_below_image",
-      "label": "Show text below image",
-      "default": true
-    },
-    {
-      "type": "color",
-      "id": "mobile_text_color",
-      "label": "Text"
-    }
+  {
+  "type": "select",
+    "id": "text_align",
+    "options": [
+      {
+        "value": "left",
+        "label": "Left"
+      },
+      {
+        "value": "center",
+        "label": "Centre"
+      },
+      {
+        "value": "right",
+        "label": "Right"
+      }
+    ],
+    "default": "center",
+    "label": "text Alignment"
+  },
+  {
+    "type": "select",
+    "id": "text_box_max_width",
+    "options": [
+      {
+        "value": "600",
+        "label": "600 px"
+      },
+      {
+        "value": "700",
+        "label": "700 px"
+      },
+      {
+        "value": "800",
+        "label": "800 px"
+      },
+      {
+        "value": "900",
+        "label": "900 px"
+      },
+      {
+        "value": "1000",
+        "label": "1000 px"
+      }
+    ],
+    "default": "800",
+    "label": "Desktop text box max width"
+  },
+  {
+    "type": "select",
+    "id": "color_scheme",
+    "options": [
+      {
+        "value": "white_text",
+        "label": "white text"
+      },
+      {
+        "value": "red_text",
+        "label": "Red Text"
+      },
+      {
+        "value": "dark_text",
+        "label": "Dark Text"
+      },
+      {
+        "value": "blue_text",
+        "label": "Blue Text"
+      }
+    ],
+    "default": "white_text",
+    "label": "Text Colour"
+  }
   ],
+  "blocks": [
+  {
+    "type": "heading",
+    "name": "t:sections.image-banner.blocks.heading.name",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "default": "Image banner",
+        "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
+      },
+      {
+        "type": "select",
+        "id": "heading_type",
+        "options": [
+          {
+            "value": "header1",
+            "label": "header 1"
+          },
+          {
+            "value": "header2",
+            "label": "header 2"
+          }
+        ],
+        "default": "header1",
+        "label": "t:sections.image-banner.blocks.heading.settings.heading_size.label"
+      }
+    ]
+  },
+  {
+    "type": "text",
+    "name": "t:sections.image-banner.blocks.text.name",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "text",
+        "default": "Make yourself a home.",
+        "label": "t:sections.image-banner.blocks.text.settings.text.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "go_serif",
+        "default": false,
+        "label": "Go large and serif"
+      }
+    ]
+  },
+  {
+    "type": "buttons",
+    "name": "t:sections.image-banner.blocks.buttons.name",
+    "limit": 1,
+    "settings": [
+      {
+        "type": "text",
+        "id": "button_label_1",
+        "default": "Button label",
+        "label": "t:sections.image-banner.blocks.buttons.settings.button_label_1.label",
+        "info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+      },
+      {
+        "type": "html",
+        "id": "button_modal_1",
+        "label": "file url or iframe for modal",
+        "info": "paste iframe code here"
+      },
+      {
+        "type": "url",
+        "id": "button_link_1",
+        "label": "t:sections.image-banner.blocks.buttons.settings.button_link_1.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "button_style_secondary_1",
+        "default": false,
+        "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_1.label"
+      },
+      {
+        "type": "text",
+        "id": "button_label_2",
+        "label": "t:sections.image-banner.blocks.buttons.settings.button_label_2.label",
+        "info": "t:sections.image-banner.blocks.buttons.settings.button_label_2.info"
+      },
+      {
+        "type": "html",
+        "id": "button_modal_2",
+        "label": "file url or iframe for modal",
+        "info": "paste iframe code here"
+      },
+      {
+        "type": "url",
+        "id": "button_link_2",
+        "label": "t:sections.image-banner.blocks.buttons.settings.button_link_2.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "button_style_secondary_2",
+        "default": false,
+        "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
+      }
+    ]
+  }
+],
   "presets": [{
     "name": "Video",
-    "category": "Video",
-    "settings": {
-      "iframe_video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-      "button1_label": "Play Video"
-    }
-  }]
+    "category": "Video"
+  }
+  ]
 }
 
 {% endschema %}
