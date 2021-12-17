@@ -6,8 +6,8 @@
         "16352843092374a33e-0": {
           "type": "Tooltip",
           "settings": {
-            "title": "Book on Rajasthan",
-            "content": "<p>Worth a visit<br\/><a href=\"\/blogs\/community\/india-in-all-its-vibrant-colour\" title=\"India in all its vibrant colour\">Read More<\/a><\/p>",
+            "title": "Fabric Link",
+            "content": "<p>Nice fabric<br\/><a href=\"\/blogs\/community\/india-in-all-its-vibrant-colour\" title=\"India in all its vibrant colour\">Read More<\/a><\/p>",
             "prod": "",
             "top": 43,
             "left": 46,
@@ -18,13 +18,13 @@
         "148881e0-9bcf-4a7c-b669-ce41df894331": {
           "type": "Tooltip",
           "settings": {
-            "title": "Eco Paint",
-            "content": "<p>Windfall Granny Smith Green<\/p>",
+            "title": "Crackers",
+            "content": "<p>strange hopping frog<\/p>",
             "prod": "coral-green-wallpaper",
             "top": 34,
             "left": 88,
-            "top_mob": 16,
-            "left_mob": 87
+            "top_mob": 61,
+            "left_mob": 47
           }
         }
       },
