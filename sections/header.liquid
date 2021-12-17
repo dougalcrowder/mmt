@@ -97,7 +97,10 @@
       </nav>
     {%- endif -%}
     <div class="header_links flex">
+      {% comment %}
+      change css to justify space between
       <a href="https://trade.mollymahon.com/" class="trade_link top_shift">Trade Login</a>
+      {% endcomment %}
       {% if section.settings.menu_message != blank %}
       <div class="menu_message top_shift">{{ section.settings.menu_message }}</div>
       {% endif %}
@@ -139,11 +142,45 @@
 
 <script>
   
-  function navCollapse() {
+  function navCollapse() { 
     document.querySelectorAll(".list-menu .subnav_active .header__submenu").forEach(function(el) {
       el.classList.remove("active");;
     });
   }
+  
+  document.querySelectorAll('#mainNav li').forEach( function(navLi) {
+    if(navLi.classList.contains('subnav_active')) {
+      navLi.addEventListener('click', function (){        
+        if (navLi.classList.contains('active')) {
+          navLi.classList.remove('showCt');
+          setTimeout(function() {
+            navLi.classList.remove('showBg');
+          }, 500);
+          setTimeout(function() {
+            navLi.classList.remove('active');
+          }, 550);
+        } else {
+          document.querySelectorAll("#mainNav li.active").forEach(function(navLiB) {
+            navLiB.classList.remove('showCt');
+            setTimeout(function() {
+              navLiB.classList.remove('showBg');
+            }, 500);
+            setTimeout(function() {
+              navLiB.classList.remove('active');
+            }, 550);
+          });
+          setTimeout(function() {
+            navLi.classList.add('active');
+            navLi.classList.add('showBg');
+            setTimeout(function() {
+              navLi.classList.add('showCt');
+            }, 500);
+          }, 50);
+        }
+        
+      });
+    }
+  });
   
   const hamburger = document.querySelector(".hamburger");
   const nav = document.querySelector(".header__inline-menu");

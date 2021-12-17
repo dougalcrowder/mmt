@@ -772,17 +772,20 @@ fieldset.product-form__input .form__label {
 
 .tag_features .tag_img {
   flex: 0 1 25%;
+  flex-basis: calc(25% - 16px);
   text-align: center;
+  font-size: 87.5%;
 }
 
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 1024px) {
   .tag_features .tag_img {
-    flex-basis: 32%;
+    flex-basis: calc(33.333333% - 24px);
   }
 }
 
 .tag_features .tag_img svg {
   display: inline-block;
+  width: 100%;
   max-width: 110px;
 }
 

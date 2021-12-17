@@ -214,7 +214,8 @@
                   </div>
                   
                   <div class="cart-item__price">
-                   {{ item.final_price | money }}
+                    <span class="inline_title">Price:</span>
+                    {{ item.final_price | money }}
                   </div>
 
                   <div class="cart-item__quantity">
@@ -252,6 +253,7 @@
                     </div>
 
                     <div class="cart-item__price-wrapper">
+                      <span class="inline_title">Total:</span>
                       {%- if item.original_line_price != item.final_line_price -%}
                         <dl class="cart-item__discounted-prices">
                           <dt class="visually-hidden">
@@ -299,6 +301,7 @@
                     </cart-remove-button>
                     
                   </div>
+                  <div class="blankgrid_item">&nbsp;</div>
                 </div>
               {%- endfor -%}
             </tbody>
