@@ -1,0 +1,139 @@
+{{ 'collections.css' | asset_url | stylesheet_tag }}
+<div class="controllers inner">
+    <form class="flex">
+      <div class="filtering" id="navFilter">
+      <fieldset id="styles" data-filter-group data-logic="or">
+        <legend>Filter by shape and size:</legend>
+        <div class="flex">
+          <button class="button" data-filter=".elegant-empire-small">
+            <picture>
+              <source srcset="{{ 'shade-elegant_empire-small.png' | asset_img_url: '126x83', scale: 2 }} x2, {{ 'shade-elegant_empire-small.png' | asset_img_url: '126x83', scale: 1 }} x1" media="(min-width: 320px)" />
+              <img loading="lazy" class="lazyimage" src="{{ 'shade-elegant_empire-small.png' | asset_img_url: '126x83' }}" alt="Elegant Empire - Small" />
+            </picture>
+            <span>Elegant Empire - Small</span>
+          </button>
+          <button class="button" data-filter=".elegant-empire-large">
+            <picture>
+              <source srcset="{{ 'shade-elegant_empire-large.png' | asset_img_url: '126x83', scale: 2 }} x2, {{ 'shade-elegant_empire-large.png' | asset_img_url: '126x83', scale: 1 }} x1" media="(min-width: 320px)" />
+              <img loading="lazy" class="lazyimage" src="{{ 'shade-elegant_empire-large.png' | asset_img_url: '126x83' }}" alt="Elegant Empire - large" />
+            </picture>
+            <span>Elegant Empire - Large</span>
+          </button>
+          <button class="button" data-filter=".flirty-skirty">
+            <picture>
+              <source srcset="{{ 'shade-flirty_skirt-med.png' | asset_img_url: '126x83', scale: 2 }} x2, {{ 'shade-flirty_skirt-med.png' | asset_img_url: '126x83', scale: 1 }} x1" media="(min-width: 320px)" />
+              <img loading="lazy" class="lazyimage" src="{{ 'shade-flirty_skirt-med.png' | asset_img_url: '126x83' }}" alt="Flirty Skirt" />
+            </picture>
+            <span>Flirty Skirt</span>
+          </button>
+          <button class="button" data-filter=".pleated-small">
+            <picture>
+              <source srcset="{{ 'shade-pleated-small.png' | asset_img_url: '126x83', scale: 2 }} x2, {{ 'shade-pleated-small.png' | asset_img_url: '126x83', scale: 1 }} x1" media="(min-width: 320px)" />
+              <img loading="lazy" class="lazyimage" src="{{ 'shade-pleated-small.png' | asset_img_url: '126x83' }}" alt="Mini Pleated" />
+            </picture>
+            <span>Pleated - Small</span>
+          </button>
+          <button class="button" data-filter=".pleated-large">
+            <picture>
+              <source srcset="{{ 'shade-pleated-large.png' | asset_img_url: '126x83', scale: 2 }} x2, {{ 'shade-pleated-large.png' | asset_img_url: '126x83', scale: 1 }} x1" media="(min-width: 320px)" />
+              <img loading="lazy" class="lazyimage" src="{{ 'shade-pleated-large.png' | asset_img_url: '126x83' }}" alt="Pleated Large" />
+            </picture>
+            <span>Pleated - Large</span>
+          </button>
+        </div>
+        <button class="button reset nude" data-filter="all">Reset</button>
+      </fieldset>
+    </div>    
+  </form>
+  </div>
+
+<div id="ProductGridContainer">
+  {%- paginate collection.products by 200 -%}
+    {%- if collection.products.size == 0 -%}
+      <div class="collection collection--empty inner" id="product-grid" data-id="{{ section.id }}">
+        <div class="loading-overlay gradient"></div>
+        <div class="title-wrapper center">
+          <h2 class="title title--primary">
+            {{ 'sections.collection_template.empty' | t }}<br>
+            {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
+          </h2>
+        </div>
+      </div>
+    {%- else -%}
+      <div class="collection inner collection_loader">
+        <div class="loading-overlay gradient"></div>
+
+        <ul id="product-grid" data-id="{{ section.id }}" class="grid product_grid">
+          {%- for product in collection.products -%}
+            
+            {% assign variant = product.selected_or_first_available_variant %}
+            
+            
+            <li class="product_card mix {% unless product.available %} sold_out{% endunless %}{% for tag in product.tags %} {{ tag | handleize }}{% endfor %}{% if product.type %} type-{{ product.type | handleize }}{% endif %}" data-price="{{variant.price}}">
+              {% render 'product-card',
+                product_card_product: product,
+                media_size: section.settings.image_ratio,
+                show_secondary_image: section.settings.show_secondary_image,
+                add_image_padding: section.settings.add_image_padding,
+                show_vendor: section.settings.show_vendor,
+                show_image_outline: section.settings.show_image_outline,
+                show_rating: section.settings.show_rating
+              %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+    
+    {%- if paginate.pages > 1 -%}
+    {% render 'pagination', paginate: paginate, anchor: '' %}
+  {%- endif -%}
+  
+    
+  {%- endpaginate -%}
+</div>
+
+<script src="{{ 'mixitup.min.js' | asset_url }}" ></script>
+<script src="{{ 'mixitup-multifilter.min.js' | asset_url }}" ></script>
+<script>
+
+  
+  document.addEventListener("DOMContentLoaded", function(){
+    
+    var containerEl = document.querySelector('.product_grid');
+    var mixer = mixitup(containerEl, {
+      multifilter: {
+          enable: true
+      },
+      animation: {
+            duration: 340
+        }
+    });
+      
+  });
+
+</script>
+
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-product-grid.name",
+  "class": "collection-grid-section lampshades_collection",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_rating.label",
+      "info": "t:sections.main-collection-product-grid.settings.show_rating.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filter",
+      "default": true,
+      "label": "Show the Lampshade filter"
+    }
+
+  ]
+}
+{% endschema %}

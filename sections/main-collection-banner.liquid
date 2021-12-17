@@ -18,7 +18,7 @@
   </div>
   
 {%- if collection.image -%}
-  <div class="image_banner letterbox">
+  <div class="ratio_banner letterbox">
   
     {%- assign landscape_image = collection.image -%}
     {%- assign square_image = collection.image -%}
@@ -43,7 +43,7 @@
 {% schema %}
 {
   "name": "t:sections.main-collection-banner.name",
-  "class": "collections_banner",
+  "class": "collections_banner ratio_banner",
   "settings": [
     {
       "type": "paragraph",
