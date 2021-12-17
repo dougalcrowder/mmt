@@ -10,9 +10,9 @@
             "content": "<p>Worth a visit<br\/><a href=\"\/blogs\/community\/india-in-all-its-vibrant-colour\" title=\"India in all its vibrant colour\">Read More<\/a><\/p>",
             "prod": "",
             "top": 43,
-            "left": 19,
+            "left": 46,
             "top_mob": 78,
-            "left_mob": 17
+            "left_mob": 38
           }
         },
         "148881e0-9bcf-4a7c-b669-ce41df894331": {
@@ -26,28 +26,15 @@
             "top_mob": 16,
             "left_mob": 87
           }
-        },
-        "30dbc6e0-e6a7-4593-b043-c26b9c87283c": {
-          "type": "Tooltip",
-          "settings": {
-            "title": "Drawers",
-            "content": "<p>Ave a rummidge!<\/p>",
-            "prod": "bagru-cotton-dark-blue-free-sample",
-            "top": 57,
-            "left": 31,
-            "top_mob": 55,
-            "left_mob": 37
-          }
         }
       },
       "block_order": [
         "16352843092374a33e-0",
-        "148881e0-9bcf-4a7c-b669-ce41df894331",
-        "30dbc6e0-e6a7-4593-b043-c26b9c87283c"
+        "148881e0-9bcf-4a7c-b669-ce41df894331"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/MM-46-1-scaled.jpg",
-        "square_image": "shopify:\/\/shop_images\/green-door-with-open-sign.jpg",
+        "image": "shopify:\/\/shop_images\/DOGATCHRISTMASTABLE.jpg",
+        "square_image": "shopify:\/\/shop_images\/DOGATCHRISTMASTABLE.jpg",
         "title": "Get involved in the YMCA",
         "header_tag": "h2"
       }
@@ -66,7 +53,8 @@
         "1634816369f8368cfa-1": {
           "type": "text",
           "settings": {
-            "text": "Make yourself a home."
+            "text": "Make yourself a home.",
+            "go_serif": false
           }
         },
         "1634816369f8368cfa-2": {
@@ -87,11 +75,11 @@
         "1634816369f8368cfa-2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/fall-leaves-changing-color.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/fall-leaves-changing-color.jpg",
         "make_logo_white": true,
         "desktop_text_box_position": "center",
+        "desktop_text_box_position_horizontal": "center",
         "text_align": "center",
+        "text_box_max_width": "800",
         "show_text_box": true,
         "color_scheme": "white_text"
       }
@@ -134,7 +122,6 @@
         "16348194457d3235ff-2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/fall-vegetable-box.jpg",
         "title": "A Seasonal Setting",
         "color_scheme": "white_text",
         "desktop_text_box_position": "end",
@@ -149,7 +136,6 @@
           "type": "column",
           "settings": {
             "width": "two_thirds",
-            "image": "shopify:\/\/shop_images\/lots-of-hand-woven-ribbon-on-book-shelves.jpg",
             "title": "Dining Al Hambra",
             "subtitle": "Under the stars in style",
             "text": "",
@@ -165,7 +151,6 @@
           "type": "column",
           "settings": {
             "width": "one_third",
-            "image": "shopify:\/\/shop_images\/thin-plant-stems-in-sun.jpg",
             "title": "Get Busy",
             "subtitle": "",
             "text": "",
@@ -192,8 +177,7 @@
         "introduction": "<p>Each week we publish articles on books, artists, seasonal recipes, travel and the stories of our makers and materials. Each week we publish articles on books, artists, seasonal recipes, travel and the stories of our makers and materials.<\/p>",
         "button_label": "See all Articles",
         "blog": "community",
-        "post_limit": 5,
-        "image": "shopify:\/\/shop_images\/Bitmap.jpg"
+        "post_limit": 5
       }
     },
     "1634819659f7be73c6": {
@@ -225,7 +209,6 @@
         "1634819659f7be73c6-2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/colorful-ribbon.jpg",
         "title": "Introducing Jaipur",
         "color_scheme": "white_text",
         "desktop_text_box_position": "end",
@@ -240,7 +223,6 @@
           "type": "column",
           "settings": {
             "width": "half",
-            "image": "shopify:\/\/shop_images\/sunlight-creeps-through-a-bright-living-room.jpg",
             "title": "",
             "subtitle": "",
             "text": "",
@@ -256,7 +238,6 @@
           "type": "column",
           "settings": {
             "width": "half",
-            "image": "shopify:\/\/shop_images\/loft-style-bedroom.jpg",
             "title": "",
             "subtitle": "",
             "text": "",
@@ -326,7 +307,6 @@
         "16348163341a2e5254-0": {
           "type": "Instalink",
           "settings": {
-            "insta_image": "shopify:\/\/shop_images\/red-wine-in-kitchen.jpg",
             "author": "@mollymahon",
             "link": "shopify:\/\/blogs\/community\/greyhound-breeding-for-noobs-and-kooks"
           }
@@ -334,7 +314,6 @@
         "b3638c37-80b2-4963-9497-730c5a8367d7": {
           "type": "Instalink",
           "settings": {
-            "insta_image": "shopify:\/\/shop_images\/person-in-a-floral-dress-holds-a-large-book-open.jpg",
             "author": "@mollymahon",
             "link": "shopify:\/\/products\/bagru-cotton-dark-blue-sample"
           }
@@ -342,7 +321,6 @@
         "9fd0fb9e-76fd-49db-a4dc-c17f50c6914d": {
           "type": "Instalink",
           "settings": {
-            "insta_image": "shopify:\/\/shop_images\/colorful-ribbon.jpg",
             "author": "@mollymahon",
             "link": "shopify:\/\/products\/coral-green-wallpaper-free-sample"
           }
@@ -350,7 +328,6 @@
         "fe6a17d5-0ffe-46d7-8c4e-e923c3a2ee32": {
           "type": "Instalink",
           "settings": {
-            "insta_image": "shopify:\/\/shop_images\/handful-of-acorns.jpg",
             "author": "@mollymahon",
             "link": "shopify:\/\/blogs\/community\/india-in-all-its-vibrant-colour"
           }
@@ -358,7 +335,6 @@
         "366ce4bd-d678-476b-b6ce-e1f69e984969": {
           "type": "Instalink",
           "settings": {
-            "insta_image": "shopify:\/\/shop_images\/coffee-break.jpg",
             "author": "@mollymahon",
             "link": "shopify:\/\/blogs\/community"
           }
@@ -366,7 +342,6 @@
         "c5462cbc-a60b-4b23-b26e-1522064bd96b": {
           "type": "Instalink",
           "settings": {
-            "insta_image": "shopify:\/\/shop_images\/green-door-with-open-sign.jpg",
             "author": "@mollymahon",
             "link": "shopify:\/\/pages\/contact"
           }
@@ -374,7 +349,6 @@
         "ab89f639-6764-4639-b1e4-d7b36eaa5147": {
           "type": "Instalink",
           "settings": {
-            "insta_image": "shopify:\/\/shop_images\/womens-fashion-woman-in-dress-in-vineyard.jpg",
             "author": "@mollymahon",
             "link": "shopify:\/\/products\/fbicot01"
           }
@@ -382,7 +356,6 @@
         "e029c48d-6777-47fa-8c59-1eb07ea60a54": {
           "type": "Instalink",
           "settings": {
-            "insta_image": "shopify:\/\/shop_images\/hand-covered-in-powdered-paint.jpg",
             "author": "@mollymahon",
             "link": "shopify:\/\/products\/fbjnat11"
           }
