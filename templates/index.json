@@ -88,8 +88,8 @@
       "type": "text-banner",
       "settings": {
         "title": "<p><strong>August Only (2022)<\/strong> Get free access to Forest Row Social Club<\/p>",
-        "link": "shopify:\/\/blogs\/community\/the-print-series-an-evolving-collection-of-affordable-photographic-prints",
-        "bg_pattern": "pattern_01",
+        "link": "shopify:\/\/blogs\/journal",
+        "bg_pattern": "pattern_02",
         "color_scheme": "blue_text"
       }
     },
@@ -99,7 +99,7 @@
         "16348194457d3235ff-0": {
           "type": "heading",
           "settings": {
-            "heading": "Image with text"
+            "heading": "Gift Sets"
           }
         },
         "16348194457d3235ff-1": {
@@ -111,8 +111,8 @@
         "16348194457d3235ff-2": {
           "type": "button",
           "settings": {
-            "button_label": "Shop Kitchen & Dining",
-            "button_link": "shopify:\/\/collections\/fabric"
+            "button_label": "Shop Gift Sets",
+            "button_link": "shopify:\/\/collections\/gift-sets"
           }
         }
       },
@@ -122,9 +122,10 @@
         "16348194457d3235ff-2"
       ],
       "settings": {
-        "title": "A Seasonal Setting",
+        "image": "shopify:\/\/shop_images\/AlunCallenderPhoto_MollyMahon_010_0290.jpg",
+        "title": "Perfect Seasonal Gifts",
         "color_scheme": "white_text",
-        "desktop_text_box_position": "end",
+        "desktop_text_box_position": "start",
         "text_align": "center",
         "layout": "text_first"
       }
