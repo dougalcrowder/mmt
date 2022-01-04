@@ -85,15 +85,15 @@
           "footer-0": {
             "type": "link_list",
             "settings": {
-              "heading": "Quick links",
-              "menu": "footer"
+              "heading": "Customer Service",
+              "menu": "customer-service"
             }
           },
           "b5dac7b8-367b-40cc-b268-8c06c9d8b635": {
             "type": "link_list",
             "settings": {
               "heading": "Follow Us",
-              "menu": ""
+              "menu": "footer"
             }
           },
           "2e0cd923-360f-4b9e-924b-d295313fbb80": {
@@ -108,7 +108,7 @@
             "type": "link_list",
             "settings": {
               "heading": "Business & Press",
-              "menu": ""
+              "menu": "press"
             }
           }
         },
