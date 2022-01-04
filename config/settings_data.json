@@ -68,13 +68,24 @@
               "link": "shopify:\/\/products\/fbicot12",
               "menu_item_handle": "printing-supplies"
             }
+          },
+          "1ee234ed-38fb-45e6-8597-4a12d43fa05e": {
+            "type": "menu_images",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/FERNMUSTARDKEANE.jpg",
+              "title": "Paper over the cracks",
+              "subtitle": "and add colour",
+              "link": "shopify:\/\/collections\/wallpaper",
+              "menu_item_handle": "wallpaper"
+            }
           }
         },
         "block_order": [
           "663b58be-d5a6-41a4-94f2-df9bb2435b16",
           "24e27814-6ff9-440b-9cda-6b6f0a4debb7",
           "a911026b-a355-4e85-b902-387149596068",
-          "f1478d1d-b69c-4ba9-a5cd-93a80571237b"
+          "f1478d1d-b69c-4ba9-a5cd-93a80571237b",
+          "1ee234ed-38fb-45e6-8597-4a12d43fa05e"
         ],
         "settings": {
           "menu": "main-menu-1",
