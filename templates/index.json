@@ -92,14 +92,15 @@
           "type": "column",
           "settings": {
             "width": "two_thirds",
-            "title": "Dining Al Hambra",
-            "subtitle": "Under the stars in style",
+            "image": "shopify:\/\/shop_images\/CORALBLUE_DEERHYRST.jpg",
+            "title": "Wallpapers",
+            "subtitle": "",
             "text": "",
-            "button_color": "white",
-            "color_scheme": "white_text",
-            "desktop_text_box_position": "start",
-            "text_align": "right",
-            "button_label": "Shop Moroc",
+            "button_color": "red",
+            "color_scheme": "red_text",
+            "desktop_text_box_position": "end",
+            "text_align": "left",
+            "button_label": "Shop All Wallpaper",
             "button_link": "shopify:\/\/pages\/care"
           }
         },
@@ -107,14 +108,15 @@
           "type": "column",
           "settings": {
             "width": "one_third",
-            "title": "Get Busy",
+            "image": "shopify:\/\/shop_images\/EIDERDOWNAW21.jpg",
+            "title": "Bedding",
             "subtitle": "",
             "text": "",
             "button_color": "white",
             "color_scheme": "white_text",
-            "desktop_text_box_position": "around",
+            "desktop_text_box_position": "between",
             "text_align": "center",
-            "button_label": "Shop Printing Supply Store",
+            "button_label": "Shop Bedding",
             "button_link": "shopify:\/\/products\/bagru-cotton-dark-blue"
           }
         }
