@@ -355,6 +355,41 @@
       "disabled": true,
       "settings": {
       }
+    },
+    "1641293635fb321c8e": {
+      "type": "collage",
+      "blocks": {
+        "957034b4-21fd-4285-927b-ab16f868c28a": {
+          "type": "text",
+          "settings": {
+            "richtext": "",
+            "go_serif": false,
+            "column": "desk_left"
+          }
+        }
+      },
+      "block_order": [
+        "957034b4-21fd-4285-927b-ab16f868c28a"
+      ],
+      "settings": {
+        "text_box_max_width": "full"
+      }
+    },
+    "1641296300a7b5094c": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Brilliant Block Printing Kits",
+        "collection": "block-print-kits",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "swipe_on_mobile": true,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": true,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": true
+      }
     }
   },
   "order": [
@@ -367,6 +402,8 @@
     "1634819659f7be73c6",
     "1634821627eaee293f",
     "16348163341a2e5254",
-    "main"
+    "main",
+    "1641293635fb321c8e",
+    "1641296300a7b5094c"
   ]
 }
