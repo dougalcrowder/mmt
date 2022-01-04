@@ -6,11 +6,11 @@
         "16352843092374a33e-0": {
           "type": "Tooltip",
           "settings": {
-            "title": "Fabric Link",
-            "content": "<p>Nice fabric<br\/><a href=\"\/blogs\/community\/india-in-all-its-vibrant-colour\" title=\"India in all its vibrant colour\">Read More<\/a><\/p>",
+            "title": "Cosy Cushions",
+            "content": "<p>Creative creature comforts<br\/><br\/><a href=\"\/collections\/cushions\" title=\"Cushions\">Shop Cushions<\/a><\/p>",
             "prod": "",
-            "top": 43,
-            "left": 46,
+            "top": 52,
+            "left": 92,
             "top_mob": 78,
             "left_mob": 38
           }
@@ -33,7 +33,7 @@
         "148881e0-9bcf-4a7c-b669-ce41df894331"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/DOGATCHRISTMASTABLE.jpg",
+        "image": "shopify:\/\/shop_images\/CHRISTMAS20LIFE1_84bdd184-efbc-4269-b90c-25f6b9e2ae99.jpg",
         "square_image": "shopify:\/\/shop_images\/DOGATCHRISTMASTABLE.jpg",
         "title": "Get involved in the YMCA",
         "header_tag": "h2"
