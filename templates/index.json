@@ -358,6 +358,7 @@
     },
     "1641293635fb321c8e": {
       "type": "collage",
+      "disabled": true,
       "blocks": {
         "957034b4-21fd-4285-927b-ab16f868c28a": {
           "type": "text",
@@ -390,6 +391,182 @@
         "show_vendor": false,
         "show_rating": true
       }
+    },
+    "1641296597be9095dc": {
+      "type": "featured-product",
+      "disabled": true,
+      "blocks": {
+        "1641296597b2be7f66-0": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "1641296597b2be7f66-1": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "1641296597b2be7f66-2": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.metafields.descriptors.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "1641296597b2be7f66-3": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "1641296597b2be7f66-4": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "1641296597b2be7f66-5": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "1641296597b2be7f66-6": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "1641296597b2be7f66-7": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "1641296597b2be7f66-0",
+        "1641296597b2be7f66-1",
+        "1641296597b2be7f66-2",
+        "1641296597b2be7f66-3",
+        "1641296597b2be7f66-4",
+        "1641296597b2be7f66-5",
+        "1641296597b2be7f66-6",
+        "1641296597b2be7f66-7"
+      ],
+      "settings": {
+        "product": "dedell01",
+        "secondary_background": false,
+        "hide_variants": false,
+        "enable_video_looping": false
+      }
+    },
+    "1641296757e9d3390b": {
+      "type": "multicolumn",
+      "disabled": true,
+      "blocks": {
+        "1641296757f816f9ef-0": {
+          "type": "column",
+          "settings": {
+            "width": "half",
+            "title": "Column",
+            "subtitle": "Under the stars in style",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "button_color": "white",
+            "color_scheme": "white_text",
+            "desktop_text_box_position": "center",
+            "text_align": "center",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "1641296757f816f9ef-1": {
+          "type": "column",
+          "settings": {
+            "width": "half",
+            "title": "Column",
+            "subtitle": "Under the stars in style",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "button_color": "white",
+            "color_scheme": "white_text",
+            "desktop_text_box_position": "center",
+            "text_align": "center",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "1641296757f816f9ef-2": {
+          "type": "column",
+          "settings": {
+            "width": "half",
+            "title": "Column",
+            "subtitle": "Under the stars in style",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "button_color": "white",
+            "color_scheme": "white_text",
+            "desktop_text_box_position": "center",
+            "text_align": "center",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1641296757f816f9ef-0",
+        "1641296757f816f9ef-1",
+        "1641296757f816f9ef-2"
+      ],
+      "settings": {
+      }
+    },
+    "1641296802546444c7": {
+      "type": "page",
+      "settings": {
+        "page": "fabric-care-1"
+      }
+    },
+    "164129687781f3cb6c": {
+      "type": "video",
+      "blocks": {
+        "7f2a2ee1-9d68-4a6f-b41b-34bbb908a8c5": {
+          "type": "heading",
+          "settings": {
+            "heading": "The art of block printing",
+            "heading_type": "header2"
+          }
+        },
+        "b85cb65c-caac-4438-b618-6f8b1bf98846": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Visit Molly's create academy profile",
+            "button_modal_1": "",
+            "button_link_1": "https:\/\/www.createacademy.com\/courses\/molly-mahon",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_modal_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "7f2a2ee1-9d68-4a6f-b41b-34bbb908a8c5",
+        "b85cb65c-caac-4438-b618-6f8b1bf98846"
+      ],
+      "settings": {
+        "logo_white": false,
+        "autoplay": true,
+        "autoloop": true,
+        "mute_video": true,
+        "show_controls": true,
+        "html5_video": "https:\/\/cdn.shopify.com\/s\/files\/1\/0090\/0100\/9210\/files\/mm_conv_01.mp4?v=1633608512",
+        "image": "shopify:\/\/shop_images\/267469019_1030593891128721_6078512326311949056_n.jpg",
+        "desktop_text_box_position": "start",
+        "desktop_text_box_position_horizontal": "end",
+        "text_align": "right",
+        "text_box_max_width": "1000",
+        "color_scheme": "white_text"
+      }
     }
   },
   "order": [
@@ -404,6 +581,10 @@
     "16348163341a2e5254",
     "main",
     "1641293635fb321c8e",
-    "1641296300a7b5094c"
+    "1641296300a7b5094c",
+    "1641296597be9095dc",
+    "1641296757e9d3390b",
+    "1641296802546444c7",
+    "164129687781f3cb6c"
   ]
 }
