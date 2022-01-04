@@ -44,6 +44,7 @@
           "24e27814-6ff9-440b-9cda-6b6f0a4debb7": {
             "type": "menu_images",
             "settings": {
+              "image": "shopify:\/\/shop_images\/GIFTTAGS.jpg",
               "title": "Brochures & Samples",
               "subtitle": "Try before you buy",
               "link": "shopify:\/\/pages\/care",
