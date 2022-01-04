@@ -18,11 +18,11 @@
         "148881e0-9bcf-4a7c-b669-ce41df894331": {
           "type": "Tooltip",
           "settings": {
-            "title": "Crackers",
+            "title": "Accessorize",
             "content": "<p>strange hopping frog<\/p>",
             "prod": "coral-green-wallpaper",
-            "top": 34,
-            "left": 88,
+            "top": 20,
+            "left": 62,
             "top_mob": 61,
             "left_mob": 47
           }
