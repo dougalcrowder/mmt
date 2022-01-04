@@ -983,7 +983,8 @@ img {
 .js .ding .image_banner,
 .js .ding .basic-page,
 .js .ding .spaced-section,
-.js .ding .collection_header {
+.js .ding .collection_header,
+.js .ding .text_banner_section {
   opacity: 1;
   transform: translateY(0);
 }

@@ -1,4 +1,5 @@
 <div class="prefooter pattern_02"></div>
+
 <footer class="footer">
   {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
     <div class="inner grid">
@@ -178,7 +179,7 @@
   {%- endif -%}
 
   <div class="footer_bottom">
-    <div class="footer__content-bottom-wrapper page-width">
+    <div class="footer__content-bottom-wrapper">
       <div class="footer__column footer__localization">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <noscript>

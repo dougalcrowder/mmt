@@ -749,7 +749,8 @@ cart-remove-button .icon-remove,
 }
 
 .price dd {
-  margin: 0 1rem 0 0;
+  margin: 0;
+  text-align: center;
 }
 
 .price .price__last:last-of-type {
@@ -798,6 +799,7 @@ cart-remove-button .icon-remove,
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .price--center {
@@ -808,7 +810,6 @@ cart-remove-button .icon-remove,
 .price--on-sale .price-item--regular {
   text-decoration: line-through;
   color: rgba(var(--color-foreground), 0.75);
-  font-size: 1.3rem;
 }
 
 .unit-price {

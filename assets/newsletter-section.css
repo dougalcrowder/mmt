@@ -12,13 +12,13 @@
 @media screen and (min-width: 750px) {
   .newsletter--narrow .newsletter__wrapper,
   .newsletter:not(.newsletter--narrow) .newsletter__wrapper.color-background-1 {
-    margin-top: calc(5rem + var(--page-width-margin));
-    margin-bottom: calc(5rem + var(--page-width-margin));
+    margin-top: calc(5rem + var(---margin));
+    margin-bottom: calc(5rem + var(---margin));
   }
 
   .newsletter__wrapper:not(.color-background-1) {
-    padding-top: calc(5rem + var(--page-width-margin));
-    padding-bottom: calc(5rem + var(--page-width-margin));
+    padding-top: calc(5rem + var(---margin));
+    padding-bottom: calc(5rem + var(---margin));
   }
 }
 

@@ -229,6 +229,17 @@ eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourc
 
 /***/ }),
 
+/***/ "./scss/product-card.scss":
+/*!********************************!*\
+  !*** ./scss/product-card.scss ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zY3NzL3Byb2R1Y3QtY2FyZC5zY3NzPzNkYmUiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEiLCJmaWxlIjoiLi9zY3NzL3Byb2R1Y3QtY2FyZC5zY3NzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gcmVtb3ZlZCBieSBleHRyYWN0LXRleHQtd2VicGFjay1wbHVnaW4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./scss/product-card.scss\n");
+
+/***/ }),
+
 /***/ "./scss/products.scss":
 /*!****************************!*\
   !*** ./scss/products.scss ***!
@@ -252,9 +263,9 @@ eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourc
 /***/ }),
 
 /***/ 0:
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./js/main.js ./scss/main.scss ./scss/header.scss ./scss/products.scss ./scss/collections.scss ./scss/blog.scss ./scss/footer.scss ./scss/pagination.scss ./scss/collage.scss ./scss/facets.scss ./scss/cart.scss ./scss/page.scss ./scss/hotspots.scss ./scss/video.scss ./scss/modal.scss ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./js/main.js ./scss/main.scss ./scss/header.scss ./scss/products.scss ./scss/collections.scss ./scss/blog.scss ./scss/footer.scss ./scss/pagination.scss ./scss/collage.scss ./scss/facets.scss ./scss/cart.scss ./scss/page.scss ./scss/hotspots.scss ./scss/video.scss ./scss/modal.scss ./scss/product-card.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -272,7 +283,8 @@ __webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/cart.scss */".
 __webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/page.scss */"./scss/page.scss");
 __webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/hotspots.scss */"./scss/hotspots.scss");
 __webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/video.scss */"./scss/video.scss");
-module.exports = __webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/modal.scss */"./scss/modal.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/modal.scss */"./scss/modal.scss");
+module.exports = __webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/product-card.scss */"./scss/product-card.scss");
 
 
 /***/ })

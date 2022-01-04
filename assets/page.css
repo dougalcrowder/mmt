@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+.page-title {
+  margin-bottom: 24px;
+}
+
 .events {
   max-width: 1120px;
   margin-top: 40px;
@@ -223,5 +227,9 @@
 
 section.basic-page + .events_area > .events {
   border-top: 1px solid var(--color-foreground);
+}
+
+.shopify-section.page-section {
+  margin: 80px 0;
 }
 

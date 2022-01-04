@@ -403,7 +403,7 @@
 /* Account/Order */
 :is(.account, .order) {
   margin: 6rem auto 9rem;
-  max-width: var(--page-width);
+  max-width: var(--);
   padding: 0 2rem;
 }
 

@@ -8,12 +8,12 @@
 
 @media screen and (min-width: 750px) {
   .blog:not(.background-secondary) {
-    margin: calc(5rem + var(--page-width-margin)) 0;
+    margin: calc(5rem + var(---margin)) 0;
   }
 
   .blog.background-secondary {
-    padding-top: calc(5rem + var(--page-width-margin));
-    padding-bottom: calc(5rem + var(--page-width-margin));
+    padding-top: calc(5rem + var(---margin));
+    padding-bottom: calc(5rem + var(---margin));
   }
 }
 
@@ -68,7 +68,7 @@
 
 @media screen and (min-width: 750px) {
   .blog.no-heading {
-    margin-top: calc(6rem + var(--page-width-margin));
+    margin-top: calc(6rem + var(---margin));
   }
 }
 

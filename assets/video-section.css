@@ -1,12 +1,12 @@
-.video-section.page-width {
+.video-section. {
   margin-top: 5rem;
   margin-bottom: 5rem;
 }
 
 @media screen and (min-width: 750px) {
-  .video-section.page-width {
-    margin-top: calc(5rem + var(--page-width-margin));
-    margin-bottom: calc(5rem + var(--page-width-margin));
+  .video-section. {
+    margin-top: calc(5rem + var(---margin));
+    margin-bottom: calc(5rem + var(---margin));
   }
 }
 
