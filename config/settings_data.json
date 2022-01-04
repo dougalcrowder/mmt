@@ -34,7 +34,8 @@
           "663b58be-d5a6-41a4-94f2-df9bb2435b16": {
             "type": "menu_images",
             "settings": {
-              "title": "Moody Boards",
+              "image": "shopify:\/\/shop_images\/CHARLOTTESTREET_07a1132b-c762-4382-958c-bf02286d3edb.jpg",
+              "title": "Mood Boards",
               "subtitle": "Inspirational Abundance",
               "link": "shopify:\/\/blogs\/community",
               "menu_item_handle": "fabric"
