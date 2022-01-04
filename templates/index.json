@@ -567,6 +567,12 @@
         "text_box_max_width": "1000",
         "color_scheme": "white_text"
       }
+    },
+    "16412983447ec23b50": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -585,6 +591,7 @@
     "1641296597be9095dc",
     "1641296757e9d3390b",
     "1641296802546444c7",
-    "164129687781f3cb6c"
+    "164129687781f3cb6c",
+    "16412983447ec23b50"
   ]
 }
