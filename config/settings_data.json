@@ -54,9 +54,10 @@
           "a911026b-a355-4e85-b902-387149596068": {
             "type": "menu_images",
             "settings": {
+              "image": "shopify:\/\/shop_images\/SSCUTTOOL_1200x_5dffddee-f420-49a4-9dfb-46c8831113c3.jpg",
               "title": "Tools",
               "subtitle": "Get stuck in",
-              "link": "shopify:\/\/blogs\/community",
+              "link": "shopify:\/\/collections\/tools",
               "menu_item_handle": "printing-supplies"
             }
           },
