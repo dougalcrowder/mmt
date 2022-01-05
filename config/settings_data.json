@@ -78,6 +78,16 @@
               "link": "shopify:\/\/collections\/wallpaper",
               "menu_item_handle": "wallpaper"
             }
+          },
+          "780eb8bb-eb65-495d-8f78-646eb73979b4": {
+            "type": "menu_images",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/SHEPHERDSHUT_2500x_407131eb-3da8-45c5-a394-531965d7192a.jpg",
+              "title": "Hawthbush farm shepherd's hut",
+              "subtitle": "A MM Transformation",
+              "link": "shopify:\/\/blogs\/journal\/hawthbush-shepherds-hut",
+              "menu_item_handle": "wallpaper"
+            }
           }
         },
         "block_order": [
@@ -85,7 +95,8 @@
           "24e27814-6ff9-440b-9cda-6b6f0a4debb7",
           "a911026b-a355-4e85-b902-387149596068",
           "f1478d1d-b69c-4ba9-a5cd-93a80571237b",
-          "1ee234ed-38fb-45e6-8597-4a12d43fa05e"
+          "1ee234ed-38fb-45e6-8597-4a12d43fa05e",
+          "780eb8bb-eb65-495d-8f78-646eb73979b4"
         ],
         "settings": {
           "menu": "main-menu-1",
