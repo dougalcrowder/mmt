@@ -184,6 +184,15 @@
           "quote": "<p>Molly is the real deal! <br\/>Enthusiastic quote goes here to get the sign up<\/p>",
           "cite": "Keith Kadstone"
         }
+      },
+      "mailchimp": {
+        "type": "mailchimp",
+        "settings": {
+          "chimp_url": "",
+          "section_title": "Subscribe to our newsletter",
+          "subheading": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>",
+          "show_name": false
+        }
       }
     },
     "content_for_index": [

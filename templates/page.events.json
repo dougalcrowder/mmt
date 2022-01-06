@@ -14,7 +14,8 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "Make yourself a home."
+            "text": "Make yourself a home.",
+            "go_serif": false
           }
         },
         "1635330929a8d9324e-2": {
@@ -36,12 +37,14 @@
         "1635330929a8d9324e-2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/MM-46-1-scaled.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/hand-covered-in-powdered-paint.jpg",
+        "image": "shopify:\/\/shop_images\/MM_Collections_Masthead_Images_-_Workshops_2.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/MM_Collections_Mobile_Masthead_Images_-_workshop_2.jpg",
         "make_logo_white": true,
-        "desktop_text_box_position": "center",
-        "text_align": "center",
-        "show_text_box": true,
+        "desktop_text_box_position": "middle",
+        "desktop_text_box_position_horizontal": "end",
+        "text_align": "right",
+        "text_box_max_width": "800",
+        "show_text_box": false,
         "color_scheme": "white_text"
       }
     },
@@ -59,7 +62,6 @@
             "event_title": "A Bloomsbury Breakfast & Workshop at the Charlotte Street Hotel",
             "event_intro": "Celebrate London Craft week and enjoy\nbreakfast in the Drawing Room at Charlotte Street Hotel. Join journalist Jo Rodgers in conversation with textile designer Molly Mahon, founder and creative director of Firmdale Hotels and Kit Kemp Design Studio, Kit Kemp, and designer and painter Melissa White.",
             "event_description": "<p>Surrounded by Kit Kemp’s Bloomsbury-inspired interiors with original artworks by Duncan Grant and Vanessa Bell, the panel will share their love for The Bloomsbury Set, discussing their unique use of craft and colour and how they continue to inspire Molly, Kit and Melissa in their work today. Talk, Tuesday 5th October, 09:00- 10:30am £30 per person, including a delicious breakfast and in conversation Workshop, Tuesday 5th October, 11:00 – 12:30pm £100 per person, including a delicious breakfast, in conversation and 1.5 hour workshop with Molly Mahon.<\/p>",
-            "image": "shopify:\/\/shop_images\/hotels-flats.jpg",
             "event_date": "5th October 11:00 - 12:30",
             "event_extras": "Including a delicious breakfast",
             "event_price": "£30 per person",
@@ -75,7 +77,6 @@
             "event_title": "Block printing Lampshades at Charleston",
             "event_intro": "Join Molly for a one-day workshop experiencing the joy of block printing and making your own lampshade.",
             "event_description": "<p>The day-long course will include a private tour of the house, followed by an introduction to block printing by Molly. Using Molly’s carved wooden blocks, you will experiment with colour and pattern and ﬁnish by printing your own 30cm lampshade. £200 pp-the price includes all materials, refreshments and a delicious lunch.<\/p>",
-            "image": "shopify:\/\/shop_images\/MM-46-1-scaled.jpg",
             "event_date": "7th October 15:30 - 18:00",
             "event_extras": "Inc. lampshade to take home",
             "event_price": "£200 per person",
@@ -112,7 +113,6 @@
             "event_title": "Block printing Curtains at Carew Castle",
             "event_intro": "Join Molly for a one-day workshop experiencing the joy of block printing and making your own lampshade.",
             "event_description": "<p>The day-long course will include a private tour of the house, followed by an introduction to block printing by Molly. Using Molly’s carved wooden blocks, you will experiment with colour and pattern and ﬁnish by printing your own 30cm lampshade. £200 pp-the price includes all materials, refreshments and a delicious lunch.<\/p>",
-            "image": "shopify:\/\/shop_images\/stone-castle-with-a-view.jpg",
             "event_date": "23rd - 25th November",
             "event_extras": "You keep the curtains",
             "event_price": "£650 per Unit",
