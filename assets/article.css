@@ -1,5 +1,39 @@
 .article-template__title {
-  margin: 24px 0;
+  margin: 24px 0 32px 0;
+  position: relative;
+  text-align: center;
+}
+
+.article-template__title:after {
+  content: " ";
+  position: absolute;
+  left: -16px;
+  bottom: 0;
+  width: calc(100% + 32px);
+  display: block;
+  height: 1px;
+  background-color: var(--color-base-text);
+}
+
+.articlebody {
+  position: relative;
+  padding-bottom: 32px;
+}
+
+.articlebody:after {
+  content: " ";
+  position: absolute;
+  left: -16px;
+  bottom: 0;
+  width: calc(100% + 32px);
+  display: block;
+  height: 1px;
+  background-color: var(--color-base-text);
+}
+
+.article_footer {
+  text-align: center;
+  padding-top: 24px;
 }
 
 .article-template__link {

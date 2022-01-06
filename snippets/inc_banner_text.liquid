@@ -1,5 +1,5 @@
 <div class="cta flex {{ section.settings.desktop_text_box_position }} justify-{{ section.settings.desktop_text_box_position_horizontal }}  align-{{ section.settings.text_align }}  inner">
-  <div class="text_box color-{{ section.settings.color_scheme }} width-{{ section.settings.text_box_max_width }}">
+  <div class="text_box color-{{ section.settings.color_scheme }} width-{{ section.settings.text_box_max_width }}{% if block.settings.show_text_box %} visually-hidden{% endif %}">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when 'heading' -%}
