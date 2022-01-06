@@ -3,7 +3,7 @@
     "main": {
       "type": "main-product",
       "settings": {
-        "short_desc": "{{ product.metafields.descriptors.subtitle.value }}",
+        "short_desc": "{{ product.metafields.my_fields.product_subtitle.value }}",
         "show_dynamic_checkout": true,
         "enable_sticky_info": true,
         "share_label": "Share",
@@ -19,8 +19,7 @@
           "settings": {
             "heading": "Product Care",
             "content": "",
-            "page": "care",
-            "info_image": "shopify:\/\/shop_images\/green-door-with-open-sign.jpg"
+            "page": "fabric-care-1"
           }
         }
       },
