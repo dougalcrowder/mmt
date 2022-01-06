@@ -18,7 +18,7 @@
   background-color: transparent;
   color: var(--color-base-text);
   min-width: 10rem;
-  transition: box-shadow var(--duration-short) ease;
+  transition: all var(--duration-default) ease;
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
@@ -34,11 +34,32 @@
   }
 }
 
+.button:hover,
+.shopify-challenge__button:hover,
+.customer button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 -2px;
+}
+
 .button.pink,
 .shopify-challenge__button.pink,
 .customer button.pink {
   border: 1px solid var(--color-pink);
   color: var(--color-pink);
+}
+
+.button.fill,
+.shopify-challenge__button.fill,
+.customer button.fill {
+  border: 1px solid var(--color-base-text);
+  background-color: var(--color-base-text);
+  color: white;
+}
+
+.button.fill:hover,
+.shopify-challenge__button.fill:hover,
+.customer button.fill:hover {
+  box-shadow: 0 3px 0 -2px var(--color-base-text);
 }
 
 .button.reverse,
@@ -51,6 +72,26 @@
   color: white;
 }
 
+.button.reverse.fill,
+.color-white_text .button.fill,
+.shopify-challenge__button.reverse.fill,
+.color-white_text .shopify-challenge__button.fill,
+.customer button.reverse.fill,
+.color-white_text .customer button.fill {
+  border: 1px solid white;
+  background-color: white;
+  color: var(--color-dark);
+}
+
+.button.reverse.fill:hover,
+.color-white_text .button.fill:hover,
+.shopify-challenge__button.reverse.fill:hover,
+.color-white_text .shopify-challenge__button.fill:hover,
+.customer button.reverse.fill:hover,
+.color-white_text .customer button.fill:hover {
+  box-shadow: 0 3px 0 -2px white;
+}
+
 .button.dark,
 .color-dark_text .button,
 .shopify-challenge__button.dark,
@@ -59,6 +100,56 @@
 .color-dark_text .customer button {
   border: 1px solid var(--color-dark);
   color: var(--color-dark);
+}
+
+.button.dark.fill,
+.color-dark_text .button.fill,
+.shopify-challenge__button.dark.fill,
+.color-dark_text .shopify-challenge__button.fill,
+.customer button.dark.fill,
+.color-dark_text .customer button.fill {
+  border: 1px solid var(--color-dark);
+  background-color: var(--color-dark);
+  color: white;
+}
+
+.button.dark.fill:hover,
+.color-dark_text .button.fill:hover,
+.shopify-challenge__button.dark.fill:hover,
+.color-dark_text .shopify-challenge__button.fill:hover,
+.customer button.dark.fill:hover,
+.color-dark_text .customer button.fill:hover {
+  box-shadow: 0 3px 0 -2px var(--color-dark);
+}
+
+.button.blue,
+.color-blue_text .button,
+.shopify-challenge__button.blue,
+.color-blue_text .shopify-challenge__button,
+.customer button.blue,
+.color-blue_text .customer button {
+  border: 1px solid var(--color-blue);
+  color: var(--color-blue);
+}
+
+.button.blue.fill,
+.color-blue_text .button.fill,
+.shopify-challenge__button.blue.fill,
+.color-blue_text .shopify-challenge__button.fill,
+.customer button.blue.fill,
+.color-blue_text .customer button.fill {
+  border: 1px solid var(--color-blue);
+  background-color: var(--color-blue);
+  color: white;
+}
+
+.button.blue.fill:hover,
+.color-blue_text .button.fill:hover,
+.shopify-challenge__button.blue.fill:hover,
+.color-blue_text .shopify-challenge__button.fill:hover,
+.customer button.blue.fill:hover,
+.color-blue_text .customer button.fill:hover {
+  box-shadow: 0 3px 0 -2px var(--color-blue);
 }
 
 .button.button--tertiary,

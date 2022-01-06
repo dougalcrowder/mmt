@@ -1,0 +1,171 @@
+.mailchimp-section {
+  width: 300px;
+  position: fixed;
+  bottom: 0;
+  left: -316px;
+  z-index: 99999;
+  background-color: var(--color-shade);
+  box-shadow: 0 4px 30px -8px rgba(0, 0, 0, 0.6);
+  transition: var(--transition);
+}
+
+@media screen and (min-width: 768px) {
+  .mailchimp-section {
+    bottom: 16px;
+    width: 500px;
+    left: -516px;
+  }
+}
+
+.mailchimp-section form {
+  padding: 48px 24px 24px 24px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .mailchimp-section form {
+    padding: 64px 32px 32px 32px;
+  }
+}
+
+.mailchimp-section form input[type=email],
+.mailchimp-section form input[type=text] {
+  background-color: white;
+  display: inline-block;
+  max-width: 380px;
+  padding: 12px;
+}
+
+.mailchimp-section form input[type=email]::-moz-placeholder, .mailchimp-section form input[type=text]::-moz-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--color-red);
+  opacity: 1;
+  /* Firefox */
+}
+
+.mailchimp-section form input[type=email]:-ms-input-placeholder, .mailchimp-section form input[type=text]:-ms-input-placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--color-red);
+  opacity: 1;
+  /* Firefox */
+}
+
+.mailchimp-section form input[type=email]::placeholder,
+.mailchimp-section form input[type=text]::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--color-red);
+  opacity: 1;
+  /* Firefox */
+}
+
+.mailchimp-section form input[type=email]:-ms-input-placeholder,
+.mailchimp-section form input[type=text]:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: var(--color-red);
+}
+
+.mailchimp-section form input[type=email]::-ms-input-placeholder,
+.mailchimp-section form input[type=text]::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: var(--color-red);
+}
+
+.mailchimp-section h3 {
+  font-size: 150%;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .mailchimp-section h3 {
+    font-size: 200%;
+  }
+}
+
+.mailchimp-section .rte {
+  margin: 0;
+}
+
+.mailchimp-section .rte p {
+  margin: 0;
+}
+
+.mailchimp-section .button#mc-embedded-subscribe {
+  max-width: 250px;
+  margin-top: 8px;
+}
+
+.active .mailchimp-section {
+  transform: translateX(316px);
+}
+
+@media screen and (min-width: 768px) {
+  .active .mailchimp-section {
+    transform: translateX(532px);
+  }
+}
+
+.closeMonkey {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .closeMonkey {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+.closeMonkey span.line1,
+.closeMonkey span.line2 {
+  width: 32px;
+  height: 2px;
+  background-color: var(--color-red);
+  display: block;
+  transform-origin: center;
+  transform: rotate(45deg);
+  position: absolute;
+  z-index: 10;
+  top: 20px;
+  left: 4px;
+}
+
+.closeMonkey span.line1 {
+  transform: rotate(135deg);
+}
+
+form > div {
+  margin-bottom: 16px;
+}
+
+/**
+ * Errors
+ */
+
+.error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+
+.success-message {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.mc-status:focus {
+  outline: none;
+}
+

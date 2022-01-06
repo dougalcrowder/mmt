@@ -1,15 +1,15 @@
-{%- if section.settings.make_logo_white -%}
+{%- if collection.image -%}
 <script>
   document.body.classList.add("white_logo");
 </script>
 {%- endif -%}
 
-<div class="banner_head flex">
+<div class="banner_head flex{% if collection.image %} with_image{% else %} no_image{% endif %}">
   
   <div class="collection_header">
     <div class="text">
       <h1>{{ collection.title }}</h1>
-      {%- if section.settings.show_collection_description -%}
+      {%- if collection.description -%}
       <div class="rte" {{ block.shopify_attributes }}>
         <span>{{ collection.description }}</span>
       </div>
@@ -52,26 +52,7 @@
     {
       "type": "text",
       "id": "subtitle",
-      "label": "Subtitle -goes over image"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_collection_description",
-      "default": true,
-      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "make_logo_white",
-      "default": true,
-      "label": "Make logo white"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_collection_image",
-      "default": true,
-      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
-      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+      "label": "Subtitle goes over image"
     }
   ]
 }

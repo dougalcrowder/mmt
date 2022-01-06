@@ -1,3 +1,8 @@
+{%- if section.settings.make_logo_white -%}
+<script>
+  document.body.classList.add("white_logo");
+</script>
+{%- endif -%}
 {%- comment -%} ---------------- THE CSS --------------------- {%- endcomment -%}
 <link rel="stylesheet" href="{{ 'hotspots.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'hotspots.css' | asset_url | stylesheet_tag }}</noscript>
@@ -264,6 +269,12 @@
       "id": "square_image",
       "label": "Main image Mobile",
       "info": "Image must be at least 2048x2048 pixels"
+    },
+    {
+      "type": "checkbox",
+      "id": "make_logo_white",
+      "default": false,
+      "label": "Make the logo white"
     },
     {
     "type": "text",

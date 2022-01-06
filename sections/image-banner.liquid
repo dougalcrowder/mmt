@@ -5,7 +5,7 @@
   </script>
   {%- endif -%}
   {%- if section.settings.image != blank -%}
-    {%- assign landscape_image = section.settings.image -%}
+    {%- assign landscape_image = section.settings.image -%} 
     <script>
       document.body.classList.add("banner");
     </script>
@@ -50,7 +50,7 @@
           "label": "t:sections.image-banner.settings.desktop_text_box_position.options__1.label"
         },
         {
-          "value": "center",
+          "value": "middle", 
           "label": "t:sections.image-banner.settings.desktop_text_box_position.options__2.label"
         },
         {
@@ -58,7 +58,7 @@
           "label": "t:sections.image-banner.settings.desktop_text_box_position.options__3.label"
         }
       ],
-      "default": "center",
+      "default": "middle",
       "label": "t:sections.image-banner.settings.desktop_text_box_position.label"
     },
     {
@@ -235,7 +235,7 @@
           "type": "checkbox",
           "id": "button_style_secondary_1",
           "default": false,
-          "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_1.label"
+          "label": "Fill Style"
         },
         {
           "type": "text",
@@ -253,7 +253,7 @@
           "type": "checkbox",
           "id": "button_style_secondary_2",
           "default": false,
-          "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
+          "label": "Fill Style"
         }
       ]
     }

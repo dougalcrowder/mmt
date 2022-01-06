@@ -1,14 +1,3 @@
-{% comment %}theme-check-disable TemplateLength
-{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
-{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'component-rte.css' | asset_url | stylesheet_tag }}
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
-{{ 'component-rating.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-
-<link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
-{% endcomment %}
 {{ 'products.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
@@ -68,13 +57,14 @@
         </h1>
         <!-- End Title -->
         
-        <!-- Title -->
-        {%- if section.settings.short_desc != blank -%}
+        <!-- Short Description -->
+        {% assign short_desc = product.metafields.my_fields.product_info %}
+        {%- if short_desc != blank -%}
         <div class="product_description rte" {{ section.shopify_attributes }}>
-          {{ section.settings.short_desc }}
+          {{ short_desc }}
         </div>
         {%- endif -%}
-        <!-- End Title -->
+        <!-- End  -->
         
         <!-- Variants -->
         <div class="variants">
@@ -311,6 +301,48 @@
               {%- endform -%}
             </product-form>
             
+            {%- assign comp_1 = product.metafields.products.companion_product_1.value -%}
+            {%- assign comp_2 = product.metafields.products.companion_product_2.value -%}
+            {%- assign comp_3 = product.metafields.products.companion_product_3.value -%}
+            {%- assign comp_4 = product.metafields.products.companion_product_4.value -%}
+            {%- assign comp_title = product.metafields.products.companion_products_title -%}
+            
+            {%- if comp_1 != blank -%}
+            <div class="companion_products">
+              
+            {%- if comp_title != blank -%}
+              <strong>
+                {{ comp_title }}
+              </strong>
+            {%- endif -%}
+            <div class="flex">
+              <a href="{{ comp_1.url }}" class="prod prod_1">
+                  <img src="{{ comp_1.featured_image | img_url: '120x120', crop: 'center' }}" alt="{{ comp_1.title }}"  width="60" height="60"/>
+                {{ comp_1.title }}
+              </a>
+              {%- if comp_2 != blank -%}
+              <a href="{{ comp_2.url }}" class="prod prod_2">
+                  <img src="{{ comp_2.featured_image | img_url: '120x120', crop: 'center' }}" alt="{{ comp_2.title }}" width="60" height="60" />
+                {{ comp_2.title }}
+              </a>
+              {%- endif -%}
+              {%- if comp_3 != blank -%}
+              <a href="{{ comp_3.url }}" class="prod prod_3">
+                  <img src="{{ comp_3.featured_image | img_url: '120x120', crop: 'center' }}" alt="{{ comp_3.title }}" width="60" height="60" />
+                {{ comp_3.title }}
+              </a>
+              {%- endif -%}
+              {%- if comp_4 != blank -%}
+              <a href="{{ comp_4.url }}" class="prod prod_4">
+                  <img src="{{ comp_4.featured_image | img_url: '120x120', crop: 'center' }}" alt="{{ comp_4.title }}" width="60" height="60" />
+                {{ comp_4.title }}
+              </a>
+              {%- endif -%}
+            </div>
+            
+            </div>
+            {%- endif -%}
+            
             {% comment %}
             {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
   
@@ -526,11 +558,6 @@
   "class": "product-section spaced-section",
   "settings": [
     {
-      "type": "text",
-      "id": "short_desc",
-      "label": "Short Product Description"
-    },
-    {
       "type": "checkbox",
       "id": "show_dynamic_checkout",
       "default": true,
@@ -548,23 +575,6 @@
       "id": "share_label",
       "label": "Share Label",
       "default": "Share"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.main-product.settings.header.content",
-      "info": "t:sections.main-product.settings.header.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "hide_variants",
-      "default": false,
-      "label": "t:sections.main-product.settings.hide_variants.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_video_looping",
-      "default": false,
-      "label": "t:sections.main-product.settings.enable_video_looping.label"
     }
   ],
   "blocks": [

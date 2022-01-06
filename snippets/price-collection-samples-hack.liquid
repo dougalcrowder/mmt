@@ -56,9 +56,15 @@
         <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
       </dt>
       <dd {% if show_badges == false %}class="price__last"{% endif %}>
+        {% if product.price == 0 %}
+        <span class="price-item price-item--regular">
+          {{ max_price }}
+        </span>
+        {% else %}
         <span class="price-item price-item--regular">
           {{ money_price }}
         </span>
+        {% endif %}
       </dd>
     </div>
     <div class="price__sale">

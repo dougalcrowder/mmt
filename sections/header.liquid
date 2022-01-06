@@ -25,12 +25,18 @@
       <nav class="header__inline-menu">
         <ul class="list-menu list-menu--inline" role="list" id="mainNav">
           {%- for link in section.settings.menu.links -%}
-            <li{% if link.links != blank %} class="subnav_active"{% endif %}>
+            <li class="{{link.handle}}{% if link.links != blank %} subnav_active{% endif %}">
               {%- if link.links != blank -%}
                 <span class="header__menu-item{% if link.child_active %} header__active-menu-item{% endif %}">{{ link.title | escape }} {% render 'icon-caret' %}</span>
                     <div class="header__submenu">
                         <div class="inner flex">
-                          <ul class="list-menu flex" role="list" tabindex="-1">
+                          {%- assign childCount = 0 -%}
+                          {%- for childlink in link.links -%}
+                          {%- if childlink.links != blank -%}
+                          {%- assign childCount = childCount | plus: 1 -%}
+                          {%- endif -%}
+                          {%- endfor -%}
+                          <ul class="list-menu flex has-{{childCount}}" role="list" tabindex="-1">
                             {%- for childlink in link.links -%}
                             <li{% if childlink.links != blank %} class="sub_subnav flex"{% endif %}>
                             {%- if childlink.links == blank -%}
@@ -87,8 +93,8 @@
                         </div>
                     </div>
               {%- else -%}
-                <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item focus-inset"{% if link.current %} aria-current="page"{% endif %}>
-                  <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item focus-inset{%- if link.current %} header__active-menu-item{% endif %}"{% if link.current %} aria-current="page"{% endif %}>
+                  <span>{{ link.title | escape }}</span>
                 </a>
               {%- endif -%}
             </li>
@@ -138,21 +144,35 @@
     </div>
     </div>
   </header>
+  <button id="navCloser" class="nude navcloser" aria-label="Close Menu"></button>
 </sticky-header>
-
 <script>
   
+  const navCloser = document.getElementById("navCloser");
+  
   function navCollapse() { 
-    document.querySelectorAll(".list-menu .subnav_active .header__submenu").forEach(function(el) {
-      el.classList.remove("active");;
+    document.querySelectorAll(".list-menu .subnav_active.active").forEach(function(el) {
+      el.classList.remove('showCt');
+      navCloser.classList.remove('active');
+      setTimeout(function() {
+        el.classList.remove('showBg');
+      }, 500);
+      setTimeout(function() {
+        el.classList.remove('active');
+      }, 550);
     });
   }
+  
+  navCloser.addEventListener('click', function (){
+    navCollapse();
+  });
   
   document.querySelectorAll('#mainNav li').forEach( function(navLi) {
     if(navLi.classList.contains('subnav_active')) {
       navLi.addEventListener('click', function (){        
         if (navLi.classList.contains('active')) {
           navLi.classList.remove('showCt');
+          navCloser.classList.remove('active');
           setTimeout(function() {
             navLi.classList.remove('showBg');
           }, 500);
@@ -174,6 +194,7 @@
             navLi.classList.add('showBg');
             setTimeout(function() {
               navLi.classList.add('showCt');
+              navCloser.classList.add('active');
             }, 500);
           }, 50);
         }

@@ -334,6 +334,16 @@
   color: white;
 }
 
+.banner_head.no_image {
+  margin-top: 120px;
+}
+
+@media screen and (min-width: 540px) {
+  .banner_head.no_image {
+    margin-top: 180px;
+  }
+}
+
 .collection {
   position: relative;
 }
