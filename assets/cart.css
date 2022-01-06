@@ -198,6 +198,27 @@
   margin-bottom: 16px;
 }
 
+.empty-cart {
+  display: none;
+  visibility: hidden;
+}
+
+.shopify-section.cart-section .is-empty,
+.cart__footer-wrapper .is-empty {
+  display: none;
+  visibility: hidden;
+}
+
+.shopify-section.cart-section .is-empty + .empty-cart,
+.cart__footer-wrapper .is-empty + .empty-cart {
+  display: block;
+  visibility: visible;
+}
+
+.dynamic-checkout__content .shopify-cleanslate > div > ul {
+  justify-content: flex-end;
+}
+
 cart-items {
   display: block;
 }

@@ -402,7 +402,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n\tvalue: true\n});\n
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/js/blog.js */"./js/blog.js");
+module.exports = __webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/js/blog.js */"./js/blog.js");
 
 
 /***/ })

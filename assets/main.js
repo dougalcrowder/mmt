@@ -291,24 +291,24 @@ eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourc
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/js/main.js */"./js/main.js");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/main.scss */"./scss/main.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/header.scss */"./scss/header.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/products.scss */"./scss/products.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/collections.scss */"./scss/collections.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/blog.scss */"./scss/blog.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/article.scss */"./scss/article.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/footer.scss */"./scss/footer.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/pagination.scss */"./scss/pagination.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/collage.scss */"./scss/collage.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/facets.scss */"./scss/facets.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/cart.scss */"./scss/cart.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/page.scss */"./scss/page.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/hotspots.scss */"./scss/hotspots.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/video.scss */"./scss/video.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/modal.scss */"./scss/modal.scss");
-__webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/product-card.scss */"./scss/product-card.scss");
-module.exports = __webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/scss/mailchimp.scss */"./scss/mailchimp.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/js/main.js */"./js/main.js");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/main.scss */"./scss/main.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/header.scss */"./scss/header.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/products.scss */"./scss/products.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/collections.scss */"./scss/collections.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/blog.scss */"./scss/blog.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/article.scss */"./scss/article.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/footer.scss */"./scss/footer.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/pagination.scss */"./scss/pagination.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/collage.scss */"./scss/collage.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/facets.scss */"./scss/facets.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/cart.scss */"./scss/cart.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/page.scss */"./scss/page.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/hotspots.scss */"./scss/hotspots.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/video.scss */"./scss/video.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/modal.scss */"./scss/modal.scss");
+__webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/product-card.scss */"./scss/product-card.scss");
+module.exports = __webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/scss/mailchimp.scss */"./scss/mailchimp.scss");
 
 
 /***/ })

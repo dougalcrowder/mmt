@@ -104,7 +104,7 @@ eval("var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPAC
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/dougalcrowder/Sites/MM/mm-src/js/modal_video.js */"./js/modal_video.js");
+module.exports = __webpack_require__(/*! /Users/dougalcrowder/Sites/MMT/mmt-src/js/modal_video.js */"./js/modal_video.js");
 
 
 /***/ })
