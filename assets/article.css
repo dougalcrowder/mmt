@@ -63,6 +63,11 @@
 
 .article-template__social-sharing {
   margin-top: 3rem;
+  text-align: center;
+}
+
+.article-template__social-sharing .share-button {
+  display: inline-block;
 }
 
 @media screen and (min-width: 750px) {
