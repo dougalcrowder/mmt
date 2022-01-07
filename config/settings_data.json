@@ -10,31 +10,12 @@
     "type_header_font": "assistant_n4",
     "type_body_font": "assistant_n4",
     "sections": {
-      "announcement-bar": {
-        "type": "announcement-bar",
-        "blocks": {
-          "announcement-bar-0": {
-            "type": "announcement",
-            "disabled": true,
-            "settings": {
-              "text": "Welcome to our store",
-              "link": ""
-            }
-          }
-        },
-        "block_order": [
-          "announcement-bar-0"
-        ],
-        "settings": {
-        }
-      },
       "header": {
         "type": "header",
         "blocks": {
           "663b58be-d5a6-41a4-94f2-df9bb2435b16": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/CHARLOTTESTREET_07a1132b-c762-4382-958c-bf02286d3edb.jpg",
               "title": "Mood Boards",
               "subtitle": "Inspirational Abundance",
               "link": "shopify:\/\/blogs\/community",
@@ -44,7 +25,6 @@
           "24e27814-6ff9-440b-9cda-6b6f0a4debb7": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/GIFTTAGS.jpg",
               "title": "Brochures & Samples",
               "subtitle": "Try before you buy",
               "link": "shopify:\/\/pages\/care",
@@ -54,7 +34,6 @@
           "a911026b-a355-4e85-b902-387149596068": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SSCUTTOOL_1200x_5dffddee-f420-49a4-9dfb-46c8831113c3.jpg",
               "title": "Tools",
               "subtitle": "Get stuck in",
               "link": "shopify:\/\/collections\/tools",
@@ -64,7 +43,6 @@
           "f1478d1d-b69c-4ba9-a5cd-93a80571237b": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/BOOKKITCHENTABLE1_1200x_725fe800-2bb7-4aee-afbf-666e9b7cfa43.jpg",
               "title": "Book - House of Print",
               "subtitle": "Pretty in Print!",
               "link": "shopify:\/\/products\/fbicot12",
@@ -74,7 +52,6 @@
           "1ee234ed-38fb-45e6-8597-4a12d43fa05e": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/FERNMUSTARDKEANE.jpg",
               "title": "Paper over the cracks",
               "subtitle": "and add colour",
               "link": "shopify:\/\/collections\/wallpaper",
@@ -84,7 +61,6 @@
           "780eb8bb-eb65-495d-8f78-646eb73979b4": {
             "type": "menu_images",
             "settings": {
-              "image": "shopify:\/\/shop_images\/SHEPHERDSHUT_2500x_407131eb-3da8-45c5-a394-531965d7192a.jpg",
               "title": "Hawthbush farm shepherd's hut",
               "subtitle": "A MM Transformation",
               "link": "shopify:\/\/blogs\/journal\/hawthbush-shepherds-hut",
@@ -101,8 +77,8 @@
           "780eb8bb-eb65-495d-8f78-646eb73979b4"
         ],
         "settings": {
-          "menu": "main-menu-1",
-          "menu_message": "FREE UK DELIVERY WHEN YOU SPEND £50 OR MORE"
+          "menu": "main-menu",
+          "menu_message": "Welcome to the MM trade portal"
         }
       },
       "footer": {
@@ -112,7 +88,7 @@
             "type": "link_list",
             "settings": {
               "heading": "Customer Service",
-              "menu": "customer-service"
+              "menu": ""
             }
           },
           "b5dac7b8-367b-40cc-b268-8c06c9d8b635": {
@@ -134,7 +110,7 @@
             "type": "link_list",
             "settings": {
               "heading": "Business & Press",
-              "menu": "press"
+              "menu": ""
             }
           }
         },
@@ -183,15 +159,6 @@
         "settings": {
           "quote": "<p>Molly is the real deal! <br\/>Enthusiastic quote goes here to get the sign up<\/p>",
           "cite": "Keith Kadstone"
-        }
-      },
-      "mailchimp": {
-        "type": "mailchimp",
-        "settings": {
-          "chimp_url": "",
-          "section_title": "Subscribe to our newsletter",
-          "subheading": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>",
-          "show_name": false
         }
       }
     },

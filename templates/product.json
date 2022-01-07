@@ -3,12 +3,9 @@
     "main": {
       "type": "main-product",
       "settings": {
-        "short_desc": "{{ product.metafields.my_fields.product_subtitle.value }}",
         "show_dynamic_checkout": true,
         "enable_sticky_info": true,
-        "share_label": "Share",
-        "hide_variants": false,
-        "enable_video_looping": false
+        "share_label": "Share"
       }
     },
     "page-tabs": {
