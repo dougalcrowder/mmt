@@ -3,7 +3,7 @@
     "main": {
       "type": "main-product",
       "settings": {
-        "show_dynamic_checkout": true,
+        "show_dynamic_checkout": false,
         "enable_sticky_info": true,
         "share_label": "Share"
       }
